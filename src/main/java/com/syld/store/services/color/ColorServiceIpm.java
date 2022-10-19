@@ -32,7 +32,9 @@ public class ColorServiceIpm implements ColorService {
         }catch (Exception e){
                 log.info(e.getMessage());
                 throw e;
+                
         }
+
     }
 
     @Override

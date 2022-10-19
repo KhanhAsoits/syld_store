@@ -6,6 +6,7 @@ import com.syld.store.services.color.ColorService;
 import com.syld.store.ultis.SlugGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,7 +46,7 @@ public class ColorController extends BaseController {
 
     // Truyen du lieu len server va check code color
     @PostMapping(path = "/create")
-    public String Save(@Valid @ModelAttribute("colors") ColorDto colorDto, BindingResult bindingResult){
+    public String Save(@Valid @ModelAttribute("colors") ColorDto colorDto, BindingResult bindingResult, Model model){
 
         ColorDto colorDto_ = colorService.getColorCode(colorDto.getColor_code());
         if(colorDto_ != null){
@@ -56,13 +57,17 @@ public class ColorController extends BaseController {
         if(colorDto__ != null) {
             bindingResult.rejectValue("color_name", "", "Color name has taken !");
         }
+        if(bindingResult.hasErrors()) {
+
+            return view(model, "Create_Color", "brand/add", this.admin_layout);
+        }
 
         try{
             colorService.save(colorDto);
         }catch (Exception e){
             log.info(e.getMessage());
         }
-        return "redirect:/admin/color?page=0&limit=8";
+        return "redirect:/admin/colors?page=0&limit=8";
     }
 
     @GetMapping(path = "/update/{color_name}")
