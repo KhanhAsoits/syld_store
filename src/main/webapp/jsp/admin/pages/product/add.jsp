@@ -377,6 +377,7 @@
         document.getElementById("tags-preview").innerHTML = htmls;
     }
     document.getElementById("product_tags").addEventListener('input',handleCreateTag)
+
     document.getElementById("product_name").addEventListener("input",(e)=>{
         e.preventDefault();
     })

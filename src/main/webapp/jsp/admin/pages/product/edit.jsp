@@ -26,10 +26,25 @@
         overflow: hidden;
     }
 
+    #tags-preview {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        min-height: 100px;
+    }
+
     .avatar-preview {
         padding: 0 !important;
         transition: .2s ease;
         transform: scale(1.1);
+    }
+
+    .tag {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 6px !important;
+        cursor: pointer;
+        margin: 3px;
+        display: inline-block;
     }
 
     .thumb-preview {
@@ -78,15 +93,19 @@
 
                     <div class="card-body">
                         <%--@elvariable id="product" type=""--%>
-                        <spForm:form class="row ec-vendor-uploads" action="${pageContext.request.contextPath}/admin/products/update" modelAttribute="product" enctype="multipart/form-data">
+                        <spForm:form class="row ec-vendor-uploads"
+                                     action="${pageContext.request.contextPath}/admin/products/update"
+                                     modelAttribute="product" enctype="multipart/form-data">
                             <spForm:input path="id" hidden="hidden" value="${single_product.id}"/>
                             <div class="col-lg-4">
                                 <div class="ec-vendor-img-upload">
                                     <div class="ec-vendor-main-img">
                                         <div class="avatar-upload">
                                             <div class="avatar-edit">
-                                                <spForm:input path="update_images" id="${single_product.images_con[0].id}"/>
-                                                <spForm:input path="files" type='file' data-id="${single_product.images_con[0].id}"
+                                                <spForm:input path="update_images"
+                                                              id="${single_product.images_con[0].id}"/>
+                                                <spForm:input path="files" type='file'
+                                                              data-id="${single_product.images_con[0].id}"
                                                               cssStyle="border: 2px solid #ced4da!important;"
                                                               id="imageUpload" cssClass="ec-image-upload upload-image"
                                                               accept=".png, .jpg, .jpeg"/>
@@ -103,14 +122,17 @@
                                             </div>
                                         </div>
                                         <div class="thumb-upload-set colo-md-12">
-                                            <c:forEach var="image" varStatus="loop" items="${single_product.images_con}">
+                                            <c:forEach var="image" varStatus="loop"
+                                                       items="${single_product.images_con}">
                                                 <c:if test="${loop.index > 0}">
                                                     <div class="thumb-upload">
                                                         <div class="thumb-edit">
 
-                                                            <spForm:input path="update_images" id="${image.id}" hidden="hidden"/>
+                                                            <spForm:input path="update_images" id="${image.id}"
+                                                                          hidden="hidden"/>
 
-                                                            <spForm:input path="files" type='file' data-id="${image.id}" id="thumbUpload${loop.index}"
+                                                            <spForm:input path="files" type='file' data-id="${image.id}"
+                                                                          id="thumbUpload${loop.index}"
                                                                           cssClass="ec-image-upload upload-image"
                                                                           accept=".png, .jpg, .jpeg"/>
                                                             <label for="imageUpload"><img
@@ -184,7 +206,7 @@
                                                       class="form-label">Sort Description</spForm:label>
                                         <spForm:input path="product_desc" id="product_desc" hidden="hidden"/>
                                         <textarea path="product_desc" id="desc" cssClass="form-control"
-                                                         cssStyle="border: 2px solid #ced4da!important;" rows="2"
+                                                  cssStyle="border: 2px solid #ced4da!important;" rows="2"
                                                   required="true"></textarea>
                                     </div>
                                         <%--                                        colors--%>
@@ -195,7 +217,7 @@
                                                 <spForm:input path="colors" type="color"
                                                               class="form-control form-control-color"
                                                               id="exampleColorInput1" value="${color.color_code}"
-                                                              title="Choose your color" />
+                                                              title="Choose your color"/>
                                             </c:forEach>
                                         </div>
                                     </div>
@@ -226,42 +248,47 @@
 
                                     <div class="col-md-6">
                                         <label class="form-label">Price <span>( In USD )</span></label>
-                                        <spForm:input path="product_price" type="number" min="1" value="${single_product.product_price}"
+                                        <spForm:input path="product_price" type="number" min="1"
+                                                      value="${single_product.product_price}"
                                                       cssStyle="border: 2px solid #ced4da!important;"
                                                       cssClass="form-control" required="true"/>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">Quantity</label>
-                                        <spForm:input path="product_quantity" type="number" min="1" value="${single_product.product_quantity}"
+                                        <spForm:input path="product_quantity" type="number" min="1"
+                                                      value="${single_product.product_quantity}"
                                                       cssStyle="border: 2px solid #ced4da!important;"
                                                       cssClass="form-control" required="true"/>
                                     </div>
                                     <div class="col-md-12 my-3">
                                         <label class="form-label">Full Detail</label>
-                                        <spForm:input path="product_detail" id="detail" hidden="hidden"/>
+                                        <spForm:input path="product_detail" id="detail" hidden="hidden"
+                                                      required="true"/>
                                         <textarea id="edit_detail"
                                                   cssStyle="border: 2px solid #ced4da!important;"
                                                   cssClass="form-control" rows="4"
                                                   required="true"></textarea>
                                     </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label class="form-label">Product Tags <span>( Type and
-																make comma to separate tags )</span></label>
-                                        <c:set var="tags" value=""/>
-                                        <c:forEach var="tag" items="${single_product.tags}">
-                                            <c:set var="tag_name" scope="request" value="${tag.tag_name}"/>
-                                            <c:set var="tags" value="${tags + ',' + tag_name}"/>
-                                            <h1>${tag_name}</h1>
-                                        </c:forEach>
-                                        <spForm:input path="group_tag"
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Product Tags
+                                            <span>(Type to auto make tag)</span></label>
+                                        <spForm:input path="group_tag" id="product_tags"
                                                       cssStyle="border: 2px solid #ced4da!important;"
                                                       required="true" type="text" cssClass="form-control"
-                                                      name="group_tag" value="${tags}"
+                                                      name="group_tag" value="${single_product.getTagString()}"
                                                       placeholder="Type tab name here and it auto create!"/>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Product Tags Preview</label>
+                                        <div id="tags-preview"
+                                             style="min-height: 100px;border: 2px solid #ced4da!important;"
+                                             class="form-control" name="group_tag">
+                                        </div>
                                     </div>
                                     <div class="col-md-12">
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
+
                                 </div>
                             </div>
                         </spForm:form>
@@ -272,29 +299,52 @@
     </div>
 </div>
 <script>
-    document.getElementById("product_name").addEventListener("input",(e)=>{
+
+    const handleCreateTag = (value) => {
+        let arr = value.split(",")
+        let htmls = ''
+        for (let item of arr) {
+            if (item !== "") {
+                let html = '<div class="px-3 py-1 tag">' + item + '</div>'
+                htmls += html
+            }
+        }
+        document.getElementById("tags-preview").innerHTML = htmls;
+    }
+    let tags = document.getElementById("product_tags").value
+    if (tags.trim() !== '') {
+        handleCreateTag(tags)
+    }
+    document.getElementById("product_tags").addEventListener('input', (e)=>{
+        let value = e.target.value
+        handleCreateTag(value)
+    })
+
+
+    document.getElementById("product_name").addEventListener("input", (e) => {
         e.preventDefault();
     })
-    CKEDITOR.replace('edit_detail',{
-        on:{
-            contentDom: function() {
-                this.editable().on( 'input', function( evt ) {
+    CKEDITOR.replace('edit_detail', {
+        on: {
+            contentDom: function () {
+                this.editable().on('input', function (evt) {
                     console.log(document.getElementById("detail"))
                     document.getElementById('detail').value = CKEDITOR.instances.edit_detail.getData();
-                } );
+                });
             }
         }
     })
-    CKEDITOR.replace('desc',{
-        on:{
-            contentDom: function() {
-                this.editable().on( 'input', function( evt ) {
+    CKEDITOR.replace('desc', {
+        on: {
+            contentDom: function () {
+                this.editable().on('input', function (evt) {
                     console.log(document.getElementById("product_desc"))
                     document.getElementById('product_desc').value = CKEDITOR.instances.desc.getData();
-                } );
+                });
             }
         }
     })
+
     CKEDITOR.instances['edit_detail'].setData('${single_product.product_detail}')
     CKEDITOR.instances['desc'].setData('${single_product.product_desc}')
 
@@ -309,8 +359,8 @@
     let uploadInput = document.querySelectorAll(".upload-image");
 
     console.log(uploadInput)
-    Array.from(uploadInput).forEach((val,index) => {
-        val.addEventListener('change',handleSetup)
+    Array.from(uploadInput).forEach((val, index) => {
+        val.addEventListener('change', handleSetup)
     })
 </script>
 

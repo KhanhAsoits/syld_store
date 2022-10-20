@@ -36,7 +36,7 @@ public class ProductServiceIpm implements ProductService {
     private final TagRepository tagRepository;
     private final SizeRepository sizeRepository;
 
-    private void processColor(List<String> colors){
+    private void processColor(List<String> colors) {
 
     }
 
@@ -126,28 +126,50 @@ public class ProductServiceIpm implements ProductService {
         }
     }
 
+    public boolean checkIsFile(List<MultipartFile> files) {
+        boolean hasFile = false;
+        for (MultipartFile file : files) {
+            if (!Objects.equals(file.getOriginalFilename(), "")) {
+                hasFile = true;
+            }
+        }
+        return hasFile;
+    }
+
     @Override
     public void update(ProductDto entity) throws Exception {
         try {
             Optional<Product> product = productRepository.findById(entity.getId());
-            if (product.isPresent()){
-                BeanUtils.copyProperties(entity,product.get());
+            if (product.isPresent()) {
+                String old_detail = product.get().getProduct_detail();
+                String old_desc = product.get().getProduct_desc();
+
+                BeanUtils.copyProperties(entity, product.get());
+                if (Objects.equals(product.get().getProduct_desc(), "")) {
+                    product.get().setProduct_desc(old_desc);
+                }
+                if (Objects.equals(product.get().getProduct_detail(), "")) {
+                    product.get().setProduct_desc(old_detail);
+
+                }
+
 //            update image
-                if (entity.getFiles().size() > 0 && !Objects.equals(entity.getFiles().get(0).getOriginalFilename(), "")){
-                    for (String file_in : entity.getUpdate_images()){
-                        if (!Objects.equals(file_in, "")){
-                            String [] data = file_in.split("--");
-                            for (MultipartFile file:entity.getFiles()){
-                                if (Objects.equals(file.getOriginalFilename(), data[1])){
-                                    String path = uploader.upload(file,entity.getProduct_name());
+                if (entity.getFiles().size() > 0 && checkIsFile(entity.getFiles())) {
+                    for (String file_in : entity.getUpdate_images()) {
+                        if (!Objects.equals(file_in, "")) {
+                            String[] data = file_in.split("--");
+                            for (MultipartFile file : entity.getFiles()) {
+                                if (Objects.equals(file.getOriginalFilename(), data[1])) {
+                                    String path = uploader.upload(file, entity.getProduct_name());
                                     Optional<ProductImage> productImage = productImageRepository.findById(data[0]);
-                                    if (productImage.isPresent()){
+                                    if (productImage.isPresent()) {
                                         uploader.remove(productImage.get().getPath());
                                         productImage.get().setPath(path);
                                         productImageRepository.save(productImage.get());
                                         break;
                                     }
-                                };
+                                }
+                                ;
                             }
                         }
                     }
@@ -158,8 +180,8 @@ public class ProductServiceIpm implements ProductService {
                     ColorDto color_ = colorService.getColorCode(color);
                     Color has_color = new Color();
 //                SAVE COLOR
-                    if (color_!=null){
-                        has_color = modelMapper.map(color_,Color.class);
+                    if (color_ != null) {
+                        has_color = modelMapper.map(color_, Color.class);
                         has_color.setId(color_.getId());
                     }
 
@@ -195,7 +217,7 @@ public class ProductServiceIpm implements ProductService {
 
 
                 String[] tags = entity.getGroup_tag().split(",");
-                List<Tag> tagsL= new ArrayList<>();
+                List<Tag> tagsL = new ArrayList<>();
                 for (String tag : tags) {
                     Tag has_tag = tagRepository.findByTagName(tag);
                     if (has_tag != null) {
@@ -223,10 +245,9 @@ public class ProductServiceIpm implements ProductService {
                 }
                 productRepository.save(product.get());
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             log.info(e.getMessage());
         }
-
     }
 
     @Override
@@ -270,12 +291,12 @@ public class ProductServiceIpm implements ProductService {
     public ProductViewDto getById(String id) {
         try {
             Optional<Product> product = productRepository.findById(id);
-            if (product.isPresent()){
-                ProductViewDto productViewDto = modelMapper.map(product,ProductViewDto.class);
+            if (product.isPresent()) {
+                ProductViewDto productViewDto = modelMapper.map(product, ProductViewDto.class);
                 productViewDto.convertData();
                 return productViewDto;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             log.info(e.getMessage());
         }
         return null;

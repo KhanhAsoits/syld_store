@@ -56,6 +56,13 @@ public class ProductViewDto {
         this.images_con = new ArrayList<>(this.thumbnails);
     }
 
+    public String getTagString(){
+        String[] string_tags = new String[this.tags.size()];
+        for (int i = 0 ; i < this.tags_con.size() ; i++){
+            string_tags[i] = this.tags_con.get(i).getTag_name();
+        }
+        return String.join(",",string_tags);
+    }
     private Timestamp create_at = new Timestamp(System.currentTimeMillis());
     private Timestamp update_at = new Timestamp(System.currentTimeMillis());
 }

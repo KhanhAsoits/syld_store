@@ -90,7 +90,15 @@ public class ProductController extends BaseController {
         return view(model,"Edit - Product","product/edit",this.admin_layout);
     }
 
-
+    @GetMapping(path = "/gird/all")
+    public String ProductGrid(Model model){
+        try {
+            model.addAttribute("list", productService.getAll());
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
+        return view(model, "List Product", "product/gird", this.admin_layout);
+    }
 
     @PostMapping("/update")
     public String update_entity(@Valid @ModelAttribute("product") ProductDto entity,BindingResult bindingResult,Model model) {

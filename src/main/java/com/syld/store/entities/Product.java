@@ -76,7 +76,8 @@ public class Product {
     @OneToMany(mappedBy = "product")
     Set<ProductCart> productCartList = new HashSet<>();
 
-    @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    @ManyToMany( cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    @JoinTable(name = "product_tags")
     Set<Tag> tags = new HashSet<>();
 
     public void addImage(ProductImage productImage) {
