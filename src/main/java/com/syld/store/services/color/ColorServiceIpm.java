@@ -32,7 +32,9 @@ public class ColorServiceIpm implements ColorService {
         }catch (Exception e){
                 log.info(e.getMessage());
                 throw e;
+                
         }
+
     }
 
     @Override
@@ -89,6 +91,30 @@ public class ColorServiceIpm implements ColorService {
         if(color != null){
             return  modelMapper.map(color, ColorDto.class);
         }
+        return null;
+    }
+
+    @Override
+    public ColorDto getByNameNotSame(String name, String id) {
+        Optional<Color> color = colorRepository.getByNameNotSame(name, id);
+        if( color.isPresent()){
+            return modelMapper.map(color, ColorDto.class);
+        }
+        return null;
+    }
+
+    @Override
+    public ColorDto getByColor_name(String color_name) {
+        Optional<Color> color = colorRepository.findByColor_name(color_name);
+        if(color.isPresent()) {
+            return modelMapper.map(color, ColorDto.class);
+        }
+        return null;
+    }
+
+
+    @Override
+    public ColorDto getListColor() {
         return null;
     }
 
