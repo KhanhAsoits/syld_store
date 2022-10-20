@@ -16,6 +16,7 @@ import java.util.List;
 @Setter
 @Getter
 @SQLDelete(sql = "UPDATE colors SET state = false WHERE id=?")
+
 public class Color {
 
     @javax.persistence.Id
