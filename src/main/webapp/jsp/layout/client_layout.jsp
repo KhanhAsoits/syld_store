@@ -2,13 +2,7 @@
     <%@include file="./client_header.jsp" %>
     <title>${title}</title>
 </head>
-
-
 <body>
-<!--[if lte IE 9]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
-    your browser</a> to improve your experience and security.</p>
-<![endif]-->
 
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">

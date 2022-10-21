@@ -90,7 +90,7 @@
 
                     <div class="card-body">
                         <%--@elvariable id="product" type=""--%>
-                        <spForm:form class="row ec-vendor-uploads" modelAttribute="product" enctype="multipart/form-data">
+                        <spForm:form class="row ec-vendor-uploads" action="${pageContext.request.contextPath}/admin/products/create" modelAttribute="product" enctype="multipart/form-data">
                             <div class="col-lg-4">
                                 <div class="ec-vendor-img-upload">
                                     <div class="ec-vendor-main-img">

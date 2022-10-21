@@ -24,8 +24,9 @@ public class User {
     @Column(unique = true)
     private String email;
 
+    @Nullable
+    private String avatar;
     @Column
-    @Size(min = 8)
     private String password;
 
     @Column
@@ -38,7 +39,7 @@ public class User {
     @Column
     private String address;
 
-    @Column
+    @Column(unique = true)
     @Nullable
     @Size(min = 10, max = 11)
     private String PhoneNumber;

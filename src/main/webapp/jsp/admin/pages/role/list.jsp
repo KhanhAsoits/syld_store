@@ -43,7 +43,7 @@
                                         <td>
                                             <div class="btn-group mb-1">
                                                 <button type="button"
-                                                        class="btn btn-outline-success"><a href="${pageContext.request.contextPath}/admin/roles/${role.role_slug}">Info</a>
+                                                        class="btn btn-outline-success"><a href="${pageContext.request.contextPath}/admin/roles/${role.id}">Info</a>
                                                 </button>
                                                 <button type="button"
                                                         class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
@@ -53,7 +53,7 @@
                                                 </button>
 
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/roles/update/${role.role_slug}">Edit</a>
+                                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/roles/update/${role.id}">Edit</a>
                                                     <c:if test="${role.state}">
                                                         <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/roles/remove/${role.id}">Delete</a>
                                                     </c:if>
