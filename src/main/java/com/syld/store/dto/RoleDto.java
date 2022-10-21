@@ -15,6 +15,7 @@ public class RoleDto {
         this.id = id;
     };
 
+    private boolean state = Boolean.TRUE;
     private String id;
 
     private String role_name;

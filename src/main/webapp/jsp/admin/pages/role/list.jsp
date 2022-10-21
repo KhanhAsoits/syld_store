@@ -39,7 +39,6 @@
                                 <c:forEach var="role" items="${list}">
                                     <tr>
                                         <td>${role.role_name}</td>
-                                        <td>${role.role_slug}</td>
                                         <td style="color: ${role.state?'blue':'red'}">${role.state?"Active":"Deleted"}</td>
                                         <td>
                                             <div class="btn-group mb-1">
