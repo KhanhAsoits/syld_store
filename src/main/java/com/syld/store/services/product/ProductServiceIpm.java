@@ -7,6 +7,7 @@ import com.syld.store.services.brand.BrandService;
 import com.syld.store.services.category.CategoryService;
 import com.syld.store.services.color.ColorService;
 import com.syld.store.services.size.SizeService;
+import com.syld.store.ultis.SlugGenerator;
 import com.syld.store.ultis.Uploader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -51,7 +52,7 @@ public class ProductServiceIpm implements ProductService {
 //            process images
 
             for (MultipartFile file : entity.getFiles()) {
-                String path = uploader.upload(file, entity.getProduct_name());
+                String path = uploader.upload(file, SlugGenerator.toSlug(entity.getProduct_name()));
                 ProductImage productImage = new ProductImage();
                 productImage.setId(UUID.randomUUID().toString());
                 productImage.setPath(path);
@@ -160,7 +161,7 @@ public class ProductServiceIpm implements ProductService {
                             String[] data = file_in.split("--");
                             for (MultipartFile file : entity.getFiles()) {
                                 if (Objects.equals(file.getOriginalFilename(), data[1])) {
-                                    String path = uploader.upload(file, entity.getProduct_name());
+                                    String path = uploader.upload(file, SlugGenerator.toSlug(entity.getProduct_name()));
                                     Optional<ProductImage> productImage = productImageRepository.findById(data[0]);
                                     if (productImage.isPresent()) {
                                         uploader.remove(productImage.get().getPath());
