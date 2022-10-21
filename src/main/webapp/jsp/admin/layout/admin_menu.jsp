@@ -25,24 +25,24 @@
                 <li class="has-sub">
                     <a class="sidenav-item-link" href="javascript:void(0)">
                         <i class="mdi mdi-account-group-outline"></i>
-                        <span class="nav-text">Vendors</span> <b class="caret"></b>
+                        <span class="nav-text">Admin</span> <b class="caret"></b>
                     </a>
                     <div class="collapse">
                         <ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
                             <li class="">
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/vendor-card.html">
-                                    <span class="nav-text">Vendor Grid</span>
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/gird">
+                                    <span class="nav-text">Account Admin Gird</span>
                                 </a>
                             </li>
 
                             <li class="">
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/vendor-list.html">
-                                    <span class="nav-text">Vendor List</span>
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/list">
+                                    <span class="nav-text">Account Admin List</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/vendor-profile.html">
-                                    <span class="nav-text">Vendors Profile</span>
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/roles">
+                                    <span class="nav-text">Account Role</span>
                                 </a>
                             </li>
                         </ul>

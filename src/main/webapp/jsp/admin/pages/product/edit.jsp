@@ -209,7 +209,7 @@
                                                   cssStyle="border: 2px solid #ced4da!important;" rows="2"
                                                   required="true"></textarea>
                                     </div>
-                                        <%--                                        colors--%>
+                                        <%-- colors--%>
                                     <div class="col-md-4 mb-25  mt-3">
                                         <label class="form-label">Colors</label>
                                         <div class="row justify-content-evenly align-items-center colors">
