@@ -213,12 +213,15 @@
                                     <div class="col-md-4 mb-25  mt-3">
                                         <label class="form-label">Colors</label>
                                         <div class="row justify-content-evenly align-items-center colors">
-<%--                                            <c:forEach var="color" items="${single_product.colors_con}">--%>
-<%--                                                <spForm:input path="colors" type="color"--%>
-<%--                                                              class="form-control form-control-color"--%>
-<%--                                                              id="exampleColorInput1" value="${color.color_code}"--%>
-<%--                                                              title="Choose your color"/>--%>
-<%--                                            </c:forEach>--%>
+                                                <%--                                            <c:forEach var="color" items="${single_product.colors_con}">--%>
+                                                <%--                                                <spForm:input path="colors" type="color"--%>
+                                                <%--                                                              class="form-control form-control-color"--%>
+                                                <%--                                                              id="exampleColorInput1" value="${color.color_code}"--%>
+                                                <%--                                                              title="Choose your color"/>--%>
+                                                <%--                                            </c:forEach>--%>
+
+
+<%--                                                    bao h them xong thi nho de lai--%>
                                             <spForm:input path="colors" type="color"
                                                           class="form-control form-control-color"
                                                           id="exampleColorInput1"
@@ -230,16 +233,14 @@
                                             <spForm:input path="colors" type="color"
                                                           class="form-control form-control-color"
                                                           id="exampleColorInput1"
-                                                          title="Choose your color" />
+                                                          title="Choose your color"/>
 
                                             <spForm:input path="colors" type="color"
                                                           class="form-control form-control-color"
                                                           id="exampleColorInput1"
                                                           title="Choose your color"/>
-
                                         </div>
                                     </div>
-
                                     <div class="col-md-8 mb-25  mt-3">
                                         <spForm:label path="sizes" class="form-label">Size</spForm:label>
                                         <div class="form-checkbox-box d-flex justify-content-start align-items-center sizes">
@@ -263,7 +264,6 @@
                                             </c:forEach>
                                         </div>
                                     </div>
-
                                     <div class="col-md-6">
                                         <label class="form-label">Price <span>( In USD )</span></label>
                                         <spForm:input path="product_price" type="number" min="1"
@@ -337,7 +337,7 @@
     if (tags.trim() !== '') {
         handleCreateTag(tags)
     }
-    document.getElementById("product_tags").addEventListener('input', (e)=>{
+    document.getElementById("product_tags").addEventListener('input', (e) => {
         let value = e.target.value
         handleCreateTag(value)
     })
