@@ -213,12 +213,30 @@
                                     <div class="col-md-4 mb-25  mt-3">
                                         <label class="form-label">Colors</label>
                                         <div class="row justify-content-evenly align-items-center colors">
-                                            <c:forEach var="color" items="${single_product.colors_con}">
-                                                <spForm:input path="colors" type="color"
-                                                              class="form-control form-control-color"
-                                                              id="exampleColorInput1" value="${color.color_code}"
-                                                              title="Choose your color"/>
-                                            </c:forEach>
+<%--                                            <c:forEach var="color" items="${single_product.colors_con}">--%>
+<%--                                                <spForm:input path="colors" type="color"--%>
+<%--                                                              class="form-control form-control-color"--%>
+<%--                                                              id="exampleColorInput1" value="${color.color_code}"--%>
+<%--                                                              title="Choose your color"/>--%>
+<%--                                            </c:forEach>--%>
+                                            <spForm:input path="colors" type="color"
+                                                          class="form-control form-control-color"
+                                                          id="exampleColorInput1"
+                                                          title="Choose your color"/>
+                                            <spForm:input path="colors" type="color"
+                                                          class="form-control form-control-color"
+                                                          id="exampleColorInput1"
+                                                          title="Choose your color"/>
+                                            <spForm:input path="colors" type="color"
+                                                          class="form-control form-control-color"
+                                                          id="exampleColorInput1"
+                                                          title="Choose your color" />
+
+                                            <spForm:input path="colors" type="color"
+                                                          class="form-control form-control-color"
+                                                          id="exampleColorInput1"
+                                                          title="Choose your color"/>
+
                                         </div>
                                     </div>
 
@@ -299,6 +317,10 @@
     </div>
 </div>
 <script>
+
+    document.getElementById('product_desc').value = '${single_product.product_desc}'
+    document.getElementById('detail').value = '${single_product.product_detail}'
+
 
     const handleCreateTag = (value) => {
         let arr = value.split(",")
