@@ -53,7 +53,8 @@
                                             <div class="card-top">
                                                 <c:forEach varStatus="loop" var="image" items="${product.thumbnails}">
                                                     <c:if test="${loop.index == 0}">
-                                                        <img class="card-image" style="height: 250px;object-fit: cover" src="${pageContext.request.contextPath}${image.path}"
+                                                        <img class="card-image" style="height: 250px;object-fit: cover"
+                                                             src="${pageContext.request.contextPath}${image.path}"
                                                              alt=""/>
                                                     </c:if>
                                                 </c:forEach>
@@ -64,11 +65,17 @@
                                             </div>
                                             <div class="card-action">
                                                 <div class="card-edit"><i
-                                                        class="mdi mdi-circle-edit-outline" href="${pageContext.request.contextPath}/admin/products/update/${product.id}"></i></div>
-                                                <div class="card-preview" href="${pageContext.request.contextPath}/admin/products/${product.id}"><i class="mdi mdi-eye-outline"></i>
+                                                        class="mdi mdi-circle-edit-outline"
+                                                        href="${pageContext.request.contextPath}/admin/products/update/${product.id}"></i>
                                                 </div>
-                                                <div class="card-remove" href="${pageContext.request.contextPath}/admin/categories/remove/${product.id}"><i
-                                                        class="mdi mdi mdi-delete-outline"></i></div>
+                                                <div class="card-preview"
+                                                     href="${pageContext.request.contextPath}/admin/products/${product.id}">
+                                                    <i class="mdi mdi-eye-outline"></i>
+                                                </div>
+                                                <div class="card-remove"
+                                                     href="${pageContext.request.contextPath}/admin/categories/remove/${product.id}">
+                                                    <i
+                                                            class="mdi mdi mdi-delete-outline"></i></div>
                                             </div>
                                         </div>
                                     </div>

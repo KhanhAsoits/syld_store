@@ -219,9 +219,7 @@
                                                 <%--                                                              id="exampleColorInput1" value="${color.color_code}"--%>
                                                 <%--                                                              title="Choose your color"/>--%>
                                                 <%--                                            </c:forEach>--%>
-
-
-<%--                                                    bao h them xong thi nho de lai--%>
+                                                <%-- bao h them xong thi nho de lai--%>
                                             <spForm:input path="colors" type="color"
                                                           class="form-control form-control-color"
                                                           id="exampleColorInput1"
@@ -356,6 +354,7 @@
             }
         }
     })
+
     CKEDITOR.replace('desc', {
         on: {
             contentDom: function () {
