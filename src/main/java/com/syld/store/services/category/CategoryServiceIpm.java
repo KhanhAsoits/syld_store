@@ -52,17 +52,18 @@ public class CategoryServiceIpm implements CategoryService {
     @Override
     public void save(CategoryDto entity) throws Exception {
         try {
+
 //           save  file to local
-            String filePath = uploader.upload(entity.getFile(), entity.getCategory_name());
 //            end
             Category category = this.modelMapper.map(entity, Category.class);
+            category.setCategory_slug(SlugGenerator.toSlug(entity.getCategory_slug()));
+            String filePath = uploader.upload(entity.getFile(), entity.getCategory_slug());
             category.setId(UUID.randomUUID().toString());
             if (filePath != null) {
                 category.setCategory_thumbnail(filePath);
             } else {
                 category.setCategory_thumbnail(default_thumbnail);
             }
-            category.setCategory_slug(SlugGenerator.toSlug(entity.getCategory_slug()));
             categoryRepository.save(category);
         } catch (Exception e) {
             log.info(e.getMessage());
@@ -80,8 +81,9 @@ public class CategoryServiceIpm implements CategoryService {
                     category.setParent_id("parent");
                 }
                 BeanUtils.copyProperties(entity, category);
+                category.setCategory_slug(SlugGenerator.toSlug(category.getCategory_slug()));
                 if (!Objects.equals(entity.getFile().getOriginalFilename(), "")) {
-                    String path = uploader.upload(entity.getFile(), entity.getCategory_name());
+                    String path = uploader.upload(entity.getFile(), entity.getCategory_slug());
                     uploader.remove(category.getCategory_thumbnail());
                     category.setCategory_thumbnail(path);
                 } else {

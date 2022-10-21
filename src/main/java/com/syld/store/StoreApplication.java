@@ -1,8 +1,4 @@
 package com.syld.store;
-
-import com.syld.store.dto.RoleDto;
-import com.syld.store.services.role.RoleService;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.MessageSource;
