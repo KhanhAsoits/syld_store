@@ -141,7 +141,7 @@
                                 </a>
                             </li>
                             <li class="">
-                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/products/gird">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/products/gird/all">
                                     <span class="nav-text">Grid Product</span>
                                 </a>
                             </li>

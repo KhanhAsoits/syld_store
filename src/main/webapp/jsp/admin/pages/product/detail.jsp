@@ -29,8 +29,8 @@
                                             <div class="single-product-cover">
                                                 <c:forEach var="image" items="${single_product.thumbnails}">
                                                     <div class="single-slide zoom-image-hover">
-                                                        <img class="img-responsive" style="height: 300px;;object-fit: cover"
-                                                             src="${pageContext.request.contextPath}${image.path}" alt="">
+                                                        <img class="img-responsive" style="height: 550px;;object-fit: cover"
+                                                             src="${pageContext.request.contextPath}${image.path}"  alt="">
                                                     </div>
                                                 </c:forEach>
                                             </div>
