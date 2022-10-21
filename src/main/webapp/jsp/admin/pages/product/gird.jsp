@@ -64,10 +64,10 @@
                                             </div>
                                             <div class="card-action">
                                                 <div class="card-edit"><i
-                                                        class="mdi mdi-circle-edit-outline"></i></div>
-                                                <div class="card-preview"><i class="mdi mdi-eye-outline"></i>
+                                                        class="mdi mdi-circle-edit-outline" href="${pageContext.request.contextPath}/admin/products/update/${product.id}"></i></div>
+                                                <div class="card-preview" href="${pageContext.request.contextPath}/admin/products/${product.id}"><i class="mdi mdi-eye-outline"></i>
                                                 </div>
-                                                <div class="card-remove"><i
+                                                <div class="card-remove" href="${pageContext.request.contextPath}/admin/categories/remove/${product.id}"><i
                                                         class="mdi mdi mdi-delete-outline"></i></div>
                                             </div>
                                         </div>
