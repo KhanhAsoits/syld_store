@@ -57,7 +57,7 @@ public class CategoryServiceIpm implements CategoryService {
 //            end
             Category category = this.modelMapper.map(entity, Category.class);
             category.setCategory_slug(SlugGenerator.toSlug(entity.getCategory_slug()));
-            String filePath = uploader.upload(entity.getFile(), entity.getCategory_slug());
+            String filePath = uploader.upload(entity.getFile(), category.getCategory_slug());
             category.setId(UUID.randomUUID().toString());
             if (filePath != null) {
                 category.setCategory_thumbnail(filePath);
@@ -83,7 +83,7 @@ public class CategoryServiceIpm implements CategoryService {
                 BeanUtils.copyProperties(entity, category);
                 category.setCategory_slug(SlugGenerator.toSlug(category.getCategory_slug()));
                 if (!Objects.equals(entity.getFile().getOriginalFilename(), "")) {
-                    String path = uploader.upload(entity.getFile(), entity.getCategory_slug());
+                    String path = uploader.upload(entity.getFile(),category.getCategory_slug());
                     uploader.remove(category.getCategory_thumbnail());
                     category.setCategory_thumbnail(path);
                 } else {
