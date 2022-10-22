@@ -17,7 +17,7 @@ public class HomeController extends BaseController {
 
     @GetMapping
     public String Index(Model model) {
-        return view(model, "Home", "index", this.layout_path);
+        return view(model, "Home", "index", this.layout_path, true);
     }
 }
 

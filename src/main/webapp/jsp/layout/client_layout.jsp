@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <%@include file="./client_header.jsp" %>
     <title>${title}</title>
@@ -6,145 +7,39 @@
 
 <!-- Main wrapper -->
 <div class="wrapper" id="wrapper">
-
     <header id="wn__header" class="header__area header__absolute sticky__header">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-6 col-lg-2">
                     <div class="logo">
                         <a href="index.html">
-                            <img src="images/logo/logo.png" alt="logo images">
+                            <img src="${pageContext.request.contextPath}/assets/images/logo/logo.svg" style="width: 100px;height: 100px" alt="logo images">
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-8 d-none d-lg-block">
                     <nav class="mainmenu__nav">
                         <ul class="meninmenu d-flex justify-content-start">
-                            <li class="drop with--one--item"><a href="index.html">Home</a>
-                                <div class="megamenu dropdown">
-                                    <ul class="item item01">
-                                        <li><a href="index.html">Home Style Default</a></li>
-                                        <li><a href="index-2.html">Home Style Two</a></li>
-                                        <li><a href="index-3.html">Home Style Three</a></li>
-                                        <li><a href="index-box.html">Home Box Style</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="drop"><a href="#">Shop</a>
-                                <div class="megamenu mega03">
-                                    <ul class="item item03">
-                                        <li class="title">Shop Layout</li>
-                                        <li><a href="shop-grid.html">Shop Grid</a></li>
-                                        <li><a href="shop-list.html">Shop List</a></li>
-                                        <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                        <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                        <li><a href="shop-no-sidebar.html">Shop No sidebar</a></li>
-                                        <li><a href="single-product.html">Single Product</a></li>
-                                    </ul>
-                                    <ul class="item item03">
-                                        <li class="title">Shop Page</li>
-                                        <li><a href="my-account.html">My Account</a></li>
-                                        <li><a href="cart.html">Cart Page</a></li>
-                                        <li><a href="checkout.html">Checkout Page</a></li>
-                                        <li><a href="wishlist.html">Wishlist Page</a></li>
-                                        <li><a href="error404.html">404 Page</a></li>
-                                        <li><a href="faq.html">Faq Page</a></li>
-                                    </ul>
-                                    <ul class="item item03">
-                                        <li class="title">Bargain Books</li>
-                                        <li><a href="shop-grid.html">Bargain Bestsellers</a></li>
-                                        <li><a href="shop-grid.html">Activity Kits</a></li>
-                                        <li><a href="shop-grid.html">B&N Classics</a></li>
-                                        <li><a href="shop-grid.html">Books Under $5</a></li>
-                                        <li><a href="shop-grid.html">Bargain Books</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="drop"><a href="shop-grid.html">Books</a>
-                                <div class="megamenu mega03">
-                                    <ul class="item item03">
-                                        <li class="title">Categories</li>
-                                        <li><a href="shop-grid.html">Biography </a></li>
-                                        <li><a href="shop-grid.html">Business </a></li>
-                                        <li><a href="shop-grid.html">Cookbooks </a></li>
-                                        <li><a href="shop-grid.html">Health & Fitness </a></li>
-                                        <li><a href="shop-grid.html">History </a></li>
-                                    </ul>
-                                    <ul class="item item03">
-                                        <li class="title">Customer Favourite</li>
-                                        <li><a href="shop-grid.html">Mystery</a></li>
-                                        <li><a href="shop-grid.html">Religion & Inspiration</a></li>
-                                        <li><a href="shop-grid.html">Romance</a></li>
-                                        <li><a href="shop-grid.html">Fiction/Fantasy</a></li>
-                                        <li><a href="shop-grid.html">Sleeveless</a></li>
-                                    </ul>
-                                    <ul class="item item03">
-                                        <li class="title">Collections</li>
-                                        <li><a href="shop-grid.html">Science </a></li>
-                                        <li><a href="shop-grid.html">Fiction/Fantasy</a></li>
-                                        <li><a href="shop-grid.html">Self-Improvemen</a></li>
-                                        <li><a href="shop-grid.html">Home & Garden</a></li>
-                                        <li><a href="shop-grid.html">Humor Books</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="drop"><a href="shop-grid.html">Kids</a>
-                                <div class="megamenu mega02">
-                                    <ul class="item item02">
-                                        <li class="title">Top Collections</li>
-                                        <li><a href="shop-grid.html">American Girl</a></li>
-                                        <li><a href="shop-grid.html">Diary Wimpy Kid</a></li>
-                                        <li><a href="shop-grid.html">Finding Dory</a></li>
-                                        <li><a href="shop-grid.html">Harry Potter</a></li>
-                                        <li><a href="shop-grid.html">Land of Stories</a></li>
-                                    </ul>
-                                    <ul class="item item02">
-                                        <li class="title">More For Kids</li>
-                                        <li><a href="shop-grid.html">B&N Educators</a></li>
-                                        <li><a href="shop-grid.html">B&N Kids' Club</a></li>
-                                        <li><a href="shop-grid.html">Kids' Music</a></li>
-                                        <li><a href="shop-grid.html">Toys & Games</a></li>
-                                        <li><a href="shop-grid.html">Hoodies</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="drop"><a href="#">Pages</a>
-                                <div class="megamenu dropdown">
-                                    <ul class="item item01">
-                                        <li><a href="about.html">About Page</a></li>
-                                        <li class="label2"><a href="portfolio.html">Portfolio</a>
-                                            <ul>
-                                                <li><a href="portfolio.html">Portfolio</a></li>
-                                                <li><a href="portfolio-three-column.html">Portfolio 3 Column</a>
+                            <c:forEach var="category" items="${navs}">
+                                <li class="drop with--one--item">
+                                    <a href="${pageContext.request.contextPath}/stores/${category.children[0].category_slug}">${category.parent.category_name}</a>
+                                    <div class="megamenu dropdown">
+                                        <ul class="item item01">
+                                            <c:forEach var="child_category" items="${category.children}">
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/stores/${child_category.category_slug}">${child_category.category_name}</a>
                                                 </li>
-                                                <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="my-account.html">My Account</a></li>
-                                        <li><a href="cart.html">Cart Page</a></li>
-                                        <li><a href="checkout.html">Checkout Page</a></li>
-                                        <li><a href="wishlist.html">Wishlist Page</a></li>
-                                        <li><a href="error404.html">404 Page</a></li>
-                                        <li><a href="faq.html">Faq Page</a></li>
-                                        <li><a href="team.html">Team Page</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="drop"><a href="blog.html">Blog</a>
-                                <div class="megamenu dropdown">
-                                    <ul class="item item01">
-                                        <li><a href="blog.html">Blog Page</a></li>
-                                        <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                        <li><a href="blog-no-sidebar.html">Blog No Sidebar</a></li>
-                                        <li><a href="blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </c:forEach>
+                            <li><a href="${pageContext.request.contextPath}/store">Shop</a></li>
+                            <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
-                <div class="col-md-6 col-sm-6 col-6 col-lg-2">
+                <div class="col-md-8 col-sm-8 col-5 col-lg-2">
                     <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
                         <li class="shop_search"><a class="search__active" href="#"></a></li>
                         <li class="wishlist"><a href="#"></a></li>
@@ -171,7 +66,7 @@
                                             <div class="item01 d-flex">
                                                 <div class="thumb">
                                                     <a href="product-details.html"><img
-                                                            src="images/product/sm-img/1.jpg"
+                                                            src="${pageContext.request.contextPath}/assets/images/product/sm-img/1.jpg"
                                                             alt="product images"></a>
                                                 </div>
                                                 <div class="content">
@@ -191,7 +86,7 @@
                                             <div class="item01 d-flex mt--20">
                                                 <div class="thumb">
                                                     <a href="product-details.html"><img
-                                                            src="images/product/sm-img/3.jpg"
+                                                            src="${pageContext.request.contextPath}/assets/images/product/sm-img/3.jpg"
                                                             alt="product images"></a>
                                                 </div>
                                                 <div class="content">
@@ -211,7 +106,7 @@
                                             <div class="item01 d-flex mt--20">
                                                 <div class="thumb">
                                                     <a href="product-details.html"><img
-                                                            src="images/product/sm-img/2.jpg"
+                                                            src="${pageContext.request.contextPath}/assets/images/product/sm-img/2.jpg"
                                                             alt="product images"></a>
                                                 </div>
                                                 <div class="content">
@@ -237,16 +132,18 @@
                             </div>
                             <!-- End Shopping Cart -->
                         </li>
-                        <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
+                        <li class="setting__bar__icon"><a class="setting__active" href="login"></a>
                             <div class="searchbar__content setting__block">
                                 <div class="content-inner">
                                     <div class="switcher-currency">
                                         <strong class="label switcher-label">
-                                            <span>Currency</span>
+                                            <span>Account</span>
                                         </strong>
                                         <div class="switcher-options">
                                             <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">USD - US Dollar</span>
+                                                <span class="currency-trigger">My order</span>
+                                                <span class="currency-trigger">Purchase history</span>
+                                                <span class="currency-trigger">My rating</span>
                                                 <ul class="switcher-dropdown">
                                                     <li>GBP - British Pound Sterling</li>
                                                     <li>EUR - Euro</li>
@@ -260,12 +157,12 @@
                                         </strong>
                                         <div class="switcher-options">
                                             <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">English01</span>
+                                                <span class="currency-trigger">English</span>
                                                 <ul class="switcher-dropdown">
-                                                    <li>English02</li>
-                                                    <li>English03</li>
-                                                    <li>English04</li>
-                                                    <li>English05</li>
+                                                    <li>Viet Nam</li>
+                                                    <li>China</li>
+                                                    <li>Japan</li>
+                                                    <li>Korea</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -278,26 +175,26 @@
                                             <div class="switcher-currency-trigger">
                                                 <span class="currency-trigger">Fashion Store</span>
                                                 <ul class="switcher-dropdown">
-                                                    <li>Furniture</li>
+                                                    <li>Perfume</li>
                                                     <li>Shoes</li>
-                                                    <li>Speaker Store</li>
-                                                    <li>Furniture</li>
+                                                    <li>Jewels</li>
+                                                    <li>Eyeglass</li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="switcher-currency">
                                         <strong class="label switcher-label">
-                                            <span>My Account</span>
+                                            <span>Setting</span>
                                         </strong>
                                         <div class="switcher-options">
                                             <div class="switcher-currency-trigger">
                                                 <div class="setting__menu">
-                                                    <span><a href="#">Compare Product</a></span>
+                                                    <span><a href="#">support & report</a></span>
                                                     <span><a href="#">My Account</a></span>
-                                                    <span><a href="#">My Wishlist</a></span>
-                                                    <span><a href="#">Sign In</a></span>
-                                                    <span><a href="#">Create An Account</a></span>
+                                                    <span><a href="#">Change Password</a></span>
+                                                    <span><a href="#">Change Theme</a></span>
+                                                    <span><a href="login">Logout</a></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -313,52 +210,68 @@
                 <div class="col-lg-12 d-none">
                     <nav class="mobilemenu__nav">
                         <ul class="meninmenu">
-                            <li><a href="index.html">Home</a>
+                            <li><a href="index">Clothing Fashion</a>
                                 <ul>
-                                    <li><a href="index.html">Home Style Default</a></li>
-                                    <li><a href="index-2.html">Home Style Two</a></li>
-                                    <li><a href="index-3.html">Home Style Three</a></li>
-                                    <li><a href="index-box.html">Home Box Style</a></li>
+                                    <li><a href="index.html">Men's Fashion</a></li>
+                                    <li><a href="index-2.html">Women's Fashion</a></li>
+                                    <li><a href="index-3.html">Child Fashion</a></li>
+                                    <li><a href="index-box.html">Handmade Fashion</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Pages</a>
+                            <li><a href="#">New Products</a>
                                 <ul>
-                                    <li><a href="about.html">About Page</a></li>
-                                    <li><a href="portfolio.html">Portfolio</a>
+                                    <li><a href="#">Perfume</a>
                                         <ul>
-                                            <li><a href="portfolio.html">Portfolio</a></li>
-                                            <li><a href="portfolio-three-column.html">Portfolio 3 Column</a></li>
-                                            <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                                            <li><a href="#">Man</a></li>
+                                            <li><a href="#">Women</a></li>
+                                            <li><a href="#">Collection</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="cart.html">Cart Page</a></li>
-                                    <li><a href="checkout.html">Checkout Page</a></li>
-                                    <li><a href="wishlist.html">Wishlist Page</a></li>
-                                    <li><a href="error404.html">404 Page</a></li>
-                                    <li><a href="faq.html">Faq Page</a></li>
-                                    <li><a href="team.html">Team Page</a></li>
+                                    <li><a href="#">Jewels</a>
+                                        <ul>
+                                            <li><a href="#">Man</a></li>
+                                            <li><a href="#">Women</a></li>
+                                            <li><a href="#">Collection</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Shoes</a>
+                                        <ul>
+                                            <li><a href="#">Man</a></li>
+                                            <li><a href="#">Women</a></li>
+                                            <li><a href="#">Collection</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Eyeglass</a>
+                                        <ul>
+                                            <li><a href="#">Man</a></li>
+                                            <li><a href="#">Women</a></li>
+                                            <li><a href="#">Collection</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Collecion</a></li>
+                                    <li><a href="#">Handmade</a></li>
+                                    <li><a href="#">Monopoly</a></li>
+
                                 </ul>
                             </li>
-                            <li><a href="shop-grid.html">Shop</a>
+
+                            <li><a href="#">Syld</a>
                                 <ul>
-                                    <li><a href="shop-grid.html">Shop Grid</a></li>
-                                    <li><a href="shop-list.html">Shop List</a></li>
-                                    <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                    <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                    <li><a href="shop-no-sidebar.html">Shop No sidebar</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
+                                    <li><a href="/blog">Blog</a></li>
+                                    <li><a href="#">Events</a></li>
+                                    <li><a href="#">Service</a>
+                                        <ul>
+                                            <li><a href="#">Clothes</a></li>
+                                            <li><a href="#">Perfume</a></li>
+                                            <li><a href="#">Jewels</a></li>
+                                            <li><a href="#">Eyeglass</a></li>
+                                            <li><a href="#">Shoes</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
                                 </ul>
                             </li>
-                            <li><a href="blog.html">Blog</a>
-                                <ul>
-                                    <li><a href="blog.html">Blog Page</a></li>
-                                    <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                    <li><a href="blog-no-sidebar.html">Blog No Sidebar</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
+
                         </ul>
                     </nav>
                 </div>
