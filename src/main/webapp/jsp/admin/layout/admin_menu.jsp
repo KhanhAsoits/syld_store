@@ -2,9 +2,9 @@
     <div id="sidebar" class="sidebar ec-sidebar-footer">
 
         <div class="ec-brand">
-            <a href="index.html" title="Ekka">
+            <a href="index.html" title="Syld">
                 <img class="ec-brand-icon" src="${pageContext.request.contextPath}/assets/admin/img/logo/ec-site-logo.png" alt="" />
-                <span class="ec-brand-name text-truncate">Ekka</span>
+                <span class="ec-brand-name text-truncate">Syld</span>
             </a>
         </div>
 
@@ -209,12 +209,12 @@
                         <ul class="sub-menu" id="authentication" data-parent="#sidebar-menu">
                             <li class="">
                                 <a href="../../../../../../../ekka-admin/sign-in.html">
-                                    <span class="nav-text">Sign In</span>
+                                    <span class="nav-text">Sign In Different Account</span>
                                 </a>
                             </li>
                             <li class="">
                                 <a href="../../../../../../../ekka-admin/sign-up.html">
-                                    <span class="nav-text">Sign Up</span>
+                                    <span class="nav-text">Sign Up New Account</span>
                                 </a>
                             </li>
                         </ul>
