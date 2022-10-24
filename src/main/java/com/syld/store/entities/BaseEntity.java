@@ -1,21 +1,16 @@
 package com.syld.store.entities;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.criterion.Order;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Entity
-@Setter
-@Getter
-public class Bill {
-    @Id
-    private String Id;
+@MappedSuperclass
+@Data
+public class BaseEntity {
+
     @ManyToOne
     User admin;
 

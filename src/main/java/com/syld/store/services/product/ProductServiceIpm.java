@@ -354,9 +354,18 @@ public class ProductServiceIpm implements ProductService {
     @Override
     public List<ProductViewDto> getNewProduct(int i) {
         List<Product> products = productRepository.findAll();
-        List<ProductViewDto> productViewDtoList = products.stream().map(product -> modelMapper.map(product, ProductViewDto.class)).toList().subList(0,i);
-        for (ProductViewDto productViewDto : productViewDtoList){
-            productViewDto.convertData();
+        List<ProductViewDto> productViewDtoList = new ArrayList<>();
+        try {
+            if (products.size() > i){
+                productViewDtoList = products.stream().map(product -> modelMapper.map(product, ProductViewDto.class)).toList().subList(0,i);
+            }else {
+                productViewDtoList = products.stream().map(product -> modelMapper.map(product, ProductViewDto.class)).toList().subList(0,products.size());
+            }
+            for (ProductViewDto productViewDto : productViewDtoList){
+                productViewDto.convertData();
+            }
+        }catch (Exception e){
+            log.info(e.getMessage());
         }
         return productViewDtoList;
     }
