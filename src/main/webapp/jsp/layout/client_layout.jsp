@@ -63,7 +63,7 @@
                                         <ul class="item item01">
                                             <c:forEach var="child_category" items="${category.children}">
                                                 <li>
-                                                    <a href="${pageContext.request.contextPath}/stores/${child_category.category_slug}">${child_category.category_name}</a>
+                                                    <a href="${pageContext.request.contextPath}/store?category=${child_category.category_slug}&page=1&limit=9">${child_category.category_name}</a>
                                                 </li>
                                             </c:forEach>
                                         </ul>

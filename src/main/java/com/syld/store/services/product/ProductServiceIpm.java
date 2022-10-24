@@ -296,6 +296,15 @@ public class ProductServiceIpm implements ProductService {
     }
 
     @Override
+    public Page<ProductViewDto> getProductByCategory(CategoryDto categoryDto,int page, int limit) {
+        Category category = new Category();
+        BeanUtils.copyProperties(categoryDto,category);
+        Pageable pageable = PageRequest.of(page - 1,limit);
+        Page<Product> products = productRepository.findAllByCategory(category,pageable);
+        return new PageImpl<>(products.stream().map(product -> modelMapper.map(product,ProductViewDto.class)).toList(),pageable,products.getSize());
+    }
+
+    @Override
     public ProductDto findByName(String product_name) {
         Optional<Product> product = productRepository.findByName(product_name);
         if (product.isPresent()) {
@@ -350,5 +359,14 @@ public class ProductServiceIpm implements ProductService {
             productViewDto.convertData();
         }
         return productViewDtoList;
+    }
+
+    @Override
+    public Page<ProductViewDto> getProductByTag(Tag tag, int page, int limit) {
+        Tag tag_ = new Tag();
+        BeanUtils.copyProperties(tag,tag_);
+        Pageable pageable = PageRequest.of(page - 1,limit);
+        Page<Product> products = productRepository.findAllByTags(tag_,pageable);
+        return new PageImpl<>(products.stream().map(product -> modelMapper.map(product,ProductViewDto.class)).toList(),pageable,products.getSize());
     }
 }

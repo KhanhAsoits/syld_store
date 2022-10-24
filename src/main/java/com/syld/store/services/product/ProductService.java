@@ -4,6 +4,7 @@ import com.syld.store.dto.CategoryDto;
 import com.syld.store.dto.ProductByCategoryDto;
 import com.syld.store.dto.ProductDto;
 import com.syld.store.dto.ProductViewDto;
+import com.syld.store.entities.Tag;
 import com.syld.store.interfaces.services.ICrudService;
 import org.springframework.data.domain.Page;
 
@@ -15,7 +16,10 @@ public interface ProductService extends ICrudService<ProductDto,String> {
 
 
     Page<ProductViewDto> getByPage(int page,int limit);
+
     List<ProductByCategoryDto> getProductByCategory(int count);
+    Page<ProductViewDto> getProductByCategory(CategoryDto categoryDto,int page,int limit);
+
     ProductDto findByName(String product_name);
     ProductDto findBySlug(String slug);
 
@@ -24,4 +28,6 @@ public interface ProductService extends ICrudService<ProductDto,String> {
     ProductViewDto getById(String slug);
 
     List<ProductViewDto> getNewProduct(int i);
+
+    Page<ProductViewDto> getProductByTag(Tag tag, int page, int limit);
 }

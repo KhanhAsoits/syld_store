@@ -9,11 +9,21 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__inner text-center">
-                    <h2 class="breadcrumb-title">Shop List</h2>
+                    <c:if test="${category!=null}">
+                        <h2 class="breadcrumb-title">${category.category_name}</h2>
+                    </c:if>
+                    <c:if test="${category==null}">
+                        <h2 class="breadcrumb-title">Store</h2>
+                    </c:if>
                     <nav class="breadcrumb-content">
                         <a class="breadcrumb_item" href="index.html">Home</a>
                         <span class="brd-separator">/</span>
-                        <span class="breadcrumb_item active">Shop List</span>
+                        <c:if test="${category!=null}">
+                            <span class="breadcrumb_item active">${category.category_name}</span>
+                        </c:if>
+                        <c:if test="${category==null}">
+                            <span class="breadcrumb_item active">Store</span>
+                        </c:if>
                     </nav>
                 </div>
             </div>
@@ -31,7 +41,7 @@
                         <h3 class="widget__title">Product Categories</h3>
                         <ul>
                             <c:forEach var="category" items="${data.categories}">
-                                <li><a href="#">${category.categoryDto.category_name} <span>(${category.product_count})</span></a></li>
+                                <li><a href="${pageContext.request.contextPath}/store?category=${category.categoryDto.category_slug}&page=1&limit=9">${category.categoryDto.category_name} <span>(${category.product_count})</span></a></li>
                             </c:forEach>
                         </ul>
                     </aside>
@@ -59,7 +69,7 @@
                         <h3 class="widget__title">Product Tags</h3>
                         <ul>
                             <c:forEach var="tag" items="${data.tags}">
-                                <li><a href="#">${tag.tag_name}</a></li>
+                                <li><a href="${pageContext.request.contextPath}/store?tag=${tag.tag_name}&page=1&limit=9">${tag.tag_name}</a></li>
                             </c:forEach>
                         </ul>
                     </aside>
