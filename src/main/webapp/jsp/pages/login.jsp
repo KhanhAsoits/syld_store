@@ -56,23 +56,6 @@
     let passwordValid_ = false;
     let isValid = false
 
-    document.getElementById("loginForm").onsubmit = (e)=>{
-        if (!isValid){
-            e.preventDefault()
-        }else {
-            e.preventDefault()
-
-            $.ajax({
-                url:"${pageContext.request.contextPath}/auth/valid_email",
-                method:"post",
-                data:JSON.stringify(document.getElementById("email").value.trim()),
-                success:(res)=>{
-                    console.log(res)
-                }
-            })
-        }
-    }
-
     const sendBtn = document.getElementById("sendBtn").onclick = (e)=>{
         if (document.getElementById("email").value === ""){
             document.getElementById("email_err").textContent = "Please fill this field."
@@ -94,6 +77,7 @@
             document.getElementById("email_err").textContent = ""
         }
     }
+
     const handleValidPassword = (event) => {
 
         let value = event.target.value

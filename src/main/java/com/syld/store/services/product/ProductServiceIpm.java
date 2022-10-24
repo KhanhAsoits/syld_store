@@ -6,13 +6,16 @@ import com.syld.store.repositories.*;
 import com.syld.store.services.brand.BrandService;
 import com.syld.store.services.category.CategoryService;
 import com.syld.store.services.color.ColorService;
-import com.syld.store.services.size.SizeService;
 import com.syld.store.ultis.SlugGenerator;
 import com.syld.store.ultis.Uploader;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -257,6 +260,42 @@ public class ProductServiceIpm implements ProductService {
     }
 
     @Override
+    public long findProductNumOfCategory(CategoryDto categoryDto) {
+        Category category = new Category();
+        BeanUtils.copyProperties(categoryDto,category);
+        return productRepository.countByCategory(category);
+    }
+
+    @Override
+    public Page<ProductViewDto> getByPage(int page, int limit) {
+        Pageable pageable = PageRequest.of(page - 1,limit);
+        Page<Product> products = productRepository.findAll(pageable);
+        return new PageImpl<>(products.stream().map(product -> new ModelMapper().map(product, ProductViewDto.class)).toList(),pageable,products.getTotalElements());
+    }
+
+    @Override
+    public List<ProductByCategoryDto> getProductByCategory(int count) {
+       List<ProductByCategoryDto> productByCategoryDtos = new ArrayList<>();
+       try {
+           List<Category> categories = categoryService.getListCategory(count);
+           for (Category category :  categories) {
+               ProductByCategoryDto product = new ProductByCategoryDto();
+               List<Product> products = productRepository.findAllByCategory(category);
+               product.setCategoryDto(modelMapper.map(category, CategoryDto.class));
+               List<ProductViewDto> productViewDtoList = products.stream().map(product1 -> modelMapper.map(product1, ProductViewDto.class)).toList();
+               for (ProductViewDto productViewDto : productViewDtoList) {
+                   productViewDto.convertData();
+               }
+               product.setProductViewDtoList(productViewDtoList);
+               productByCategoryDtos.add(product);
+           }
+       }catch (Exception e){
+           log.info(e.getMessage());
+       }
+       return productByCategoryDtos;
+    }
+
+    @Override
     public ProductDto findByName(String product_name) {
         Optional<Product> product = productRepository.findByName(product_name);
         if (product.isPresent()) {
@@ -301,5 +340,15 @@ public class ProductServiceIpm implements ProductService {
             log.info(e.getMessage());
         }
         return null;
+    }
+
+    @Override
+    public List<ProductViewDto> getNewProduct(int i) {
+        List<Product> products = productRepository.findAll();
+        List<ProductViewDto> productViewDtoList = products.stream().map(product -> modelMapper.map(product, ProductViewDto.class)).toList().subList(0,i);
+        for (ProductViewDto productViewDto : productViewDtoList){
+            productViewDto.convertData();
+        }
+        return productViewDtoList;
     }
 }

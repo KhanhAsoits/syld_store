@@ -1,6 +1,7 @@
 package com.syld.store.repositories;
 
 import com.syld.store.dto.CategoryDto;
+import com.syld.store.dto.ProductByCategoryDto;
 import com.syld.store.entities.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -28,4 +29,6 @@ public interface CategoryRepository extends JpaRepository<Category, String> {
     @Query(value = "select * from category where category_slug=?1", nativeQuery = true)
     Optional<Category> findBySlug(String slug);
 
+    @Query(value = "select * from category limit ?1 offset 0",nativeQuery = true)
+    List<Category> findCategoryByCount(int count);
 }

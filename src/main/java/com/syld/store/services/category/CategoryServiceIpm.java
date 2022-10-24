@@ -2,6 +2,8 @@ package com.syld.store.services.category;
 
 import com.syld.store.dto.CategoryDto;
 import com.syld.store.dto.ListCategoryDto;
+import com.syld.store.dto.ProductByCategoryDto;
+import com.syld.store.dto.ProductViewDto;
 import com.syld.store.entities.Category;
 import com.syld.store.repositories.CategoryRepository;
 import com.syld.store.ultis.SlugGenerator;
@@ -135,6 +137,11 @@ public class CategoryServiceIpm implements CategoryService {
             log.info(e.getMessage());
             throw e;
         }
+    }
+
+    @Override
+    public List<Category> getListCategory(int count) {
+        return categoryRepository.findCategoryByCount(count);
     }
 
     @Override

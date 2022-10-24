@@ -56,6 +56,9 @@ public class ProductViewDto {
         this.images_con = new ArrayList<>(this.thumbnails);
     }
 
+    public float getSalePrice(){
+        return this.product_price - (this.product_price * (this.sale_off > 0 ? this.sale_off / 100 : 0));
+    }
     public String getTagString(){
         String[] string_tags = new String[this.tags.size()];
         for (int i = 0 ; i < this.tags_con.size() ; i++){
