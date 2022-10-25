@@ -4,7 +4,7 @@
         <div class="ec-brand">
             <a href="index.html" title="Ekka">
                 <img class="ec-brand-icon" src="${pageContext.request.contextPath}/assets/admin/img/logo/ec-site-logo.png" alt="" />
-                <span class="ec-brand-name text-truncate">Ekka</span>
+                <span class="ec-brand-name text-truncate">Syld </span>
             </a>
         </div>
 
@@ -160,7 +160,7 @@
                         <ul class="sub-menu" id="orders" data-parent="#sidebar-menu">
                             <li class="">
                                 <a class="sidenav-item-link" href="../../../../../../../ekka-admin/new-order.html">
-                                    <span class="nav-text">New Order</span>
+                                    <span class="nav-text">List Order</span>
                                 </a>
                             </li>
                             <li class="">
