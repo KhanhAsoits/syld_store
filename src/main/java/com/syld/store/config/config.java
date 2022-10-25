@@ -30,7 +30,7 @@ public class config {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.authorizeHttpRequests().antMatchers("/admin/**").hasAuthority("role_admin");
+        http.authorizeHttpRequests().antMatchers("/admin/**").hasAnyAuthority("role_admin");
         http.authorizeHttpRequests()
                 .anyRequest().permitAll();
         http.formLogin(
