@@ -21,6 +21,8 @@ public interface ProductRepository extends JpaRepository<Product,String> {
     @Query(value = "select * from product where product_name = ?1",nativeQuery = true)
     Optional<Product> findByName(String product_name);
     @Query(value = "select * from product where slug = ?1",nativeQuery = true)
+    Optional<Product> findBySlug_(String slug);
+
     Optional<Product> findBySlug(String slug);
 
     @Query(value = "select count (p)  from product p  where p.category_id = ?1",nativeQuery = true)
