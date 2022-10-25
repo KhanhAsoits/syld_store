@@ -388,17 +388,14 @@
                     console.log(document.getElementById("desc"))
                     document.getElementById('desc').value = CKEDITOR.instances.product_desc.getData();
                 })
-                this.editable.on('paste',function (e){
-                    CKEDITOR.instances.product_desc.setData(e.editor.getData());
-                    document.getElementById('desc').value = CKEDITOR.instances.product_desc.getData();
-                })
             }
         }
     })
+   
     CKEDITOR.replace('product_detail',{
         on:{
             contentDom: function() {
-                this.editable().on( 'change', function( evt ) {
+                    this.editable().on( 'change', function( evt ) {
                     console.log(document.getElementById("detail"))
                     document.getElementById('detail').value = CKEDITOR.instances.product_detail.getData();
                 } );
