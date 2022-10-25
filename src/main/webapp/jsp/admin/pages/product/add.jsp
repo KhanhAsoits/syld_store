@@ -388,6 +388,10 @@
                     console.log(document.getElementById("desc"))
                     document.getElementById('desc').value = CKEDITOR.instances.product_desc.getData();
                 })
+                this.editable.on('paste',function (e){
+                    CKEDITOR.instances.product_desc.setData(e.editor.getData());
+                    document.getElementById('desc').value = CKEDITOR.instances.product_desc.getData();
+                })
             }
         }
     })
