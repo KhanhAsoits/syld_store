@@ -42,6 +42,7 @@ public class config {
         );
 
 
+
         http.logout().logoutUrl("/logout");
 
         return http.build();
