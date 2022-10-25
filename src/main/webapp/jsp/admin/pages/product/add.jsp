@@ -384,7 +384,7 @@
     CKEDITOR.replace('product_desc',{
         on: {
             contentDom:function (){
-                this.editable().on('input',function (e){
+                this.editable().on('change',function (e){
                     console.log(document.getElementById("desc"))
                     document.getElementById('desc').value = CKEDITOR.instances.product_desc.getData();
                 })
@@ -394,7 +394,7 @@
     CKEDITOR.replace('product_detail',{
         on:{
             contentDom: function() {
-                this.editable().on( 'input', function( evt ) {
+                this.editable().on( 'change', function( evt ) {
                     console.log(document.getElementById("detail"))
                     document.getElementById('detail').value = CKEDITOR.instances.product_detail.getData();
                 } );
