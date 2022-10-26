@@ -35,18 +35,17 @@ public class CartServiceIpm implements CartService {
     private final ProductService productService;
     private final UserService userService;
 
-    private ProductCartRepository productCartRepository;
+    private final ProductCartRepository productCartRepository;
 
     public Cart save_(CartDto entity) throws Exception {
         try {
             Cart cart = new Cart();
-            UserClientDto userClientDto = userService.findById(entity.getUser_id());
+            UserClientDto userClientDto = userService.findByEmail(entity.getUser_id());
             User user = new User();
-            BeanUtils.copyProperties(user, userClientDto);
+            BeanUtils.copyProperties(userClientDto,user);
             cart.setUser(user);
             cart.setId(UUID.randomUUID().toString());
-            cartRepository.save(cart);
-            return cart;
+            return cartRepository.save(cart);
         } catch (Exception e) {
             log.info(e.getMessage());
             return null;
@@ -73,13 +72,14 @@ public class CartServiceIpm implements CartService {
         try {
             Cart cart = new Cart();
             if (cartDto.getId() != null && !Objects.equals(cartDto.getId(), "")) {
-                //            create new cart if non - exits
-                BeanUtils.copyProperties(cart, this.save_(cartDto));
-            } else {
-                Optional<Cart> cart_ = cartRepository.findById(cart.getId());
+                Optional<Cart> cart_ = cartRepository.findById(cartDto.getId());
                 if (cart_.isPresent()) {
                     cart = cart_.get();
                 }
+                //            create new cart if non - exits
+            } else {
+                Cart cart_ = this.save_(cartDto);
+                BeanUtils.copyProperties(cart_,cart);
             }
 
             boolean isHas = false;
@@ -89,7 +89,9 @@ public class CartServiceIpm implements CartService {
                 for (ProductCart product : cart.getProductCarts()) {
                     if (Objects.equals(product.getProduct().getId(), productViewDto.getId())) {
                         isHas = true;
-                        product.getProduct().setProduct_quantity(product.getProduct().getProduct_quantity() + cartDto.getQuantity());
+                        if (cartDto.getQuantity() + product.getQuantity() <= product.getProduct().getProduct_quantity()){
+                            product.setQuantity(product.getQuantity() + cartDto.getQuantity());
+                        }
                         break;
                     }
                 }
@@ -98,6 +100,7 @@ public class CartServiceIpm implements CartService {
                     ProductCart productCart = new ProductCart();
                     productCart.setId(UUID.randomUUID().toString());
                     productCart.setProduct(product_);
+                    productCart.setQuantity(cartDto.getQuantity());
                     String id = productCart.getId();
                     productCartRepository.save(productCart);
 

@@ -99,7 +99,7 @@
                             <li class="me-4">
                                 <a class="cartbox_active" href="#">
                                     <c:if test="${cart!=null}">
-                                        <span class="cart-quan">${cart.productCarts.size()}</span>
+                                        <span id="cart-quantity" class="cart-quan">${cart.productCarts.size()}</span>
                                     </c:if>
                                     <span class="fa fa-shopping-cart" style="font-size: 20px"></span>
                                 </a>
@@ -109,48 +109,45 @@
                                         <div class="micart__close">
                                             <span>close</span>
                                         </div>
-                                        <c:if test="${cart!=null}">
+                                        <c:if test="${cart!=null && cart.productCarts.size() > 0}">
                                             <div class="items-total d-flex justify-content-between">
-                                                <span>3 items</span>
+                                                <span id="cart-item">${cart.productCarts.size()} items</span>
                                                 <span>Cart Subtotal</span>
                                             </div>
                                             <div class="total_amount text-end">
-                                                <span>$66.00</span>
+                                                <span id="cart-total">$0</span>
                                             </div>
                                             <div class="mini_action checkout">
-                                                <a class="checkout__btn" href="cart.html">Go to Checkout</a>
+                                                <a class="checkout__btn" style="color: whitesmoke!important;" href="cart.html">Go to Checkout</a>
                                             </div>
                                             <div class="single__items">
-                                                <div class="miniproduct">
+                                                <div class="miniproduct" id="cart-product">
                                                     <c:forEach var="product" items="${cart.productCarts}">
                                                         <div class="item01 d-flex mt--20">
                                                             <div class="thumb">
-                                                                <c:forEach var="image" items="${product.thumbnails}"
+                                                                <c:forEach var="image" items="${product.product.thumbnails}"
                                                                            varStatus="loop">
-
                                                                     <c:if test="${loop.index == 1}">
                                                                         <a href="${pageContext.request.contextPath}">
                                                                             <img src="${pageContext.request.contextPath}${image.path}"
                                                                                  alt="product images"></a>
                                                                     </c:if>
-
                                                                 </c:forEach>
 
                                                             </div>
-                                                            <div class="content">
+                                                            <div class="content d-flex flex-column">
                                                                 <h6>
-                                                                    <a href="product-details.html">${product.prdouct_name}</a>
+                                                                    <a href="${pageContext.request.contextPath}/products/${product.product.slug}">${product.product.product_name}</a>
                                                                 </h6>
-                                                                <span class="price">$${product.product_price}</span>
-                                                                <div class="product_price d-flex justify-content-between">
-                                                                    <ul class="d-flex justify-content-end">
-                                                                        <li><a href="#"><i
-                                                                                class="zmdi zmdi-settings"></i></a>
-                                                                        </li>
-                                                                        <li><a href="#"><i class="zmdi zmdi-delete"></i></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
+                                                                <span class="price" data-quantity="${product.quantity}">$${product.product.product_price}</span>
+                                                                <span style="font-size: 14px">Quantity : ${product.quantity}</span>
+                                                            </div>
+                                                            <div class="product_price d-flex justify-content-between">
+                                                                <ul class="d-flex justify-content-end">
+                                                                    <li>
+                                                                        <a href="#"><i class="fa fa-trash" style="font-size: 20px"></i></a>
+                                                                    </li>
+                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </c:forEach>
@@ -161,6 +158,7 @@
                                             </div>
                                         </c:if>
                                         <c:if test="${cart==null}">
+
                                             <h6 style="color: rgba(0,0,0,0.5);font-weight: 500;font-size: 18px;text-align: center">
                                                 Nothing in cart >.<
                                             </h6>
@@ -308,3 +306,15 @@
     <jsp:include page="../pages/${web_content}.jsp"/>
 
 <%@include file="./client_footer.jsp" %>
+
+<script>
+    let listPrice  = document.querySelectorAll(".content .price")
+    let total = document.getElementById("cart-total")
+
+    let amount = 0;
+
+    listPrice.forEach((val,index)=>{
+        amount+= (parseFloat(val.textContent.replace("$","").trim()) * parseInt(val.dataset.quantity))
+    })
+    total.textContent = '$' + amount.toString();
+</script>

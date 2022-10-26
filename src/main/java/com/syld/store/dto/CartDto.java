@@ -9,5 +9,5 @@ public class CartDto {
     String id;
     String product_id;
     String user_id;
-    int quantity;
+    int quantity = 1;
 }

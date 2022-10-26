@@ -1,5 +1,6 @@
 package com.syld.store.controller.admin;
 
+import com.google.gson.Gson;
 import com.syld.store.dto.CartDto;
 import com.syld.store.services.Cart.CartService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class CartController {
     @PostMapping(path = "/create")
     public ResponseEntity<?> AddProductToCart(@RequestBody CartDto cartDto) {
         try {
-            return ResponseEntity.internalServerError().body(cartService.AddProductToCart(cartDto));
+            return ResponseEntity.ok().body(cartService.AddProductToCart(cartDto));
         } catch (Exception e) {
             log.info(e.getMessage());
             return ResponseEntity.internalServerError().body(e.getMessage());

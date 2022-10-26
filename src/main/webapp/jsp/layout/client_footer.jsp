@@ -109,5 +109,6 @@
 <script src="${pageContext.request.contextPath}/assets/js/vendor/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/plugins.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/active.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/cart-process.js"></script>
 
 </body>

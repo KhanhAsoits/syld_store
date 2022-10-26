@@ -46,6 +46,7 @@ public class BaseController {
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!Objects.equals(authentication.getName(), "anonymousUser")) {
+            model.addAttribute("email",authentication.getName());
             model.addAttribute("cart", navbarService.getUserCart(authentication.getName()));
         }
         model.addAttribute("title", title);
