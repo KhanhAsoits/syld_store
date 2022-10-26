@@ -23,6 +23,6 @@ public class Cart {
     @ManyToOne
     User user;
 
-    @OneToOne(mappedBy = "cart")
-    ProductCart productCart;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    List<Product> products;
 }

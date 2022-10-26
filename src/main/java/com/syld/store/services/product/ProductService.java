@@ -23,6 +23,8 @@ public interface ProductService extends ICrudService<ProductDto,String> {
     ProductDto findByName(String product_name);
     ProductDto findBySlug(String slug);
 
+    ProductViewDto findBySlugAndReturnDto(String slug);
+
     List<ProductViewDto> getAll();
 
     ProductViewDto getById(String slug);

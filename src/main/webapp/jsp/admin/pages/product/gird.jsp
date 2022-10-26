@@ -9,7 +9,7 @@
                 </p>
             </div>
             <div>
-                <a href="product-list.html" class="btn btn-primary">Products</a>
+                <a href="${pageContext.request.contextPath}/admin/products/create" class="btn btn-primary">Add Products</a>
             </div>
         </div>
 
@@ -67,8 +67,10 @@
                                                         class="mdi mdi-circle-edit-outline" href="${pageContext.request.contextPath}/admin/products/update/${product.id}"></i></div>
                                                 <div class="card-preview" href="${pageContext.request.contextPath}/admin/products/${product.id}"><i class="mdi mdi-eye-outline"></i>
                                                 </div>
-                                                <div class="card-remove" href="${pageContext.request.contextPath}/admin/categories/remove/${product.id}"><i
+                                                <c:if test="${product.state}">
+                                                <div class="card-remove" href="${pageContext.request.contextPath}/admin/products/remove/${product.id}"><i
                                                         class="mdi mdi mdi-delete-outline"></i></div>
+                                                </c:if>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
                                             </div>
                                         </div>
                                     </div>

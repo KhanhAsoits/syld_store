@@ -1,6 +1,7 @@
 package com.syld.store.controller;
 
 import com.syld.store.dto.ShopViewDto;
+import com.syld.store.entities.Tag;
 import com.syld.store.services.client.ShopService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,11 +37,16 @@ public class ShopController extends BaseController{
 //            get by category
         }else if(tag != null && !Objects.equals(tag,"")){
             shopViewDto = shopService.GetDataByTag(tag,page,limit);
+            if (shopViewDto.getProductViewDtoList().getContent().size() > 0){
+                Tag current_tag = shopService.GetTagByName(tag);
+                model.addAttribute("tag",current_tag);
+            }
         }
         else  {
 //            get all
             shopViewDto = shopService.GetData(page,limit);
         }
+        log.info(String.valueOf(shopViewDto.getProductViewDtoList().getTotalPages()));
         model.addAttribute("pages",shopViewDto.getProductViewDtoList().getTotalPages());
         model.addAttribute("data",shopViewDto);
         model.addAttribute("current_page",page);

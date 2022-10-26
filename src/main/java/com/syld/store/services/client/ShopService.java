@@ -27,6 +27,10 @@ public class ShopService {
     private final CategoryService categoryService;
 
     private final TagRepository tagRepository;
+
+    public Tag GetTagByName(String name){
+        return tagRepository.findByTagName(name);
+    }
     public ShopViewDto GetData(int page,int limit){
         ShopViewDto shopViewDto = new ShopViewDto();
         try {
@@ -88,7 +92,7 @@ public class ShopService {
         return shopViewDto;
     }
 
-    private void GetCategoryAndTag(ShopViewDto shopViewDto) {
+    public void GetCategoryAndTag(ShopViewDto shopViewDto) {
         List<CategoryDto> categories = categoryService.getAll();
         for (CategoryDto categoryDto : categories){
             CategoryWithChildNumber category = new CategoryWithChildNumber();
