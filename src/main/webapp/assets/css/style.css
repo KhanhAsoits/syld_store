@@ -67,6 +67,8 @@ Reset Styles
     box-sizing: border-box;
 }
 
+
+
 article,
 aside,
 details,
@@ -2549,6 +2551,7 @@ Header Styles
 
 .header__area .container-fluid {
     padding: 0 80px;
+    box-shadow: 0 1px #bcaaaa;
 }
 
 .header__area .menubar {

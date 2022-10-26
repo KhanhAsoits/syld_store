@@ -1,5 +1,6 @@
 package com.syld.store.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.syld.store.dto.ColorDto;
 import lombok.Getter;
 import lombok.Setter;
@@ -50,9 +51,11 @@ public class Product {
     private Timestamp update_at = new Timestamp(System.currentTimeMillis());
 
     @ManyToOne
+    @JsonIgnore
     Brand brand;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JsonIgnore
     @JoinTable(
             name = "product_color",
             joinColumns = @JoinColumn(name = "product_id"),
@@ -68,6 +71,7 @@ public class Product {
     )
     Set<com.syld.store.entities.Size> sizes = new HashSet<>();
     @ManyToOne
+    @JsonIgnore
     Category category;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -76,6 +80,7 @@ public class Product {
 
     @ManyToMany( cascade = CascadeType.ALL , fetch = FetchType.EAGER)
     @JoinTable(name = "product_tags")
+    @JsonIgnore
     Set<Tag> tags = new HashSet<>();
 
     public void addImage(ProductImage productImage) {

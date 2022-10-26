@@ -5,24 +5,29 @@
     <%@include file="./client_header.jsp" %>
     <title>${title}</title>
     <style>
-        .sticky__header.is-sticky{
-            background-color: whitesmoke!important;
+        .sticky__header.is-sticky {
+            background-color: whitesmoke !important;
 
         }
-        .sticky__header.is-sticky a{
-            color: black!important;
+
+        .sticky__header.is-sticky a {
+            color: black !important;
         }
-        .sticky__header.is-sticky .meanmenu-reveal span{
-            color: black!important;
+
+        .sticky__header.is-sticky .meanmenu-reveal span {
+            color: black !important;
         }
-        .logo{
-            width: 66px!important;
-            height: 60px!important;
+
+        .logo {
+            width: 66px !important;
+            height: 60px !important;
         }
-        .copyright{
-            display: none!important;
+
+        .copyright {
+            display: none !important;
         }
-        .cart-quan{
+
+        .cart-quan {
             position: absolute;
             background-color: rgb(255, 53, 53);
             width: 15px;
@@ -49,7 +54,8 @@
                 <div class="col-md-6 col-sm-6 col-6 col-lg-2">
                     <div class="logo">
                         <a href="${pageContext.request.contextPath}/">
-                            <img class="logo" src="${pageContext.request.contextPath}/assets/images/logo/logo.svg" style="width: 100px;height: 100px" alt="logo images">
+                            <img class="logo" src="${pageContext.request.contextPath}/assets/images/logo/logo.svg"
+                                 style="width: 100px;height: 100px" alt="logo images">
                         </a>
                     </div>
                 </div>
@@ -92,7 +98,9 @@
                         <sec:authorize access="isAuthenticated()">
                             <li class="me-4">
                                 <a class="cartbox_active" href="#">
-                                    <span class="cart-quan">6</span>
+                                    <c:if test="${cart!=null}">
+                                        <span id="cart-quantity" class="cart-quan">${cart.productCarts.size()}</span>
+                                    </c:if>
                                     <span class="fa fa-shopping-cart" style="font-size: 20px"></span>
                                 </a>
                                 <!-- Start Shopping Cart -->
@@ -101,83 +109,62 @@
                                         <div class="micart__close">
                                             <span>close</span>
                                         </div>
-                                        <div class="items-total d-flex justify-content-between">
-                                            <span>3 items</span>
-                                            <span>Cart Subtotal</span>
-                                        </div>
-                                        <div class="total_amount text-end">
-                                            <span>$66.00</span>
-                                        </div>
-                                        <div class="mini_action checkout">
-                                            <a class="checkout__btn" href="cart.html">Go to Checkout</a>
-                                        </div>
-                                        <div class="single__items">
-                                            <div class="miniproduct">
-                                                <div class="item01 d-flex">
-                                                    <div class="thumb">
-                                                        <a href="product-details.html"><img
-                                                                src="${pageContext.request.contextPath}/assets/images/product/sm-img/1.jpg"
-                                                                alt="product images"></a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <h6><a href="product-details.html">Voyage Yoga Bag</a></h6>
-                                                        <span class="price">$30.00</span>
-                                                        <div class="product_price d-flex justify-content-between">
-                                                            <span class="qun">Qty: 01</span>
-                                                            <ul class="d-flex justify-content-end">
-                                                                <li><a href="#"><i class="zmdi zmdi-settings"></i></a>
-                                                                </li>
-                                                                <li><a href="#"><i class="zmdi zmdi-delete"></i></a>
-                                                                </li>
-                                                            </ul>
+                                        <c:if test="${cart!=null && cart.productCarts.size() > 0}">
+                                            <div class="items-total d-flex justify-content-between">
+                                                <span id="cart-item">${cart.productCarts.size()} items</span>
+                                                <span>Cart Subtotal</span>
+                                            </div>
+                                            <div class="total_amount text-end">
+                                                <span id="cart-total">$0</span>
+                                            </div>
+                                            <div class="mini_action checkout">
+                                                <a class="checkout__btn" style="color: whitesmoke!important;" href="cart.html">Go to Checkout</a>
+                                            </div>
+                                            <div class="single__items">
+                                                <div class="miniproduct" id="cart-product">
+                                                    <c:forEach var="product" items="${cart.productCarts}">
+                                                        <div class="item01 d-flex mt--20">
+                                                            <div class="thumb">
+                                                                <c:forEach var="image" items="${product.product.thumbnails}"
+                                                                           varStatus="loop">
+                                                                    <c:if test="${loop.index == 1}">
+                                                                        <a href="${pageContext.request.contextPath}">
+                                                                            <img src="${pageContext.request.contextPath}${image.path}"
+                                                                                 alt="product images"></a>
+                                                                    </c:if>
+                                                                </c:forEach>
+
+                                                            </div>
+                                                            <div class="content d-flex flex-column">
+                                                                <h6>
+                                                                    <a href="${pageContext.request.contextPath}/products/${product.product.slug}">${product.product.product_name}</a>
+                                                                </h6>
+                                                                <span class="price" data-quantity="${product.quantity}">$${product.product.product_price}</span>
+                                                                <span style="font-size: 14px">Quantity : ${product.quantity}</span>
+                                                            </div>
+                                                            <div class="product_price d-flex justify-content-between">
+                                                                <ul class="d-flex justify-content-end">
+                                                                    <li>
+                                                                        <a href="#"><i class="fa fa-trash" style="font-size: 20px"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item01 d-flex mt--20">
-                                                    <div class="thumb">
-                                                        <a href="product-details.html"><img
-                                                                src="${pageContext.request.contextPath}/assets/images/product/sm-img/3.jpg"
-                                                                alt="product images"></a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <h6><a href="product-details.html">Impulse Duffle</a></h6>
-                                                        <span class="price">$40.00</span>
-                                                        <div class="product_price d-flex justify-content-between">
-                                                            <span class="qun">Qty: 03</span>
-                                                            <ul class="d-flex justify-content-end">
-                                                                <li><a href="#"><i class="zmdi zmdi-settings"></i></a>
-                                                                </li>
-                                                                <li><a href="#"><i class="zmdi zmdi-delete"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item01 d-flex mt--20">
-                                                    <div class="thumb">
-                                                        <a href="product-details.html"><img
-                                                                src="${pageContext.request.contextPath}/assets/images/product/sm-img/2.jpg"
-                                                                alt="product images"></a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <h6><a href="product-details.html">Compete Track Tote</a></h6>
-                                                        <span class="price">$40.00</span>
-                                                        <div class="product_price d-flex justify-content-between">
-                                                            <span class="qun">Qty: 03</span>
-                                                            <ul class="d-flex justify-content-end">
-                                                                <li><a href="#"><i class="zmdi zmdi-settings"></i></a>
-                                                                </li>
-                                                                <li><a href="#"><i class="zmdi zmdi-delete"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    </c:forEach>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="mini_action cart">
-                                            <a class="cart__btn" href="cart.html">View and edit cart</a>
-                                        </div>
+                                            <div class="mini_action cart">
+                                                <a class="cart__btn" href="cart.html">View and edit cart</a>
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${cart==null}">
+
+                                            <h6 style="color: rgba(0,0,0,0.5);font-weight: 500;font-size: 18px;text-align: center">
+                                                Nothing in cart >.<
+                                            </h6>
+                                            <a href="${pageContext.request.contextPath}/store?page=1&limit=9">shop
+                                                now</a>
+                                        </c:if>
                                     </div>
                                 </div>
                                 <!-- End Shopping Cart -->
@@ -206,12 +193,14 @@
                                             <div class="switcher-options">
                                                 <div class="switcher-currency-trigger">
                                                     <div class="setting__menu">
-                                                        <sec:authorize access="hasAnyRole('role_admin')">
-                                                            <span><a href="#">Admin</a></span>
+                                                        <sec:authorize access="hasAnyAuthority('role_admin')">
+                                                            <span><a
+                                                                    href="${pageContext.request.contextPath}/admin/products">Admin</a></span>
                                                         </sec:authorize>
                                                         <span><a href="#">My Account</a></span>
                                                         <span><a href="#">Change Password</a></span>
-                                                        <span><a href="${pageContext.request.contextPath}/logout">Logout</a></span>
+                                                        <span><a
+                                                                href="${pageContext.request.contextPath}/logout">Logout</a></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -317,3 +306,15 @@
     <jsp:include page="../pages/${web_content}.jsp"/>
 
 <%@include file="./client_footer.jsp" %>
+
+<script>
+    let listPrice  = document.querySelectorAll(".content .price")
+    let total = document.getElementById("cart-total")
+
+    let amount = 0;
+
+    listPrice.forEach((val,index)=>{
+        amount+= (parseFloat(val.textContent.replace("$","").trim()) * parseInt(val.dataset.quantity))
+    })
+    total.textContent = '$' + amount.toString();
+</script>

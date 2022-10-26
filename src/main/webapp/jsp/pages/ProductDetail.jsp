@@ -27,7 +27,7 @@
                             <div class="wn__fotorama__wrapper">
                                 <div class="fotorama wn__fotorama__action" data-nav="thumbs">
                                     <c:forEach var="thumbnail" items="${single_product.images_con}">
-                                        <a href="1.html"><img src="${pageContext.request.contextPath}${thumbnail.path}" alt=""></a>
+                                        <a href="1.html"><img src="${pageContext.request.contextPath}${thumbnail.path}"  alt=""></a>
                                     </c:forEach>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                    ${single_product.product_desc}
                                 </div>
                                 <div class="box-tocart d-flex">
-                                    <span>Qty</span>
+                                    <span>amount </span>
                                     <input id="qty" class="input-text qty" name="qty" min="1" value="${single_product.product_quantity}"
                                            title="Qty" type="number">
                                     <div class="addtocart__actions">
@@ -244,16 +244,21 @@
                                         <div class="action">
                                             <div class="actions_inner">
                                                 <ul class="add_to_links">
-                                                    <li><a class="cart d-flex justify-content-center align-items-center" href="cart.html"><i
-                                                            class="bi bi-shopping-bag4"></i></a></li>
+                                                    <c:if test="${cart!=null}">
+                                                        <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${new_product.product_quantity}" onclick="addProductToCart(this)" href="javascript:void(0)" data-cart="${cart.id}" data-email="${email}" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
+                                                    </c:if>
+                                                    <c:if test="${email!=null && cart == null}">
+                                                        <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${new_product.product_quantity}" onclick="addProductToCart(this)" data-email="${email}" href="javascript:void(0)" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
+                                                    </c:if>
+                                                    <c:if test="${email==null && cart == null}">
+                                                        <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${new_product.product_quantity}" href="${pageContext.request.contextPath}/auth/login" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
+                                                    </c:if>
                                                     <li><a class="wishlist d-flex justify-content-center align-items-center" href="wishlist.html"><i
                                                             class="bi bi-shopping-cart-full"></i></a></li>
-                                                    <li><a class="compare d-flex justify-content-center align-items-center" href="#"><i
-                                                            class="bi bi-heart-beat"></i></a></li>
+                                                    <li><a class="compare d-flex justify-content-center align-items-center" href="#"><i class="bi bi-heart-beat"></i></a></li>
                                                     <li><a data-bs-toggle="modal" title="Quick View"
-                                                           class="quickview d-flex justify-content-center align-items-center modal-view detail-link"
-                                                           href="#productmodal"><i class="bi bi-search"></i></a>
-                                                    </li>
+                                                           class="quickview d-flex justify-content-center align-items-center modal-view detail-link" href="#productmodal"><i
+                                                            class="bi bi-search"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>

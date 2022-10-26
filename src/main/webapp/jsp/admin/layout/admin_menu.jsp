@@ -14,7 +14,7 @@
             <ul class="nav sidebar-inner" id="sidebar-menu">
                 <!-- Dashboard -->
                 <li class="active">
-                    <a class="sidenav-item-link" href="index.html">
+                    <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/dashbroad">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Dashboard</span>
                     </a>
@@ -30,7 +30,7 @@
                     <div class="collapse">
                         <ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
                             <li class="">
-                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/gird">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/card">
                                     <span class="nav-text">Account Admin Gird</span>
                                 </a>
                             </li>
@@ -53,23 +53,23 @@
                 <li class="has-sub">
                     <a class="sidenav-item-link" href="javascript:void(0)">
                         <i class="mdi mdi-account-group"></i>
-                        <span class="nav-text">Users</span> <b class="caret"></b>
+                        <span class="nav-text">Users - Card</span> <b class="caret"></b>
                     </a>
                     <div class="collapse">
                         <ul class="sub-menu" id="users" data-parent="#sidebar-menu">
                             <li>
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/user-card.html">
-                                    <span class="nav-text">User Grid</span>
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/card">
+                                    <span class="nav-text">Card Bank</span>
                                 </a>
                             </li>
 
                             <li class="">
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/user-list.html">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users">
                                     <span class="nav-text">User List</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/user-profile.html">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/detail">
                                     <span class="nav-text">Users Profile</span>
                                 </a>
                             </li>
