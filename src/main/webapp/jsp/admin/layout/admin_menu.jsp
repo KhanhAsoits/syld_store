@@ -30,13 +30,13 @@
                     <div class="collapse">
                         <ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
                             <li class="">
-                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/gird">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/gird/all">
                                     <span class="nav-text">Account Admin Gird</span>
                                 </a>
                             </li>
 
                             <li class="">
-                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/list">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users">
                                     <span class="nav-text">Account Admin List</span>
                                 </a>
                             </li>
@@ -58,18 +58,18 @@
                     <div class="collapse">
                         <ul class="sub-menu" id="users" data-parent="#sidebar-menu">
                             <li>
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/user-card.html">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/gird">
                                     <span class="nav-text">User Grid</span>
                                 </a>
                             </li>
 
                             <li class="">
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/user-list.html">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users">
                                     <span class="nav-text">User List</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/user-profile.html">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/detail">
                                     <span class="nav-text">Users Profile</span>
                                 </a>
                             </li>

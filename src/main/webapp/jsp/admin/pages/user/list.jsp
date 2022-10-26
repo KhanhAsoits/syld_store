@@ -12,9 +12,9 @@
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Size</h1>
+                <h1>Users</h1>
                 <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Size</p>
+                    <span><i class="mdi mdi-chevron-right"></i></span>User</p>
             </div>
             <div>
                 <a href="${pageContext.request.contextPath}/admin/users/create" class="btn btn-primary"> Add

@@ -13,6 +13,7 @@ public interface UserService extends ICrudService<UserClientDto,String> {
 
     List<UserClientDto> findAll();
 
+    List<UserClientDto> getAll();
     UserClientDto findByNumberPhone(String number_phone);
 
     UserClientDto findById(String id);

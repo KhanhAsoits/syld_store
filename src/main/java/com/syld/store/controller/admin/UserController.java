@@ -7,6 +7,7 @@ import com.syld.store.services.role.RoleService;
 import com.syld.store.services.user.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,10 +24,15 @@ public class UserController extends BaseController {
     private final RoleService roleService;
 
     @GetMapping
-    public String Index(Model model) {
-        model.addAttribute("list", userService.findAll());
-        return view(model, "List - User", "user/list", this.admin_layout);
+    public String getAll(Model model){
+        try {
+            model.addAttribute("list", userService.getAll());
+        }catch (Exception e) {
+            log.info(e.getMessage());
+        }
+        return view(model, "List User", "user/list", this.admin_layout);
     }
+
 
     @GetMapping(path = "/update/{id}")
     public String Update(Model model, @PathVariable String id) {
@@ -87,5 +93,20 @@ public class UserController extends BaseController {
             log.info(e.getMessage());
         }
         return "redirect:/admin/users";
+    }
+
+
+    @GetMapping(path = "/gird/all")
+    public String UserGird(Model model) {
+        try {
+            model.addAttribute("list", userService.findAll());
+        }catch (Exception e) {
+            log.info(e.getMessage());
+        }
+        return view(model, "List User", "users/gird", this.admin_layout);
+    }
+
+    public ResponseEntity<?> remove(String Id) {
+        return null;
     }
 }

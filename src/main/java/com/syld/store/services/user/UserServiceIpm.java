@@ -26,6 +26,8 @@ public class UserServiceIpm implements UserService {
 
     private final UserRepository userRepository;
 
+    final ModelMapper modelMapper = new ModelMapper();
+
     private final RoleService roleService;
 
     @Override
@@ -107,6 +109,18 @@ public class UserServiceIpm implements UserService {
     public List<UserClientDto> findAll() {
         List<User> users = userRepository.findAll();
         return users.stream().map(user -> new ModelMapper().map(user, UserClientDto.class)).toList();
+    }
+
+    @Override
+    public List<UserClientDto> getAll() {
+        List<UserClientDto> list = new ArrayList<>();
+        try {
+            List<User> users = userRepository.findAll();
+            list = users.stream().map(user -> modelMapper.map(user, UserClientDto.class)).toList();
+        }catch (Exception e) {
+            log.info(e.getMessage());
+        }
+        return list;
     }
 
     @Override
