@@ -206,7 +206,7 @@
                                             <div class="switcher-options">
                                                 <div class="switcher-currency-trigger">
                                                     <div class="setting__menu">
-                                                        <sec:authorize access="hasAnyRole('role_admin')">
+                                                        <sec:authorize access="hasAnyAuthority('role_admin')">
                                                             <span><a href="#">Admin</a></span>
                                                         </sec:authorize>
                                                         <span><a href="#">My Account</a></span>
