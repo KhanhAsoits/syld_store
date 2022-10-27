@@ -48,7 +48,7 @@ public class User {
     private Timestamp update_at = new Timestamp(System.currentTimeMillis());
 
     @Nullable
-    @OneToOne(mappedBy = "user")
+    @OneToOne
     Card card;
 
     @OneToOne

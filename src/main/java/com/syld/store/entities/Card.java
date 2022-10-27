@@ -29,6 +29,4 @@ public class Card {
 
     @Column(unique = true)
     private String brand_thumbnail;
-    @OneToOne
-    User user;
-}
+ }

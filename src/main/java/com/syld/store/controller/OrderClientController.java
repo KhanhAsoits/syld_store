@@ -1,5 +1,6 @@
 package com.syld.store.controller;
 
+import com.syld.store.dto.CardDto;
 import com.syld.store.dto.CartClientView;
 import com.syld.store.dto.OrderDto;
 import com.syld.store.services.Cart.CartService;
@@ -33,6 +34,7 @@ public class OrderClientController extends BaseController {
             String raw_email = new String(decode);
             CartClientView cartClientView = cartService.getByUser(raw_email);
             model.addAttribute("order", new OrderDto());
+            model.addAttribute("card", new CardDto());
             model.addAttribute("cart", cartClientView);
             return view(model, "Order Detail", "checkout", this.layout_path, true);
         } catch (Exception e) {

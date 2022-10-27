@@ -197,9 +197,18 @@
                                     <div class="payment-body">Cards</div>
                                 </c:if>
                                 <c:if test="${cart.user.card==null}">
-                                    <spForm:form action="${pageContext.request.contextPath}/card/create">
-                                        <spForm:input path=""
-                                    </spForm:form>
+                                    <%--@elvariable id="card" type="com.syld.store.dto.CardDto"--%>
+                                    <div class="border px-2 py-3">
+                                        <input id="card_number" class=" mb-2 form-control"
+                                               placeholder="Type Card Number"
+                                               data-test="^3[47][0-9]{13}$"/>
+                                        <label>Select Bank</label>
+                                        <select id="card_bank" class="form-control">
+                                            <option value="paypal">Paypal</option>
+                                        </select>
+                                        <input id="card_user_email" value="${email}" style="visibility: hidden">
+                                        <button class="btn btn-secondary m-2 btn-block w-100" type="button" id="btn-add-card">Add Card</button>
+                                    </div>
                                 </c:if>
                             </div>
                         </div>
@@ -226,5 +235,39 @@
     }
 
     processTotal()
+
+
+    let btnAddCard = document.getElementById("btn-add-card")
+    btnAddCard.addEventListener('click', (e) => {
+
+        let user = document.getElementById("card_user_email")
+        let card_number = document.getElementById("card_number")
+        let card_bank = document.getElementById("card_bank")
+
+        if (user && card_bank && card_number) {
+            $.ajax({
+                url: "${pageContext.request.contextPath}/api/card/create",
+                method: "post",
+                dataType: "json",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: JSON.stringify({
+                    card_number: card_number,
+                    card_brand: card_bank,
+                    user_email: user
+                }),
+                success: (res) => {
+                    console.log(res)
+                },
+                error: (err) => {
+                    console.log(err)
+                }
+            })
+
+        }
+
+    })
 </script>
 <!-- End Checkout Area -->

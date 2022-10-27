@@ -22,18 +22,7 @@ public class CardController extends BaseController {
 
     private final CardService cardService;
 
-    @PostMapping(path = "/create")
-    public String Save(@Valid @ModelAttribute("card") CardDto cardDto, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            return String.format("redirect:/order/%s", Base64.getEncoder().encodeToString(cardDto.getUser_email().getBytes()));
-        }
-        try {
-            cardService.save(cardDto);
-        } catch (Exception e) {
-            log.info(e.getMessage());
-        }
-        return String.format("redirect:/order/%s", Base64.getEncoder().encodeToString(cardDto.getUser_email().getBytes()));
-    }
+
 
     @GetMapping
     public String GetAll(Model model) {

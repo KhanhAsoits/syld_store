@@ -2,7 +2,10 @@ package com.syld.store.services.card;
 
 import com.syld.store.dto.CardDto;
 import com.syld.store.entities.Card;
+import com.syld.store.entities.User;
 import com.syld.store.repositories.CardRepository;
+import com.syld.store.repositories.UserRepository;
+import com.syld.store.services.user.UserService;
 import com.syld.store.ultis.SlugGenerator;
 import com.syld.store.ultis.Uploader;
 import lombok.RequiredArgsConstructor;
@@ -26,12 +29,15 @@ public class CardServiceIpm implements CardService {
 
     private final CardRepository cardRepository;
 
+    private final UserRepository userRepository;
     final Uploader uploader = new Uploader();
     final ModelMapper modelMapper = new ModelMapper();
 
+    private final String paypal = "/assets/uploads/banks/paypal.png";
 
     @Override
     public void save(CardDto entity) throws Exception {
+
 
         try {
             String filePath = uploader.upload(entity.getFile(), entity.getCard_brand());
@@ -104,8 +110,23 @@ public class CardServiceIpm implements CardService {
 
     @Override
     public void save_custom(CardDto entity) {
+        Card card = new Card();
         try {
-
+            if (Objects.equals(entity.getBank_name(), "paypal")) {
+                card.setBrand_thumbnail(this.paypal);
+                card.setCard_brand("Paypal");
+            }
+            card.setCard_number(entity.getCard_number());
+            card.setId(UUID.randomUUID().toString());
+            cardRepository.save(card);
+            Optional<Card> card_ = cardRepository.findById(card.getId());
+            if (card_.isPresent()) {
+                Optional<User> user = userRepository.findByEmail(entity.getUser_email());
+                if (user.isPresent()) {
+                    user.get().setCard(card_.get());
+                    userRepository.save(user.get());
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
