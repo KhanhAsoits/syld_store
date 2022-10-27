@@ -226,9 +226,17 @@
                 </ul>
                 <p>${product_list.product_desc}</p>
                 <ul class="cart__action d-flex">
-                        <li class="cart"><a href="cart.html">Add to cart</a></li>
-                        <li class="wishlist"><a href="cart.html"></a></li>
-                        <li class="compare"><a href="cart.html"></a></li>
+                    <c:if test="${cart!=null}">
+                        <li class="cart"><a class="cart d-flex justify-content-center align-items-center" data-limit="${product_list.product_quantity}" onclick="addProductToCart(this)" href="javascript:void(0)" data-cart="${cart.id}" data-email="${email}" data-product="${product_list.id}">Add To Cart</a></li>
+                    </c:if>
+                    <c:if test="${email!=null && cart == null}">
+                        <li class="cart"><a class="cart d-flex justify-content-center align-items-center" data-limit="${product_list.product_quantity}" onclick="addProductToCart(this)" data-email="${email}" href="javascript:void(0)" data-product="${product_list.id}"><i class="bi bi-shopping-bag4">1</i></a></li>
+                    </c:if>
+                    <c:if test="${email==null && cart == null}">
+                        <li class="cart"><a class="cart d-flex justify-content-center align-items-center" data-limit="${product_list.product_quantity}" href="${pageContext.request.contextPath}/auth/login" data-product="${product_list.id}"><i class="bi bi-shopping-bag4"></i>2</a></li>
+                    </c:if>
+                    <li class="wishlist"><a href="cart.html"></a></li>
+                    <li class="compare"><a href="cart.html"></a></li>
                 </ul>
 
             </div>
