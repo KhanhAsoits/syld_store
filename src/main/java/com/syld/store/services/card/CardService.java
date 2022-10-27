@@ -9,6 +9,8 @@ public interface CardService extends ICrudService<CardDto, String> {
 
     List<CardDto> getAll();
 
+    void save_custom(CardDto entity);
+
     CardDto getById(String id);
 
 }

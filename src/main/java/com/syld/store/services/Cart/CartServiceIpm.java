@@ -42,7 +42,7 @@ public class CartServiceIpm implements CartService {
             Cart cart = new Cart();
             UserClientDto userClientDto = userService.findByEmail(entity.getUser_id());
             User user = new User();
-            BeanUtils.copyProperties(userClientDto,user);
+            BeanUtils.copyProperties(userClientDto, user);
             cart.setUser(user);
             cart.setId(UUID.randomUUID().toString());
             return cartRepository.save(cart);
@@ -79,7 +79,7 @@ public class CartServiceIpm implements CartService {
                 //            create new cart if non - exits
             } else {
                 Cart cart_ = this.save_(cartDto);
-                BeanUtils.copyProperties(cart_,cart);
+                BeanUtils.copyProperties(cart_, cart);
             }
 
             boolean isHas = false;
@@ -89,7 +89,7 @@ public class CartServiceIpm implements CartService {
                 for (ProductCart product : cart.getProductCarts()) {
                     if (Objects.equals(product.getProduct().getId(), productViewDto.getId())) {
                         isHas = true;
-                        if (cartDto.getQuantity() + product.getQuantity() <= product.getProduct().getProduct_quantity()){
+                        if (cartDto.getQuantity() + product.getQuantity() <= product.getProduct().getProduct_quantity()) {
                             product.setQuantity(product.getQuantity() + cartDto.getQuantity());
                         }
                         break;
@@ -124,9 +124,9 @@ public class CartServiceIpm implements CartService {
     }
 
     @Override
-    public CartClientView getByUser(String userId) {
+    public CartClientView getByUser(String username) {
         try {
-            User user = userService.findByName(userId);
+            User user = userService.findByName(username);
             if (user != null) {
                 Optional<Cart> cart = cartRepository.findByUser(user);
                 if (cart.isPresent()) {
@@ -137,5 +137,29 @@ public class CartServiceIpm implements CartService {
             log.info(e.getMessage());
         }
         return null;
+    }
+
+    @Override
+    public CartClientView RemoveProductFromCart(String product_id, String username) {
+        try {
+            Optional<ProductCart> productCart = productCartRepository.findById(product_id);
+
+            if (productCart.isPresent()) {
+                User user = userService.findByName(username);
+                Optional<Cart> cart = cartRepository.findByUser(user);
+                if (cart.isPresent()) {
+                    for (ProductCart productCart_ : cart.get().getProductCarts()) {
+                        if (productCart_.getId() == productCart.get().getId()) {
+                            cart.get().getProductCarts().remove(productCart_);
+                            return new ModelMapper().map(cartRepository.save(cart.get()), CartClientView.class);
+                        }
+                    }
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

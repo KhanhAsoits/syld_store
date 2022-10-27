@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 
+import java.util.Base64;
 import java.util.Objects;
 
 public class BaseController {
@@ -19,8 +20,12 @@ public class BaseController {
 
     public String prefix = "index";
 
-    public String layout_path = "/layout/layout";
+    public String layout_path = "/layout/client_layout";
 
+
+    public String Base64Encode(String string) {
+        return Base64.getEncoder().encodeToString(string.getBytes());
+    }
 
     public String view(Model model, String title, String prefix, String layout_path) {
         if (prefix != null && layout_path != null) {
@@ -46,7 +51,7 @@ public class BaseController {
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!Objects.equals(authentication.getName(), "anonymousUser")) {
-            model.addAttribute("email",authentication.getName());
+            model.addAttribute("email", authentication.getName());
             model.addAttribute("cart", navbarService.getUserCart(authentication.getName()));
         }
         model.addAttribute("title", title);

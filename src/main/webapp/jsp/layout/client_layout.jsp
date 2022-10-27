@@ -1,3 +1,4 @@
+<%@ page import="java.util.Base64" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
@@ -25,6 +26,10 @@
 
         .copyright {
             display: none !important;
+        }
+
+        .owl-nav{
+            display: none!important;
         }
 
         .cart-quan {
@@ -109,7 +114,7 @@
                                         <div class="micart__close">
                                             <span>close</span>
                                         </div>
-                                        <c:if test="${cart!=null && cart.productCarts.size() > 0}">
+                                        <c:if test="${cart!=null}">
                                             <div class="items-total d-flex justify-content-between">
                                                 <span id="cart-item">${cart.productCarts.size()} items</span>
                                                 <span>Cart Subtotal</span>
@@ -118,14 +123,19 @@
                                                 <span id="cart-total">$0</span>
                                             </div>
                                             <div class="mini_action checkout">
-                                                <a class="checkout__btn" style="color: whitesmoke!important;" href="cart.html">Go to Checkout</a>
+                                                <a class="checkout__btn" style="color: whitesmoke!important;"
+                                                   href="${pageContext.request.contextPath}/order/<%=Base64.getEncoder().encodeToString(request.getAttribute("email").toString().getBytes())%>">Go
+                                                    to
+                                                    Checkout</a>
                                             </div>
                                             <div class="single__items">
-                                                <div class="miniproduct" id="cart-product">
+                                                <div class="miniproduct" id="cart-product"
+                                                     style="height: 50vh;overflow-y: scroll;">
                                                     <c:forEach var="product" items="${cart.productCarts}">
                                                         <div class="item01 d-flex mt--20">
                                                             <div class="thumb">
-                                                                <c:forEach var="image" items="${product.product.thumbnails}"
+                                                                <c:forEach var="image"
+                                                                           items="${product.product.thumbnails}"
                                                                            varStatus="loop">
                                                                     <c:if test="${loop.index == 1}">
                                                                         <a href="${pageContext.request.contextPath}">
@@ -145,7 +155,12 @@
                                                             <div class="product_price d-flex justify-content-between">
                                                                 <ul class="d-flex justify-content-end">
                                                                     <li>
-                                                                        <a href="#"><i class="fa fa-trash" style="font-size: 20px"></i></a>
+                                                                        <a href="javascript:void(0)"
+                                                                           onclick="removeFromCart(this,true)"
+                                                                           data-user="${email}"
+                                                                           data-product="${product.id}"><i
+                                                                                class="fa fa-trash"
+                                                                                style="font-size: 20px"></i></a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -154,7 +169,9 @@
                                                 </div>
                                             </div>
                                             <div class="mini_action cart">
-                                                <a class="cart__btn" href="cart.html">View and edit cart</a>
+                                                <a class="cart__btn"
+                                                   href="${pageContext.request.contextPath}/cart/client/detail">View and
+                                                    edit cart</a>
                                             </div>
                                         </c:if>
                                         <c:if test="${cart==null}">
@@ -305,18 +322,18 @@
 
     <jsp:include page="../pages/${web_content}.jsp"/>
 
-<%@include file="./client_footer.jsp" %>
+    <%@include file="./client_footer.jsp" %>
 
-<script>
-    let listPrice  = document.querySelectorAll(".content .price")
-    let total = document.getElementById("cart-total")
+    <script>
+        let listPrice = document.querySelectorAll(".content .price")
+        let total = document.getElementById("cart-total")
 
-    let amount = 0;
+        let amount = 0;
 
-    listPrice.forEach((val,index)=>{
-        amount+= (parseFloat(val.textContent.replace("$","").trim()) * parseInt(val.dataset.quantity))
-    })
-    if(total){
-        total.textContent = '$' + amount.toString();
-    }
-</script>
+        listPrice.forEach((val, index) => {
+            amount += (parseFloat(val.textContent.replace("$", "").trim()) * parseInt(val.dataset.quantity))
+        })
+        if (total) {
+            total.textContent = '$' + amount.toString();
+        }
+    </script>
