@@ -4,11 +4,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__inner text-center">
-                    <h2 class="breadcrumb-title">${single_product.product_name}</h2>
+                    <h2 class="breadcrumb-title" style="color: black">${single_product.product_name}</h2>
                     <nav class="breadcrumb-content">
-                        <a class="breadcrumb_item" href="index.html">Home</a>
+                        <a class="breadcrumb_item" style="color: black" href="index.html">Home</a>
                         <span class="brd-separator">/</span>
-                        <span class="breadcrumb_item active">${single_product.product_name}</span>
+                        <span class="breadcrumb_item active" style="color: black">${single_product.product_name}</span>
                     </nav>
                 </div>
             </div>
