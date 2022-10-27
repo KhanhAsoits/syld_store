@@ -26,9 +26,6 @@ public class Cart {
     User user;
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    List<Product> products;
-
     @OneToMany
     Set<ProductCart> productCarts = new HashSet<>();
 
