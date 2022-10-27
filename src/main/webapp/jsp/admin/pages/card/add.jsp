@@ -85,12 +85,11 @@
             <div class="col-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Add Product</h2>
+                        <h2>Add Card</h2>
                     </div>
-
                     <div class="card-body">
-                        <%--@elvariable id="user" type=""--%>
-                        <spForm:form class="row ec-vendor-uploads" action="${pageContext.request.contextPath}/admin/users/create" modelAttribute="user" enctype="multipart/form-data">
+                        <%--@elvariable id="cards" type=""--%>
+                        <spForm:form class="row ec-vendor-uploads" action="${pageContext.request.contextPath}/admin/cards/create" modelAttribute="cards" enctype="multipart/form-data">
                             <div class="col-lg-4">
                                 <div class="ec-vendor-img-upload">
                                     <div class="ec-vendor-main-img">
@@ -100,9 +99,9 @@
                                                               cssStyle="border: 2px solid #ced4da!important;"
                                                               id="imageUpload" cssClass="ec-image-upload"
                                                               accept=".png, .jpg, .jpeg" required="true"/>
-                                                <label for="imageUpload"><img
+                                                <spForm:label path="file" for="imageUpload"><img
                                                         src="${pageContext.request.contextPath}/assets/admin/img/icons/edit.svg"
-                                                        class="svg_img header_svg" alt="edit"/></label>
+                                                        class="svg_img header_svg" alt="edit"/></spForm:label>
                                             </div>
                                             <div class="avatar-preview ec-preview">
                                                 <div class="imagePreview ec-div-preview">
@@ -118,63 +117,39 @@
                             <div class="col-lg-8">
                                 <div class="ec-vendor-upload-detail row">
                                     <div class="col-md-6">
-                                        <spForm:label path="username"
-                                                      class="form-label">Username</spForm:label>
-                                        <spForm:input path="username" cssClass="form-control slug-title"
+                                        <spForm:label path="card_brand"
+                                                      class="form-label">Name Card</spForm:label>
+                                        <spForm:input path="card_brand" cssClass="form-control slug-title"
                                                       cssStyle="border: 2px solid #ced4da!important"
                                                       required="true"/>
-                                        <spForm:errors path="username" cssStyle="color: red;font-size: 12px;"/>
+                                        <spForm:errors path="card_brand" cssStyle="color: red;font-size: 12px;"/>
                                     </div>
                                     <div class="col-md-6">
-                                        <spForm:label path="email"
-                                                      class="form-label">Email</spForm:label>
-                                        <spForm:input path="email" cssClass="form-control slug-title" type="email"
+                                        <spForm:label path="card_number"
+                                                      class="form-label">Number Card</spForm:label>
+                                        <spForm:input path="card_number" cssClass="form-control slug-title" type="email"
                                                       cssStyle="border: 2px solid #ced4da!important"
                                                       required="true"/>
-                                        <spForm:errors path="email" cssStyle="color: red;font-size: 12px;"/>
+                                        <spForm:errors path="card_number" cssStyle="color: red;font-size: 12px;"/>
                                     </div>
                                     <div class="py-2 col-12"></div>
                                     <div class="col-md-6">
-                                        <spForm:label path="password"
-                                                      class="form-label">Password</spForm:label>
-                                        <spForm:input type="password" path="password" cssClass="form-control slug-title"
-                                                      cssStyle="border: 2px solid #ced4da!important"
-                                                      required="true"/>
-                                        <spForm:errors path="password" cssStyle="color: red;font-size: 12px;"/>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <spForm:label path="phoneNumber"
-                                                      class="form-label">NumberPhone</spForm:label>
-                                        <spForm:input  type="tel" path="phoneNumber" cssClass="form-control slug-title"
-                                                       cssStyle="border: 2px solid #ced4da!important"
-                                                       required="true"/>
-                                        <spForm:errors path="phoneNumber" cssStyle="color: red;font-size: 12px;"/>
-                                    </div>
                                     <div class="py-2 col-12"></div>
 
                                     <div class="col-md-6">
-                                        <spForm:label path="role_name"
-                                                      class="form-label">Role</spForm:label>
-                                        <spForm:select path="role_name" cssClass="form-control">
-                                            <c:forEach var="role" items="${roles}">
-                                                <option value="${role.role_name}">${role.role_name}</option>
+                                        <spForm:label path="user_id"
+                                                      class="form-label">User Name</spForm:label>
+                                        <spForm:select path="user_id" cssClass="form-control">
+                                            <c:forEach var="user_id" items="${users}">
+                                                <option value="${user.user_name}">${user.user_name}</option>
                                             </c:forEach>
                                         </spForm:select>
                                     </div>
                                     <div class="py-2 col-12"></div>
-
-                                    <div class="col-md-6">
-                                        <spForm:label path="address"
-                                                      class="form-label">Address</spForm:label>
-                                        <spForm:input path="address" cssClass="form-control slug-title"
-                                                      cssStyle="border: 2px solid #ced4da!important"
-                                                      required="true"/>
-                                        <spForm:errors path="address" cssStyle="color: red;font-size: 12px;"/>
-                                    </div>
                                     <div class="my-2 col-12"></div>
 
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <spForm:button type="submit" class="btn btn-primary">Submit</spForm:button>
                                     </div>
                                 </div>
                             </div>

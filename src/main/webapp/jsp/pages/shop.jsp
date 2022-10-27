@@ -10,16 +10,16 @@
             <div class="col-lg-12">
                 <div class="breadcrumb__inner text-center">
                     <c:if test="${category!=null}">
-                        <h2 class="breadcrumb-title">${category.category_name}</h2>
+                        <h2 style="color: black" class="breadcrumb-title">${category.category_name}</h2>
                     </c:if>
                     <c:if test="${category==null}">
                         <h2 class="breadcrumb-title">Store</h2>
                     </c:if>
                     <nav class="breadcrumb-content">
-                        <a class="breadcrumb_item" href="index.html">Home</a>
-                        <span class="brd-separator">/</span>
+                        <a class="breadcrumb_item" style="color: black" href="${pageContext.request.contextPath}/">Home</a>
+                        <span class="brd-separator" style="color: black">/</span>
                         <c:if test="${category!=null}">
-                            <span class="breadcrumb_item active">${category.category_name}</span>
+                            <span style="color: black" class="breadcrumb_item active">${category.category_name}</span>
                         </c:if>
                         <c:if test="${category==null}">
                             <span class="breadcrumb_item active">Store</span>
@@ -42,7 +42,7 @@
             <ul>
                 <c:forEach var="category" items="${data.categories}">
                     <li>
-                        <a href="${pageContext.request.contextPath}/store?category=${category.categoryDto.category_slug}&page=1&limit=9">${category.categoryDto.category_name}
+                        <a href="${pageContext.request.contextPath}/store?category=${category.categoryDto.category_slug}&page=1&limit=18">${category.categoryDto.category_name}
                             <span>(${category.product_count})</span></a></li>
                 </c:forEach>
             </ul>

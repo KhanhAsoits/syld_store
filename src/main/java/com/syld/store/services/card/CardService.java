@@ -11,4 +11,8 @@ public interface CardService extends ICrudService<CardDto, String> {
 
     CardDto getById(String id);
 
+    CardDto getByName(String card_name);
+
+    CardDto getByCard_Number(String card_number);
+
 }
