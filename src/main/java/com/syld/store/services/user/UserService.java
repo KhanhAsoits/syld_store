@@ -1,6 +1,7 @@
 package com.syld.store.services.user;
 
 import com.syld.store.dto.UserClientDto;
+import com.syld.store.entities.User;
 import com.syld.store.interfaces.services.ICrudService;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import java.util.List;
 public interface UserService extends ICrudService<UserClientDto,String> {
     UserClientDto findByEmail(String email);
 
+    User findByName(String name);
     List<UserClientDto> findAll();
 
     List<UserClientDto> getAll();

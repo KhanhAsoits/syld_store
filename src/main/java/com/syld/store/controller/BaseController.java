@@ -1,10 +1,12 @@
 package com.syld.store.controller;
 
+import com.syld.store.entities.User;
 import com.syld.store.services.client.NavbarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
 
 import java.util.Objects;
@@ -41,6 +43,11 @@ public class BaseController {
 
         if (is_nav) {
             model.addAttribute("navs", navbarService.getAllCategory());
+        }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!Objects.equals(authentication.getName(), "anonymousUser")) {
+            model.addAttribute("email",authentication.getName());
+            model.addAttribute("cart", navbarService.getUserCart(authentication.getName()));
         }
         model.addAttribute("title", title);
         return layout_path;

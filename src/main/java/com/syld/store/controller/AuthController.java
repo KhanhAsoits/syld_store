@@ -53,7 +53,7 @@ public class AuthController extends BaseController {
         model.addAttribute("user",new UserClientDto());
         if (error != null)
             model.addAttribute("message",getAuthErr(error));
-        return view(model, "Login Page ", "login", "layout/client_layout");
+        return view(model, "Login Page ", "login", "layout/client_layout",true);
     }
 
     @PostMapping(path = "/valid_email")
@@ -86,7 +86,7 @@ public class AuthController extends BaseController {
         if (error != null)
             model.addAttribute("message", getAuthErr(error));
         model.addAttribute("user_reg", new UserClientDto());
-        return view(model, "Register Page ", "register", "layout/client_layout");
+        return view(model, "Register Page ", "register", "layout/client_layout",true);
     }
 
 

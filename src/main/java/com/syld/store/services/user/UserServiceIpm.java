@@ -106,6 +106,12 @@ public class UserServiceIpm implements UserService {
     }
 
     @Override
+    public User findByName(String name) {
+        Optional<User> user = userRepository.findByEmail(name);
+        return user.orElse(null);
+    }
+
+    @Override
     public List<UserClientDto> findAll() {
         List<User> users = userRepository.findAll();
         return users.stream().map(user -> new ModelMapper().map(user, UserClientDto.class)).toList();

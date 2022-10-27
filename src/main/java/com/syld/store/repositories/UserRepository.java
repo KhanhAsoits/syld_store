@@ -13,6 +13,8 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, String> {
     Optional<User> findByEmail(String email);
 
+    Optional<User> findByUsername(String user_name);
+
     @Query(value = "select * from user where phone_number =?1", nativeQuery = true)
     User findByPhone(String number_phone);
 
