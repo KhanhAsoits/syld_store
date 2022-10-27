@@ -13,7 +13,7 @@
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
                 <!-- Dashboard -->
-                <li class="active">
+                <li class="has-sub">
                     <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/dashbroad">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Dashboard</span>
@@ -30,7 +30,7 @@
                     <div class="collapse">
                         <ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
                             <li class="">
-                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/card">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/cards">
                                     <span class="nav-text">Account Admin Gird</span>
                                 </a>
                             </li>
@@ -58,7 +58,7 @@
                     <div class="collapse">
                         <ul class="sub-menu" id="users" data-parent="#sidebar-menu">
                             <li>
-                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/card">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/cards">
                                     <span class="nav-text">Card Bank</span>
                                 </a>
                             </li>

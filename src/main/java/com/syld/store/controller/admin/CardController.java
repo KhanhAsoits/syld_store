@@ -49,7 +49,7 @@ public class CardController extends BaseController {
         return "rediret: /admin/cards";
     }
 
-    @GetMapping(path = "remove/{is}")
+    @GetMapping(path = "remove/{id}")
     public String Remove(RedirectAttributes redirectAttributes, @PathVariable String id) {
         try {
             cardService.remove(id);

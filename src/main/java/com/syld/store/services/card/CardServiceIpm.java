@@ -33,22 +33,6 @@ public class CardServiceIpm implements CardService {
     @Override
     public void save(CardDto entity) throws Exception {
 
-        try{
-            String filePath = uploader.upload(entity.getFile(), entity.getCard_brand());
-
-            Card card = this.modelMapper.map(entity, Card.class);
-            card.setId(UUID.randomUUID().toString());
-            if(filePath != null) {
-                card.setBrand_thumbnail(filePath);
-            }else {
-                card.setBrand_thumbnail(entity.getBrand_thumbnail());
-            }
-            card.setId(SlugGenerator.toSlug(entity.getId()));
-            cardRepository.save(card);
-        }catch (Exception e) {
-            log.info(e.getMessage());
-            throw e;
-        }
     }
 
 
