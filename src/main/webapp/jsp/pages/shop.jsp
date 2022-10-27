@@ -138,13 +138,13 @@
                     <div class="actions_inner">
                         <ul class="add_to_links">
                             <c:if test="${cart!=null}">
-                                <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${new_product.product_quantity}" onclick="addProductToCart(this)" href="javascript:void(0)" data-cart="${cart.id}" data-email="${email}" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
+                                <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${product.product_quantity}" onclick="addProductToCart(this)" href="javascript:void(0)" data-cart="${cart.id}" data-email="${email}" data-product="${product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
                             </c:if>
                             <c:if test="${email!=null && cart == null}">
-                                <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${new_product.product_quantity}" onclick="addProductToCart(this)" data-email="${email}" href="javascript:void(0)" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
+                                <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${product.product_quantity}" onclick="addProductToCart(this)" data-email="${email}" href="javascript:void(0)" data-product="${product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
                             </c:if>
                             <c:if test="${email==null && cart == null}">
-                                <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${new_product.product_quantity}" href="${pageContext.request.contextPath}/auth/login" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
+                                <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${product.product_quantity}" href="${pageContext.request.contextPath}/auth/login" data-product="${product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
                             </c:if>
                             <li><a class="wishlist d-flex justify-content-center align-items-center" href="wishlist.html"><i
                                     class="bi bi-shopping-cart-full"></i></a></li>
@@ -197,7 +197,7 @@
     </div>
     <div class="shop-grid tab-pane fade show " id="nav-list" role="tabpanel">
     <div class="list__view__wrapper">
-    <c:forEach var="product_list" items="${data.productViewDtoList.getContent()}">
+        <c:forEach var="product_list" items="${data.productViewDtoList.getContent()}">
         <div class="list__view mt--40">
             <div class="thumb">
                 <a class="first__img" href="${pageContext.request.contextPath}/products/${product_list.slug}"><img
@@ -226,9 +226,9 @@
                 </ul>
                 <p>${product_list.product_desc}</p>
                 <ul class="cart__action d-flex">
-                    <li class="cart"><a href="cart.html">Add to cart</a></li>
-                    <li class="wishlist"><a href="cart.html"></a></li>
-                    <li class="compare"><a href="cart.html"></a></li>
+                        <li class="cart"><a href="cart.html">Add to cart</a></li>
+                        <li class="wishlist"><a href="cart.html"></a></li>
+                        <li class="compare"><a href="cart.html"></a></li>
                 </ul>
 
             </div>

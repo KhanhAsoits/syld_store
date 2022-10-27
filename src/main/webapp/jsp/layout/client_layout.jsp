@@ -316,5 +316,7 @@
     listPrice.forEach((val,index)=>{
         amount+= (parseFloat(val.textContent.replace("$","").trim()) * parseInt(val.dataset.quantity))
     })
-    total.textContent = '$' + amount.toString();
+    if(total){
+        total.textContent = '$' + amount.toString();
+    }
 </script>
