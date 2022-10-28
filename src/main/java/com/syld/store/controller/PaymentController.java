@@ -1,6 +1,7 @@
 package com.syld.store.controller;
 
 import com.syld.store.dto.OrderDto;
+import com.syld.store.services.paypal.PaypalService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,12 +20,17 @@ import javax.validation.Valid;
 @RequestMapping(path = "/payment")
 @PreAuthorize("isAuthenticated()")
 public class PaymentController {
+    private final PaypalService paypalService;
 
     @PostMapping(path = "/create")
-    public String CreatePayment(@Valid @ModelAttribute("order")OrderDto orderDto , BindingResult bindingResult, Model model){
-        if (bindingResult.hasErrors()){
+    public String CreatePayment(@Valid @ModelAttribute("order") OrderDto orderDto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
             return "redirect:/err";
         }
-        return null;
+        try {
+        } catch (Exception e) {
+            model.addAttribute("err_message", "Internal Server Errors");
+        }
+        return "redirect:/err";
     }
 }

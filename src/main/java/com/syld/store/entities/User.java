@@ -47,10 +47,6 @@ public class User {
     private Timestamp create_at = new Timestamp(System.currentTimeMillis());
     private Timestamp update_at = new Timestamp(System.currentTimeMillis());
 
-    @Nullable
-    @OneToOne
-    Card card;
-
     @OneToOne
     Role role;
 

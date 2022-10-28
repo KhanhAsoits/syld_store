@@ -122,7 +122,7 @@ public class CardServiceIpm implements CardService {
             if (card_.isPresent()) {
                 Optional<User> user = userRepository.findByEmail(entity.getUser_email());
                 if (user.isPresent()) {
-                    user.get().setCard(card_.get());
+//                    user.get().setCard(card_.get());
                     userRepository.save(user.get());
                 }
             }
