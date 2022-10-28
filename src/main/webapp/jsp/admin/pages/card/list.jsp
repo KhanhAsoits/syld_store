@@ -17,9 +17,10 @@
                     <span><i class="mdi mdi-chevron-right"></i></span>Card</p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/brands/create" class="btn btn-primary"> Add
+                <a href="${pageContext.request.contextPath}/admin/cards/create" class="btn btn-primary"> Add
                     Card</a>
             </div>
+
         </div>
         <div class="row">
             <div class="col-12">

@@ -4,11 +4,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__inner text-center">
-                    <h2 class="breadcrumb-title">${single_product.product_name}</h2>
+                    <h2 class="breadcrumb-title" style="color: black">${single_product.product_name}</h2>
                     <nav class="breadcrumb-content">
-                        <a class="breadcrumb_item" href="index.html">Home</a>
+                        <a class="breadcrumb_item" style="color: black" href="index.html">Home</a>
                         <span class="brd-separator">/</span>
-                        <span class="breadcrumb_item active">${single_product.product_name}</span>
+                        <span class="breadcrumb_item active" style="color: black">${single_product.product_name}</span>
                     </nav>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                             <div class="wn__fotorama__wrapper">
                                 <div class="fotorama wn__fotorama__action" data-nav="thumbs">
                                     <c:forEach var="thumbnail" items="${single_product.images_con}">
-                                        <a href="1.html"><img src="${pageContext.request.contextPath}${thumbnail.path}"  alt=""></a>
+                                        <a href="#"><img src="${pageContext.request.contextPath}${thumbnail.path}"  alt=""></a>
                                     </c:forEach>
                                 </div>
                             </div>
@@ -245,13 +245,13 @@
                                             <div class="actions_inner">
                                                 <ul class="add_to_links">
                                                     <c:if test="${cart!=null}">
-                                                        <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${new_product.product_quantity}" onclick="addProductToCart(this)" href="javascript:void(0)" data-cart="${cart.id}" data-email="${email}" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
+                                                        <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${product.product_quantity}" onclick="addProductToCart(this)" href="javascript:void(0)" data-cart="${cart.id}" data-email="${email}" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
                                                     </c:if>
                                                     <c:if test="${email!=null && cart == null}">
-                                                        <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${new_product.product_quantity}" onclick="addProductToCart(this)" data-email="${email}" href="javascript:void(0)" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
+                                                        <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${product.product_quantity}" onclick="addProductToCart(this)" data-email="${email}" href="javascript:void(0)" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
                                                     </c:if>
                                                     <c:if test="${email==null && cart == null}">
-                                                        <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${new_product.product_quantity}" href="${pageContext.request.contextPath}/auth/login" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
+                                                        <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${product.product_quantity}" href="${pageContext.request.contextPath}/auth/login" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
                                                     </c:if>
                                                     <li><a class="wishlist d-flex justify-content-center align-items-center" href="wishlist.html"><i
                                                             class="bi bi-shopping-cart-full"></i></a></li>

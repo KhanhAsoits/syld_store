@@ -10,16 +10,16 @@
             <div class="col-lg-12">
                 <div class="breadcrumb__inner text-center">
                     <c:if test="${category!=null}">
-                        <h2 class="breadcrumb-title">${category.category_name}</h2>
+                        <h2 style="color: black" class="breadcrumb-title">${category.category_name}</h2>
                     </c:if>
                     <c:if test="${category==null}">
                         <h2 class="breadcrumb-title">Store</h2>
                     </c:if>
                     <nav class="breadcrumb-content">
-                        <a class="breadcrumb_item" href="index.html">Home</a>
-                        <span class="brd-separator">/</span>
+                        <a class="breadcrumb_item" style="color: black" href="${pageContext.request.contextPath}/">Home</a>
+                        <span class="brd-separator" style="color: black">/</span>
                         <c:if test="${category!=null}">
-                            <span class="breadcrumb_item active">${category.category_name}</span>
+                            <span style="color: black" class="breadcrumb_item active">${category.category_name}</span>
                         </c:if>
                         <c:if test="${category==null}">
                             <span class="breadcrumb_item active">Store</span>
@@ -42,7 +42,7 @@
             <ul>
                 <c:forEach var="category" items="${data.categories}">
                     <li>
-                        <a href="${pageContext.request.contextPath}/store?category=${category.categoryDto.category_slug}&page=1&limit=9">${category.categoryDto.category_name}
+                        <a href="${pageContext.request.contextPath}/store?category=${category.categoryDto.category_slug}&page=1&limit=18">${category.categoryDto.category_name}
                             <span>(${category.product_count})</span></a></li>
                 </c:forEach>
             </ul>
@@ -226,9 +226,17 @@
                 </ul>
                 <p>${product_list.product_desc}</p>
                 <ul class="cart__action d-flex">
-                        <li class="cart"><a href="cart.html">Add to cart</a></li>
-                        <li class="wishlist"><a href="cart.html"></a></li>
-                        <li class="compare"><a href="cart.html"></a></li>
+                    <c:if test="${cart!=null}">
+                        <li class="cart"><a class="cart d-flex justify-content-center align-items-center" data-limit="${product_list.product_quantity}" onclick="addProductToCart(this)" href="javascript:void(0)" data-cart="${cart.id}" data-email="${email}" data-product="${product_list.id}">Add To Cart</a></li>
+                    </c:if>
+                    <c:if test="${email!=null && cart == null}">
+                        <li class="cart"><a class="cart d-flex justify-content-center align-items-center" data-limit="${product_list.product_quantity}" onclick="addProductToCart(this)" data-email="${email}" href="javascript:void(0)" data-product="${product_list.id}"><i class="bi bi-shopping-bag4">1</i></a></li>
+                    </c:if>
+                    <c:if test="${email==null && cart == null}">
+                        <li class="cart"><a class="cart d-flex justify-content-center align-items-center" data-limit="${product_list.product_quantity}" href="${pageContext.request.contextPath}/auth/login" data-product="${product_list.id}"><i class="bi bi-shopping-bag4"></i>2</a></li>
+                    </c:if>
+                    <li class="wishlist"><a href="cart.html"></a></li>
+                    <li class="compare"><a href="cart.html"></a></li>
                 </ul>
 
             </div>

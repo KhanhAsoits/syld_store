@@ -72,12 +72,12 @@
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Add Product</h1>
+                <h1>Edit Users</h1>
                 <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/admin">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Product</p>
+                    <span><i class="mdi mdi-chevron-right"></i></span>Edit Users</p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/products" class="btn btn-primary"> View All
+                <a href="${pageContext.request.contextPath}/admin/users" class="btn btn-primary"> View All
                 </a>
             </div>
         </div>

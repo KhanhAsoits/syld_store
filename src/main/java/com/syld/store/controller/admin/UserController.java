@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -88,4 +89,17 @@ public class UserController extends BaseController {
         }
         return "redirect:/admin/users";
     }
+
+    @GetMapping(path = "/remove/{id}")
+    public String Remove(RedirectAttributes redirectAttributes, @PathVariable String id) {
+        try {
+            userService.remove(id);
+            redirectAttributes.addFlashAttribute("message", "Success !");
+        }catch (Exception e) {
+            redirectAttributes.addFlashAttribute("message", "Falied");
+        }
+        return "redirect:/admin/users";
+    }
+
+
 }

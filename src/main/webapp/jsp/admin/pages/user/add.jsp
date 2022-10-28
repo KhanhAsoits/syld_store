@@ -72,12 +72,12 @@
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Add Product</h1>
+                <h1>Add user</h1>
                 <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/admin">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Product</p>
+                    <span><i class="mdi mdi-chevron-right"></i></span>Card</p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/products" class="btn btn-primary"> View All
+                <a href="${pageContext.request.contextPath}/admin/users" class="btn btn-primary"> View All
                 </a>
             </div>
         </div>
@@ -85,7 +85,7 @@
             <div class="col-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Add Product</h2>
+                        <h2>Add user</h2>
                     </div>
 
                     <div class="card-body">

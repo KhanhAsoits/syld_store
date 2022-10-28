@@ -49,7 +49,6 @@ public class CardServiceIpm implements CardService {
             } else {
                 card.setBrand_thumbnail(entity.getBrand_thumbnail());
             }
-            card.setId(SlugGenerator.toSlug(entity.getId()));
             cardRepository.save(card);
         } catch (Exception e) {
             log.info(e.getMessage());
@@ -141,6 +140,24 @@ public class CardServiceIpm implements CardService {
             }
         } catch (Exception e) {
             log.info(e.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    public CardDto getByName(String card_brand) {
+        Card card = cardRepository.findByCard_brand(card_brand);
+        if(card != null) {
+            return modelMapper.map(card, CardDto.class);
+        }
+        return null;
+    }
+
+    @Override
+    public CardDto getByCard_Number(String card_number) {
+        Card card = cardRepository.findByCard_number(card_number);
+        if(card != null) {
+            return modelMapper.map(card, CardDto.class);
         }
         return null;
     }

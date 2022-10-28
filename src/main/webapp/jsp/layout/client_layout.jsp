@@ -7,7 +7,7 @@
     <title>${title}</title>
     <style>
         .sticky__header.is-sticky {
-            background-color: whitesmoke !important;
+            background-color: white !important;
 
         }
 
@@ -16,14 +16,17 @@
         }
 
         .sticky__header.is-sticky .meanmenu-reveal span {
-            color: black !important;
+            color: whitesmoke !important;
         }
 
         .logo {
-            width: 66px !important;
-            height: 60px !important;
+            width: 86px !important;
+            height: 80px !important;
         }
 
+        .owl-nav{
+            display: none !important;
+        }
         .copyright {
             display: none !important;
         }
@@ -56,7 +59,7 @@
     <header id="wn__header" class="header__area header__absolute sticky__header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 col-sm-6 col-6 col-lg-2">
+                <div class="col-md-6 col-sm-6 col-6 col-lg-2 d-flex align-items-center ">
                     <div class="logo">
                         <a href="${pageContext.request.contextPath}/">
                             <img class="logo" src="${pageContext.request.contextPath}/assets/images/logo/logo.svg"
@@ -67,21 +70,22 @@
                 <div class="col-lg-8 d-none d-lg-block">
                     <nav class="mainmenu__nav">
                         <ul class="meninmenu d-flex justify-content-start">
-                            <c:forEach var="category" items="${navs}">
+                            <li><a href="${pageContext.request.contextPath}/store?page=1&limit=18">Store</a></li>
+                            <c:forEach var="category" items="${navs}" >
                                 <li class="drop with--one--item">
-                                    <a href="${pageContext.request.contextPath}/store?category=${category.children[0].category_slug}&page=1&limit=9">${category.parent.category_name}</a>
+                                    <a href="${pageContext.request.contextPath}/store?category=${category.children[0].category_slug}&page=1&limit=18">${category.parent.category_name}</a>
                                     <div class="megamenu dropdown">
                                         <ul class="item item01">
                                             <c:forEach var="child_category" items="${category.children}">
                                                 <li>
-                                                    <a href="${pageContext.request.contextPath}/store?category=${child_category.category_slug}&page=1&limit=9">${child_category.category_name}</a>
+                                                    <a href="${pageContext.request.contextPath}/store?category=${child_category.category_slug}&page=1&limit=18">${child_category.category_name}</a>
                                                 </li>
                                             </c:forEach>
                                         </ul>
                                     </div>
                                 </li>
                             </c:forEach>
-                            <li><a href="${pageContext.request.contextPath}/store?page=1&limit=9">Shop</a></li>
+
                             <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
                         </ul>
                     </nav>
@@ -179,7 +183,7 @@
                                             <h6 style="color: rgba(0,0,0,0.5);font-weight: 500;font-size: 18px;text-align: center">
                                                 Nothing in cart >.<
                                             </h6>
-                                            <a href="${pageContext.request.contextPath}/store?page=1&limit=9">shop
+                                            <a href="${pageContext.request.contextPath}/store?page=1&limit=18">shop
                                                 now</a>
                                         </c:if>
                                     </div>

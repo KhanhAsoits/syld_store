@@ -16,10 +16,10 @@
                 <div class="col-lg-12">
                     <div class="slider__content">
                         <div class="contentbox">
-                            <h2>Buy <span>your </span></h2>
-                            <h2>favourite <span>Book </span></h2>
-                            <h2>from <span>Here </span></h2>
-                            <a class="shopbtn" href="#">shop now</a>
+                            <h2 >Buy <span style="color: floralwhite">your </span></h2>
+                            <h2>favourite <span style="color: floralwhite">fashion </span></h2>
+                            <h2>from <span style="color: floralwhite">Here </span></h2>
+                            <a class="shopbtn" href="${pageContext.request.contextPath}/store?page=1&limit=9">shop now</a>
                         </div>
                     </div>
                 </div>
@@ -34,10 +34,10 @@
                 <div class="col-lg-12">
                     <div class="slider__content">
                         <div class="contentbox">
-                            <h2>Buy <span>your </span></h2>
-                            <h2>favourite <span>Book </span></h2>
-                            <h2>from <span>Here </span></h2>
-                            <a class="shopbtn" href="#">shop now</a>
+                            <h2>Buy <span style="color: lightpink">your </span></h2>
+                            <h2>favourite <span style="color: lightpink">fashion </span></h2>
+                            <h2>from <span style="color: lightpink">Here </span></h2>
+                            <a class="shopbtn" href="${pageContext.request.contextPath}/store?page=1&limit=9">shop now</a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section__title text-center">
-                    <h2 class="title__be--2">New <span class="color--theme">Products</span></h2>
+                    <h2 class="title__be--2">New <span class="color--theme" style="color: lightslategray">Products</span></h2>
                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have
                         suffered lebmid alteration in some ledmid form</p>
                 </div>
@@ -125,15 +125,15 @@
         <div class="row">
             <div class="col-lg-7 offset-lg-5 col-md-12 col-12 ptb--150">
                 <div class="section__title text-center">
-                    <h2>Stay With Us</h2>
+                    <h2 style="color: whitesmoke">Stay With Us</h2>
                 </div>
                 <div class="newsletter__block text-center">
-                    <p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest
+                    <p style="color: whitesmoke">Subscribe to our newsletters now and stay up-to-date with new collections, the latest
                         lookbooks and exclusive offers.</p>
                     <form action="#">
                         <div class="newsletter__box">
-                            <input type="email" placeholder="Enter your e-mail">
-                            <button>Subscribe</button>
+                            <input type="email" style="color: whitesmoke"   placeholder="Enter your e-mail">
+                            <button style="color: whitesmoke">Subscribe</button>
                         </div>
                     </form>
                 </div>
@@ -148,7 +148,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section__title text-center">
-                    <h2 class="title__be--2">All <span class="color--theme">Products</span></h2>
+                    <h2 class="title__be--2">Hot Sale <span class="color--theme" style="color: lightpink">Products</span></h2>
                     <p>There are many variations of passages of Lorem Ipsum available, but the majority have
                         suffered lebmid alteration in some ledmid form</p>
                 </div>
@@ -200,7 +200,7 @@
                                                             <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${single_product.product_quantity}" onclick="addProductToCart(this)" data-email="${email}" href="javascript:void(0)" data-product="${single_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
                                                         </c:if>
                                                         <c:if test="${email==null && cart == null}">
-                                                            <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${single_product.product_quantity}" href="${pageContext.request.contextPath}/auth/login" data-product="${single_product.id}"><i class="bi bi-shopping-bag4"></i></a</li>
+                                                            <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${single_product.product_quantity}" href="${pageContext.request.contextPath}/auth/login" data-product="${single_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
                                                         </c:if>
                                                         <li><a class="wishlist d-flex justify-content-center align-items-center" href="wishlist.html"><i
                                                                 class="bi bi-shopping-cart-full"></i></a></li>
@@ -264,7 +264,7 @@
                                                             <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${single_product.product_quantity}" onclick="addProductToCart(this)" data-email="${email}" href="javascript:void(0)" data-product="${single_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
                                                         </c:if>
                                                         <c:if test="${email==null && cart == null}">
-                                                            <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${single_product.product_quantity}" href="${pageContext.request.contextPath}/auth/login" data-product="${single_product.id}"><i class="bi bi-shopping-bag4"></i></a</li>
+                                                            <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${single_product.product_quantity}" href="${pageContext.request.contextPath}/auth/login" data-product="${single_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
                                                         </c:if>tems-center" href="cart.html"><i
                                                                 class="bi bi-shopping-bag4"></i></a></li>
                                                         <li><a class="wishlist d-flex justify-content-center align-items-center" href="wishlist.html"><i
@@ -301,62 +301,6 @@
     </div>
 </section>
 <!-- Footer Area -->
-<footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
-    <div class="footer-static-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__widget footer__menu">
-                        <div class="ft__logo">
-                            <a href="index.html">
-                                <img src="images/logo/3.png" alt="logo">
-                            </a>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                have suffered duskam alteration variations of passages</p>
-                        </div>
-                        <div class="footer__content">
-                            <ul class="social__net social__net--2 d-flex justify-content-center">
-                                <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-                                <li><a href="#"><i class="bi bi-google"></i></a></li>
-                                <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-                                <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-                                <li><a href="#"><i class="bi bi-youtube"></i></a></li>
-                            </ul>
-                            <ul class="mainmenu d-flex justify-content-center">
-                                <li><a href="index.html">Trending</a></li>
-                                <li><a href="index.html">Best Seller</a></li>
-                                <li><a href="index.html">All Product</a></li>
-                                <li><a href="index.html">Wishlist</a></li>
-                                <li><a href="index.html">Blog</a></li>
-                                <li><a href="index.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="copyright__wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="copyright">
-                        <div class="copy__right__inner text-start">
-                            <p>&copy; 2021, Boighor. Made with <i class="fa fa-heart text-danger"></i> by <a
-                                    href="http://hasthemes.com/" target="_blank">HasThemes</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="payment text-end">
-                        <img src="images/icons/payment.png" alt=""/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-
 <div id="quickview-wrapper">
     <!-- Modal -->
     <div class="modal fade" id="productmodal" tabindex="-1" role="dialog">
