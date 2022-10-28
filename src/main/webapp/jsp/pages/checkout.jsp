@@ -41,7 +41,7 @@
         </div>
         <div class="">
             <%--@elvariable id="order" type="com.syld.store.dto.OrderDto"--%>
-            <spForm:form cssClass="row" action="${pageContext.request.contextPath}/order/create" method="post"
+            <spForm:form cssClass="row" action="${pageContext.request.contextPath}/payment/create" method="post"
                          modelAttribute="order">
                 <div class="col-lg-6 col-12">
                     <div class="customer_details">
@@ -67,7 +67,7 @@
                             <div class="margin_between">
                                 <div class="input_box space_between">
                                     <label>Phone <span>*</span></label>
-                                    <spForm:input value="${cart.user.phone_number}" readonly="true"
+                                    <spForm:input value="${cart.user.phone_number}" placeholder="Phone"
                                                   path="user.phone_number" type="tel"/>
                                 </div>
 
@@ -180,6 +180,7 @@
                             </li>
                         </ul>
                         <ul class="total__amount">
+                            <li>SubTotal <span id="sub_total">$223.00</span></li>
                             <li>Order Total <span id="order-total">$223.00</span></li>
                         </ul>
                     </div>
@@ -188,28 +189,20 @@
                             <div class="che__header" role="tab" id="headingOne">
                                 <a class="checkout__title" data-bs-toggle="collapse" href="#collapseOne"
                                    aria-expanded="true" aria-controls="collapseOne">
-                                    <span>Chose Card</span>
+                                    <span>Chose Payment Method</span>
                                 </a>
                             </div>
                             <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingFour"
                                  data-bs-parent="#accordion">
-                                <c:if test="${cart.user.card!=null}">
-                                    <div class="payment-body">Cards</div>
-                                </c:if>
-                                <c:if test="${cart.user.card==null}">
-                                    <%--@elvariable id="card" type="com.syld.store.dto.CardDto"--%>
-                                    <div class="border px-2 py-3">
-                                        <input id="card_number" class=" mb-2 form-control"
-                                               placeholder="Type Card Number"
-                                               data-test="^3[47][0-9]{13}$"/>
-                                        <label>Select Bank</label>
-                                        <select id="card_bank" class="form-control">
-                                            <option value="paypal">Paypal</option>
-                                        </select>
-                                        <input id="card_user_email" value="${email}" style="visibility: hidden">
-                                        <button class="btn btn-secondary m-2 btn-block w-100" type="button" id="btn-add-card">Add Card</button>
+                                <div class="py-2 px-3 my-2 row">
+                                    <div class="col-12 col-md-4 border">
+                                        <button type="submit" class="btn">
+                                            <img src="${pageContext.request.contextPath}/assets/images/paypal/paypal.png" alt="paypal">
+                                        </button>
                                     </div>
-                                </c:if>
+                                    <div class="col-12 col-md-4"></div>
+                                    <div class="col-12 col-md-4"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -228,9 +221,12 @@
         let checked_price = document.querySelector("input[name='ship_mode']:checked")
         let check_value = checked_price.value
         let amount = parseInt(check_value);
+        let subtotal = 0;
         listPrice.forEach((val, index) => {
+            subtotal+=parseInt(val.textContent.replace("$", "").trim().slice(0, val.textContent.length - 3))
             amount += parseInt(val.textContent.replace("$", "").trim().slice(0, val.textContent.length - 3))
         })
+        document.getElementById("sub_total").textContent = '$' + subtotal + '.00'
         document.getElementById("order-total").textContent = '$' + amount + ".00";
     }
 
