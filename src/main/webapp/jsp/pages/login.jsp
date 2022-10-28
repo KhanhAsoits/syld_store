@@ -7,13 +7,15 @@
     }
 
 </style>
-<section class="my_account_area pt--80 pb--55 bg--white">
+<section class="my_account_area pt--80 pb--55 bg-white">
     <div class="container">
         <div class="row">
             <div class="col-4 "></div>
             <div class="col-5 ">
                 <div class="my__account__wrapper" >
-                    <h3 class="account__title" >Login</h3>
+                    <br>
+
+                    <h4 class="account__title" >Login</h4>
                     <p style="color: red" class="lead fw-normal mb-0 me-3">${message}</p> <br>
                     <%--@elvariable id="user" type=""--%>
                     <spForm:form action="login" id="loginForm" method="post" modelAttribute="user">

@@ -13,16 +13,16 @@
                         <h2 style="color: black" class="breadcrumb-title">${category.category_name}</h2>
                     </c:if>
                     <c:if test="${category==null}">
-                        <h2 class="breadcrumb-title">Store</h2>
+                        <h2 style="color:black;" class="breadcrumb-title">Store</h2>
                     </c:if>
                     <nav class="breadcrumb-content">
                         <a class="breadcrumb_item" style="color: black" href="${pageContext.request.contextPath}/">Home</a>
                         <span class="brd-separator" style="color: black">/</span>
                         <c:if test="${category!=null}">
-                            <span style="color: black" class="breadcrumb_item active">${category.category_name}</span>
+                            <span   style="color: black" class="breadcrumb_item active">${category.category_name}</span>
                         </c:if>
                         <c:if test="${category==null}">
-                            <span class="breadcrumb_item active">Store</span>
+                            <span style="color:black;" class="breadcrumb_item active">Store</span>
                         </c:if>
                     </nav>
                 </div>

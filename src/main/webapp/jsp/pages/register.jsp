@@ -1,10 +1,11 @@
 <%@ taglib prefix="spForm" uri="http://www.springframework.org/tags/form" %>
-<section class="my_account_area pt--80 pb--55 bg--white">
+<section class="my_account_area pt--80 pb--55 bg--image--1">
     <div class="container">
         <div class="row">
             <div class="col-4 "></div>
             <div class="col-5 ">
                 <div class="my__account__wrapper">
+                    <br>
                     <h3 class="account__title">Register</h3>
                     <span style="color: red">${message}</span>
                     <%--@elvariable id="user_reg" type=""--%>
