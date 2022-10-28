@@ -7,4 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface OrderService extends ICrudService<OrderDto, String> {
 
+    void pay_success(String order_id);
+
+    void cancel_pay(String order_id);
 }

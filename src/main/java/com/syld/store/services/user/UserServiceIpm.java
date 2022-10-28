@@ -139,6 +139,20 @@ public class UserServiceIpm implements UserService {
     public UserClientDto findByPhoneNotSame(String phone, String id) {
         return userRepository.findByPhoneNotSame(phone, id);
     }
+
+    @Override
+    public void updateAddressAndPhone(String email, String address, String phone_number) {
+        try {
+            Optional<User> userClientDto = userRepository.findByEmail(email);
+            if (userClientDto.isPresent()) {
+                userClientDto.get().setAddress(address);
+                userClientDto.get().setPhone_number(phone_number);
+                userRepository.save(userClientDto.get());
+            }
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
+    }
 }
 
 

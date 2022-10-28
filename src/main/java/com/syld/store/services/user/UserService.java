@@ -22,4 +22,6 @@ public interface UserService extends ICrudService<UserClientDto,String> {
     UserClientDto findByEmailNotSame(String email, String id);
 
     UserClientDto findByPhoneNotSame(String phone, String id);
+
+    void updateAddressAndPhone(String email,String address, String phone_number);
 }

@@ -162,4 +162,21 @@ public class CartServiceIpm implements CartService {
             return null;
         }
     }
+
+    @Override
+    public CartClientView getById(String cart_id) {
+        Optional<Cart> cart = cartRepository.findById(cart_id);
+        if (cart.isPresent()) {
+            return new ModelMapper().map(cart.get(), CartClientView.class);
+        }
+        return null;
+    }
+
+    @Override
+    public void clear(User user) {
+        Optional<Cart> cartClientView = cartRepository.findByUser(user);
+        if (cartClientView.isPresent()) {
+            cartClientView.get().getProductCarts().clear();
+        }
+    }
 }

@@ -6,6 +6,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -21,8 +23,8 @@ public class OrderEntity {
     @ManyToOne
     User user;
 
-    @OneToOne
-    Cart cart;
+    @OneToMany(fetch = FetchType.EAGER)
+    List<ProductCart> productCart = new ArrayList<>();
 
     @Column(unique = true)
     private String order_name;

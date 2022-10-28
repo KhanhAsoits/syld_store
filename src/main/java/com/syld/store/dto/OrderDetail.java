@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class OrderDetail {
+    private String order_name;
     private String product_name;
     private String subtotal;
     private String shipping;
