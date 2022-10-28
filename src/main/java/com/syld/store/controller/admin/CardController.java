@@ -14,6 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+import java.util.Base64;
+
+
 @Controller
 @RequestMapping(path = "/admin/cards")
 @Slf4j
@@ -22,11 +25,13 @@ public class CardController extends BaseController {
 
     private final CardService cardService;
 
+
+
     @GetMapping
     public String GetAll(Model model) {
         try {
             model.addAttribute("cards", cardService.getAll());
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.info(e.getMessage());
         }
         return view(model, "List Card", "card/list", this.admin_layout);
@@ -60,18 +65,18 @@ public class CardController extends BaseController {
         return "redirect:/admin/cards?page=1&limit=6";
     }
     @GetMapping(path = "/update/{id}")
-    public String Update(Model model, @PathVariable("card_edit")CardDto cardDto, BindingResult bindingResult) {
+    public String Update(Model model, @PathVariable("card_edit") CardDto cardDto, BindingResult bindingResult) {
 
         CardDto cardDto_ = cardService.getById(cardDto.getId());
-        if(cardDto_ != null) {
+        if (cardDto_ != null) {
             bindingResult.rejectValue("card_brand", "", "Card brand has token !");
         }
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return view(model, "Edit - card", "card/edit", this.admin_layout);
         }
-        try{
+        try {
             cardService.update(cardDto);
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.info(e.getMessage());
         }
         return "rediret: /admin/cards";

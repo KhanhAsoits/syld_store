@@ -11,4 +11,6 @@ public interface CartService extends ICrudService<CartDto,String> {
     public CartClientView AddProductToCart(CartDto cartDto);
 
     CartClientView getByUser(String userId);
+
+    CartClientView RemoveProductFromCart(String product_id,String username);
 }

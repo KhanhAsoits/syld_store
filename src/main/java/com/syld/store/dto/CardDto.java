@@ -14,6 +14,8 @@ public class CardDto {
     private String card_brand;
     private String brand_thumbnail;
 
+    private String bank_name;
+    private String user_email;
     MultipartFile file;
 
 }

@@ -42,13 +42,13 @@ public class User {
     @Column(unique = true)
     @Nullable
     @Size(min = 10, max = 11)
-    private String PhoneNumber;
+    private String phone_number;
 
     private Timestamp create_at = new Timestamp(System.currentTimeMillis());
     private Timestamp update_at = new Timestamp(System.currentTimeMillis());
 
     @Nullable
-    @OneToOne(mappedBy = "user")
+    @OneToOne
     Card card;
 
     @OneToOne

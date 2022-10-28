@@ -2,7 +2,10 @@ package com.syld.store.services.card;
 
 import com.syld.store.dto.CardDto;
 import com.syld.store.entities.Card;
+import com.syld.store.entities.User;
 import com.syld.store.repositories.CardRepository;
+import com.syld.store.repositories.UserRepository;
+import com.syld.store.services.user.UserService;
 import com.syld.store.ultis.SlugGenerator;
 import com.syld.store.ultis.Uploader;
 import lombok.RequiredArgsConstructor;
@@ -26,27 +29,28 @@ public class CardServiceIpm implements CardService {
 
     private final CardRepository cardRepository;
 
+    private final UserRepository userRepository;
     final Uploader uploader = new Uploader();
     final ModelMapper modelMapper = new ModelMapper();
 
+    private final String paypal = "/assets/uploads/banks/paypal.png";
 
     @Override
     public void save(CardDto entity) throws Exception {
 
-        try{
+
+        try {
             String filePath = uploader.upload(entity.getFile(), entity.getCard_brand());
 
             Card card = this.modelMapper.map(entity, Card.class);
             card.setId(UUID.randomUUID().toString());
-            if(filePath != null ) {
+            if (filePath != null) {
                 card.setBrand_thumbnail(filePath);
-            }else {
-                card.setBrand_thumbnail(card.getBrand_thumbnail());
+            } else {
+                card.setBrand_thumbnail(entity.getBrand_thumbnail());
             }
-            card.setId(SlugGenerator.toSlug(entity.getId()));
             cardRepository.save(card);
-
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.info(e.getMessage());
             throw e;
         }
@@ -56,9 +60,9 @@ public class CardServiceIpm implements CardService {
     @Override
     public void update(CardDto entity) throws Exception {
 
-        try{
+        try {
             Card card = cardRepository.findById(entity.getId()).orElse(null);
-            if(card != null) {
+            if (card != null) {
                 String old_path = card.getBrand_thumbnail();
                 BeanUtils.copyProperties(entity, card);
                 if (!Objects.equals(entity.getFile().getOriginalFilename(), "")) {
@@ -69,10 +73,10 @@ public class CardServiceIpm implements CardService {
                     card.setBrand_thumbnail(old_path);
                 }
                 cardRepository.save(card);
-            }else {
+            } else {
                 throw new Exception("no card found !");
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.info(e.getMessage());
         }
     }
@@ -80,14 +84,14 @@ public class CardServiceIpm implements CardService {
     @Override
     public void remove(String Id) throws Exception {
 
-        try{
+        try {
             Card card = cardRepository.findById(Id).orElse(null);
-            if(card != null) {
+            if (card != null) {
                 cardRepository.delete(card);
-            }else {
+            } else {
                 throw new Exception("No Card Found");
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.info(e.getMessage());
             throw e;
         }
@@ -104,13 +108,37 @@ public class CardServiceIpm implements CardService {
     }
 
     @Override
+    public void save_custom(CardDto entity) {
+        Card card = new Card();
+        try {
+            if (Objects.equals(entity.getBank_name(), "paypal")) {
+                card.setBrand_thumbnail(this.paypal);
+                card.setCard_brand("Paypal");
+            }
+            card.setCard_number(entity.getCard_number());
+            card.setId(UUID.randomUUID().toString());
+            cardRepository.save(card);
+            Optional<Card> card_ = cardRepository.findById(card.getId());
+            if (card_.isPresent()) {
+                Optional<User> user = userRepository.findByEmail(entity.getUser_email());
+                if (user.isPresent()) {
+                    user.get().setCard(card_.get());
+                    userRepository.save(user.get());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public CardDto getById(String id) {
         try {
             Optional<Card> card = cardRepository.findById(id);
-            if(card.isPresent()){
+            if (card.isPresent()) {
                 return modelMapper.map(card.get(), CardDto.class);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.info(e.getMessage());
         }
         return null;

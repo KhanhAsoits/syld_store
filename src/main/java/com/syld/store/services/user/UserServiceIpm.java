@@ -44,8 +44,8 @@ public class UserServiceIpm implements UserService {
                 user.setRole(role);
             }
 
-            if (Objects.equals(user.getPhoneNumber(), "")) {
-                user.setPhoneNumber(null);
+            if (Objects.equals(user.getPhone_number(), "")) {
+                user.setPhone_number(null);
             }
             if (Objects.equals(user.getAddress(), "")) {
                 user.setAddress(null);
@@ -76,8 +76,8 @@ public class UserServiceIpm implements UserService {
                 if (role != null) {
                     user.get().setRole(role);
                 }
-                if (Objects.equals(user.get().getPhoneNumber(), "")) {
-                    user.get().setPhoneNumber(null);
+                if (Objects.equals(user.get().getPhone_number(), "")) {
+                    user.get().setPhone_number(null);
                 }
                 if (Objects.equals(user.get().getAddress(), "")) {
                     user.get().setAddress(null);
