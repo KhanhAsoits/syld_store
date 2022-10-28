@@ -1,12 +1,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <style>
     .best-sale{
         width: 80%;
         overflow: hidden;
         margin: auto;
     }
+    .add_to_links {
+        font-family: "add", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
 
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetaler2@11.1.5/dist/sweetalert2.min.css">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetaler2@11.1.5/dist/sweetalert2.min.css"></script>
 
 <div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
     <!-- Start Single Slide -->
@@ -386,3 +394,15 @@
         </div>
     </div>
 </div>
+<%--js--%>
+
+<script>
+    document.querySelector('actions_inner').addEventListener('onclick', (event)=>{
+        event.preventDefault();
+        Swal.fire(
+            'Add Success!',
+            'You clicked confirm!',
+            'success'
+        )
+    });
+</script>

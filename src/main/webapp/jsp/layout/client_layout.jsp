@@ -218,7 +218,7 @@
                                                             <span><a
                                                                     href="${pageContext.request.contextPath}/admin/products">Admin</a></span>
                                                         </sec:authorize>
-                                                        <span><a href="#">My Account</a></span>
+                                                        <span><a href="${pageContext.request.contextPath}/my_account/update/${user.id}">My Account</a></span>
                                                         <span><a href="#">Change Password</a></span>
                                                         <span><a
                                                                 href="${pageContext.request.contextPath}/logout">Logout</a></span>
