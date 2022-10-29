@@ -43,6 +43,7 @@
             <%--@elvariable id="order" type="com.syld.store.dto.OrderDto"--%>
             <spForm:form cssClass="row" action="${pageContext.request.contextPath}/payment/create" method="post"
                          modelAttribute="order">
+                <spForm:input path="cart_id" value="${cart.id}" cssStyle="visibility: hidden"/>
                 <div class="col-lg-6 col-12">
                     <div class="customer_details">
                         <h3>Billing details</h3>
@@ -50,6 +51,8 @@
                             <div class="margin_between">
                                 <div class="input_box space_between">
                                     <label>Full name <span>*</span></label>
+
+
                                     <spForm:input readonly="true" value="${cart.user.username}" path="user.username"
                                                   type="text"/>
                                 </div>
@@ -165,15 +168,17 @@
                             <li>Shipping
                                 <ul>
                                     <li>
-                                        <input name="ship_mode" onchange="processShipPrice(this)" data-index="0"
+                                        <input name="ship_mode" data-mode="fast" onchange="processShipPrice(this)"
+                                               data-index="0"
                                                value="48"
-                                               type="radio">
+                                               type="radio"/>
                                         <label>Flat Rate: $48.00</label>
                                     </li>
                                     <li>
-                                        <input name="ship_mode" data-index="0" onchange="processShipPrice(this)"
+                                        <input name="ship_mode" data-index="0" data-mode="slow"
+                                               onchange="processShipPrice(this)"
                                                value="16"
-                                               checked="checked" type="radio">
+                                               checked="checked" type="radio"/>
                                         <label>Slow Rate: $16.00</label>
                                     </li>
                                 </ul>
@@ -197,7 +202,8 @@
                                 <div class="py-2 px-3 my-2 row">
                                     <div class="col-12 col-md-4 border">
                                         <button type="submit" class="btn">
-                                            <img src="${pageContext.request.contextPath}/assets/images/paypal/paypal.png" alt="paypal">
+                                            <img src="${pageContext.request.contextPath}/assets/images/paypal/paypal.png"
+                                                 alt="paypal">
                                         </button>
                                     </div>
                                     <div class="col-12 col-md-4"></div>
@@ -213,6 +219,7 @@
 </section>
 <script>
     function processShipPrice(self) {
+        console.log(document.getElementById("ship_mode").value)
         processTotal()
     }
 
@@ -223,7 +230,7 @@
         let amount = parseInt(check_value);
         let subtotal = 0;
         listPrice.forEach((val, index) => {
-            subtotal+=parseInt(val.textContent.replace("$", "").trim().slice(0, val.textContent.length - 3))
+            subtotal += parseInt(val.textContent.replace("$", "").trim().slice(0, val.textContent.length - 3))
             amount += parseInt(val.textContent.replace("$", "").trim().slice(0, val.textContent.length - 3))
         })
         document.getElementById("sub_total").textContent = '$' + subtotal + '.00'

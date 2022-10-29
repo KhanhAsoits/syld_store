@@ -25,7 +25,7 @@ public class OrderDto {
     private String order_name;
 
     @Min(1)
-    private float order_amount;
+    private float order_amount = 1;
 
     private int order_state = 0;
     //0 la dang thanh toan
@@ -36,4 +36,6 @@ public class OrderDto {
 
     //    nhan data
     private String cart_id;
+
+    private String ship_mode;
 }
