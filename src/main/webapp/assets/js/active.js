@@ -263,14 +263,13 @@
     var furnitureOwl = $('.furniture--4');
     furnitureOwl.owlCarousel({
       loop: true,
-      margin: 0,
+      margin: 30,
       nav: false,
       autoplay: false,
       autoplayTimeout: 10000,
       items: 4,
       addClassActive: true,
       dots: false,
-      margin: 30,
       lazyLoad: true,
       responsive: {
         0: {
