@@ -42,7 +42,7 @@ public class UserController extends BaseController {
         if (hasEmail != null) {
             bindingResult.rejectValue("email", "", "Email has taken!");
         }
-        UserClientDto hasPhone = userService.findByPhoneNotSame(userClientDto.getPhoneNumber(), userClientDto.getId());
+        UserClientDto hasPhone = userService.findByPhoneNotSame(userClientDto.getPhone_number(), userClientDto.getId());
         if (hasPhone != null) {
             bindingResult.rejectValue("phoneNumber", "", "Phone has taken!");
         }
@@ -73,7 +73,7 @@ public class UserController extends BaseController {
         if (hasEmail != null) {
             bindingResult.rejectValue("email", "", "Email has taken!");
         }
-        UserClientDto hasPhone = userService.findByNumberPhone(userClientDto.getPhoneNumber());
+        UserClientDto hasPhone = userService.findByNumberPhone(userClientDto.getPhone_number());
         if (hasPhone != null) {
             bindingResult.rejectValue("phoneNumber", "", "Phone has taken!");
         }

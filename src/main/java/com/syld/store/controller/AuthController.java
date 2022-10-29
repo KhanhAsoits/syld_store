@@ -40,36 +40,39 @@ public class AuthController extends BaseController {
 
     @Autowired
     MessageConfig messageConfig;
+
     @GetMapping(path = "/login")
-    public String Login(Model model, @RequestParam(required = false,value = "error") String error,HttpServletRequest request) {
+    public String Login(Model model, @RequestParam(required = false, value = "error") String error, HttpServletRequest request) {
+        if (!Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), "anonymousUser")){
+            return "redirect:/home";
+        }
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
-        log.info("here");
         if (inputFlashMap != null) {
             model.addAttribute("message", inputFlashMap.get("message"));
         }
         if (this.isLogin() != null) {
             return this.isLogin();
         }
-        model.addAttribute("user",new UserClientDto());
+        model.addAttribute("user", new UserClientDto());
         if (error != null)
-            model.addAttribute("message",getAuthErr(error));
-        return view(model, "Login Page ", "login", "layout/client_layout",true);
+            model.addAttribute("message", getAuthErr(error));
+        return view(model, "Login Page ", "login", "layout/client_layout", true);
     }
 
     @PostMapping(path = "/valid_email")
-    public ResponseEntity<?> GetUserByEmail(@RequestBody String payload){
-        Map<String,String> result = new HashMap<>();
+    public ResponseEntity<?> GetUserByEmail(@RequestBody String payload) {
+        Map<String, String> result = new HashMap<>();
         try {
             log.info(payload);
             UserClientDto userClientDto = userService.findByEmail(payload);
-            if (userClientDto!=null){
-                result.put("result","false");
-            }else {
-                result.put("result","true");
+            if (userClientDto != null) {
+                result.put("result", "false");
+            } else {
+                result.put("result", "true");
             }
-        }catch (Exception e){
-            result.put("result",e.getMessage());
-            result.put("error","true");
+        } catch (Exception e) {
+            result.put("result", e.getMessage());
+            result.put("error", "true");
         }
         return ResponseEntity.ok().body(result);
     }
@@ -86,7 +89,7 @@ public class AuthController extends BaseController {
         if (error != null)
             model.addAttribute("message", getAuthErr(error));
         model.addAttribute("user_reg", new UserClientDto());
-        return view(model, "Register Page ", "register", "layout/client_layout",true);
+        return view(model, "Register Page ", "register", "layout/client_layout", true);
     }
 
 

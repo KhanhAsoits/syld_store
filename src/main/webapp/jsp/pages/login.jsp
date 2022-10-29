@@ -10,8 +10,8 @@
 <section class="my_account_area pt--80 pb--55 bg-white">
     <div class="container">
         <div class="row">
-            <div class="col-4 "></div>
-            <div class="col-5 ">
+            <div class="col-12 col-md-3 col-lg-4"></div>
+            <div class="col-12 col-md-6  col-lg-4">
                 <div class="my__account__wrapper" >
                     <br>
 
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 "></div>
+        <div class="col-12 col-md-3 col-lg-4"></div>
     </div>
 </section>
 <script>
