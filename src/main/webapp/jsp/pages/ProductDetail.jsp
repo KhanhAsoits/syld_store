@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="ht__breadcrumb__area bg-image--4">
+<div class="ht__breadcrumb__area bg--gray">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -7,7 +7,7 @@
                     <h2 class="breadcrumb-title" style="color: black">${single_product.product_name}</h2>
                     <nav class="breadcrumb-content">
                         <a class="breadcrumb_item" style="color: black" href="index.html">Home</a>
-                        <span class="brd-separator">/</span>
+                        <span style="color: black" class="brd-separator">/</span>
                         <span class="breadcrumb_item active" style="color: black">${single_product.product_name}</span>
                     </nav>
                 </div>

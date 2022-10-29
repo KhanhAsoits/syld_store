@@ -9,6 +9,8 @@
                 </p>
             </div>
             <div>
+                <a href="${pageContext.request.contextPath}/admin/products" class="btn btn-primary"> View All
+                </a>
                 <a href="${pageContext.request.contextPath}/admin/products/update/${single_product.id}" class="btn btn-primary"> Edit
                 </a>
             </div>
