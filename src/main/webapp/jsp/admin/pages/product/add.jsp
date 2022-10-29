@@ -271,9 +271,9 @@
                                         <spForm:label path="product_desc"
                                                       class="form-label">Sort Description</spForm:label>
                                         <spForm:input path="product_desc" id="desc" hidden="hidden"/>
-                                        <textarea id="product_desc" cssClass="form-control"
+                                        <spForm:textarea path="product_desc" id="product_desc" cssClass="form-control"
                                                          cssStyle="border: 2px solid #ced4da!important;" rows="2"
-                                                  required="true"></textarea>
+                                                  required="true"></spForm:textarea>
                                     </div>
                                         <%--                                        colors--%>
                                     <div class="col-md-4 mb-25  mt-3">
@@ -332,10 +332,10 @@
                                     <div class="col-md-12 my-3">
                                         <label class="form-label">Full Detail</label>
                                         <spForm:input path="product_detail" id="detail" hidden="hidden"/>
-                                        <textarea id="product_detail"
+                                        <spForm:textarea path="product_detail" id="product_detail"
                                                          cssStyle="border: 2px solid #ced4da!important;"
                                                          cssClass="form-control" rows="4"
-                                                  required="true"></textarea>
+                                                  required="true"></spForm:textarea>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Product Tags <span>(Type and auto create tag if new)</span></label>

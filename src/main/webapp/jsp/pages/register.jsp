@@ -38,8 +38,8 @@
                             </div>
                             <div class="input__box">
                                 <label>Number Phone</label>
-                                <spForm:input path="phoneNumber"/>
-                                <spForm:errors path="phoneNumber"/>
+                                <spForm:input path="phone_number"/>
+                                <spForm:errors path="phone_number"/>
                             </div>
                             <div class="form__btn">
                                 <button>Register</button>
