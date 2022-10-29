@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <!-- Favicons -->
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/Icon-logo.ico">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/assets/images/icon-logo.svg">
     <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/assets/images/icon.png">
 
     <!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->

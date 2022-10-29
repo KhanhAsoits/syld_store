@@ -1,6 +1,8 @@
 package com.syld.store.services.user;
 
 import com.fasterxml.jackson.databind.util.BeanUtil;
+import com.syld.store.dto.ChangePasswordDto;
+import com.syld.store.dto.ClientUserDto;
 import com.syld.store.dto.UserClientDto;
 import com.syld.store.entities.Role;
 import com.syld.store.entities.User;
@@ -67,7 +69,7 @@ public class UserServiceIpm implements UserService {
                 BeanUtils.copyProperties(entity, user.get());
                 Role role = roleService.getByName(entity.getRole_name());
                 String avatar = "";
-                if ((!Objects.equals(entity.getFile().getOriginalFilename(), ""))) {
+                if (entity.getFile() != null && (!Objects.equals(entity.getFile().getOriginalFilename(), ""))) {
                     avatar = new Uploader().upload(entity.getFile(), SlugGenerator.toSlug(user.get().getUsername()));
                     user.get().setAvatar(avatar);
                 } else {
@@ -79,6 +81,7 @@ public class UserServiceIpm implements UserService {
                 if (Objects.equals(user.get().getPhone_number(), "")) {
                     user.get().setPhone_number(null);
                 }
+
                 if (Objects.equals(user.get().getAddress(), "")) {
                     user.get().setAddress(null);
                 }
@@ -91,6 +94,32 @@ public class UserServiceIpm implements UserService {
 
     @Override
     public void remove(String Id) {
+
+    }
+
+    @Override
+    public void client_update(ClientUserDto entity) {
+        try {
+            Optional<User> user = userRepository.findById(entity.getId());
+            if (user.isPresent()) {
+                String old_avt = user.get().getAvatar();
+                BeanUtils.copyProperties(entity, user.get());
+                Role role = roleService.getByName(entity.getRole_name());
+                if (role != null) {
+                    user.get().setRole(role);
+                }
+                if (Objects.equals(user.get().getPhone_number(), "")) {
+                    user.get().setPhone_number(null);
+                }
+
+                if (Objects.equals(user.get().getAddress(), "")) {
+                    user.get().setAddress(null);
+                }
+                userRepository.save(user.get());
+            }
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
 
     }
 
@@ -152,6 +181,26 @@ public class UserServiceIpm implements UserService {
         } catch (Exception e) {
             log.info(e.getMessage());
         }
+    }
+
+    @Override
+    public boolean changePassword(String email, ChangePasswordDto changePasswordDto) {
+
+        boolean isSuccess = false;
+
+        try {
+            Optional<User> userClientDto = userRepository.findByEmail(email);
+            if (userClientDto.isPresent()) {
+                if (new BCryptPasswordEncoder().matches(changePasswordDto.getOld_pass(), userClientDto.get().getPassword())) {
+                    userClientDto.get().setPassword(new BCryptPasswordEncoder().encode(changePasswordDto.getNew_pass()));
+                    userRepository.save(userClientDto.get());
+                    isSuccess = true;
+                }
+            }
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
+        return isSuccess;
     }
 }
 
