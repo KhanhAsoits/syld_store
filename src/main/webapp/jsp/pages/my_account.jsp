@@ -7,7 +7,7 @@
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1.webp"
                              alt="avatar"
                              class="rounded-circle mx-auto img-fluid" style="width: 150px;">
                         <h5 class="my-3">${user.username}</h5>

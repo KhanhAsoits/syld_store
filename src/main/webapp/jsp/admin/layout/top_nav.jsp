@@ -23,18 +23,18 @@
                 <li class="dropdown user-menu">
                     <button class="dropdown-toggle nav-link ec-drop" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                        <img src="../../../../../../../ekka-admin/assets/img/user/user.png" class="user-image" alt="User Image" />
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1.webp" class="user-image" alt="User Image" />
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right ec-dropdown-menu">
                         <!-- User image -->
                         <li class="dropdown-header">
-                            <img src="../../../../../../../ekka-admin/assets/img/user/user.png" class="img-circle" alt="User Image" />
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1.webp" class="img-circle" alt="User Image" />
                             <div class="d-inline-block">
-                                John Deo <small class="pt-1"><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aec4c1c6c080cbd6cfc3dec2cbeec9c3cfc7c280cdc1c3">[email&#160;protected]</a></small>
+                                Admin <small class="pt-1"><a href="#" class="__cf_email__" data-cfemail="${user.email}">${user.email}</a></small>
                             </div>
                         </li>
                         <li>
-                            <a href="../../../../../../../ekka-admin/user-profile.html">
+                            <a href="/my_account/detail">
                                 <i class="mdi mdi-account"></i> My Profile
                             </a>
                         </li>
@@ -50,7 +50,7 @@
                             <a href="javascript:0"> <i class="mdi mdi-settings-outline"></i> Setting </a>
                         </li>
                         <li class="dropdown-footer">
-                            <a href="index.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+                            <a href="/logout"> <i class="mdi mdi-logout"></i> Log Out </a>
                         </li>
                     </ul>
                 </li>
