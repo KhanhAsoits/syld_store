@@ -10,7 +10,6 @@ function addProductToCart(e) {
         quantity: 1
     }
 
-
     $.ajax({
         headers: {
             'Accept': 'application/json',
