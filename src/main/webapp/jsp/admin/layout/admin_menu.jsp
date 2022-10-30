@@ -159,23 +159,13 @@
                     <div class="collapse">
                         <ul class="sub-menu" id="orders" data-parent="#sidebar-menu">
                             <li class="">
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/new-order.html">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/orders">
                                     <span class="nav-text">List Order</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/order-history.html">
+                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/history">
                                     <span class="nav-text">Order History</span>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/order-detail.html">
-                                    <span class="nav-text">Order Detail</span>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a class="sidenav-item-link" href="../../../../../../../ekka-admin/invoice.html">
-                                    <span class="nav-text">Invoice</span>
                                 </a>
                             </li>
                         </ul>
