@@ -253,66 +253,22 @@
                 <div class="col-lg-12 d-none">
                     <nav class="mobilemenu__nav">
                         <ul class="meninmenu">
-                            <li><a href="index">Clothing Fashion</a>
-                                <ul>
-                                    <li><a href="index.html">Men's Fashion</a></li>
-                                    <li><a href="index-2.html">Women's Fashion</a></li>
-                                    <li><a href="index-3.html">Child Fashion</a></li>
-                                    <li><a href="index-box.html">Handmade Fashion</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">New Products</a>
-                                <ul>
-                                    <li><a href="#">Perfume</a>
-                                        <ul>
-                                            <li><a href="#">Man</a></li>
-                                            <li><a href="#">Women</a></li>
-                                            <li><a href="#">Collection</a></li>
+                            <li><a href="${pageContext.request.contextPath}/store?page=1&limit=18">Store</a></li>
+                            <c:forEach var="category" items="${navs}">
+                                <li class="drop with--one--item">
+                                    <a href="${pageContext.request.contextPath}/store?category=${category.children[0].category_slug}&page=1&limit=18">${category.parent.category_name}</a>
+                                    <div class="megamenu dropdown">
+                                        <ul class="item item01">
+                                            <c:forEach var="child_category" items="${category.children}">
+                                                <li>
+                                                    <a href="${pageContext.request.contextPath}/store?category=${child_category.category_slug}&page=1&limit=18">${child_category.category_name}</a>
+                                                </li>
+                                            </c:forEach>
                                         </ul>
-                                    </li>
-                                    <li><a href="#">Jewels</a>
-                                        <ul>
-                                            <li><a href="#">Man</a></li>
-                                            <li><a href="#">Women</a></li>
-                                            <li><a href="#">Collection</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Shoes</a>
-                                        <ul>
-                                            <li><a href="#">Man</a></li>
-                                            <li><a href="#">Women</a></li>
-                                            <li><a href="#">Collection</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Eyeglass</a>
-                                        <ul>
-                                            <li><a href="#">Man</a></li>
-                                            <li><a href="#">Women</a></li>
-                                            <li><a href="#">Collection</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Collecion</a></li>
-                                    <li><a href="#">Handmade</a></li>
-                                    <li><a href="#">Monopoly</a></li>
-
-                                </ul>
-                            </li>
-                            <li><a href="#">Syld</a>
-                                <ul>
-                                    <li><a href="/blog">Blog</a></li>
-                                    <li><a href="#">Events</a></li>
-                                    <li><a href="#">Service</a>
-                                        <ul>
-                                            <li><a href="#">Clothes</a></li>
-                                            <li><a href="#">Perfume</a></li>
-                                            <li><a href="#">Jewels</a></li>
-                                            <li><a href="#">Eyeglass</a></li>
-                                            <li><a href="#">Shoes</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </li>
+                                    </div>
+                                </li>
+                            </c:forEach>
+                            <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
