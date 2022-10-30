@@ -41,7 +41,7 @@
                                 <c:forEach var="order" items="${order}">
                                     <tr>
                                         <td>${order.order_name}</td>
-                                        <td style="color: ${order.order_state?'blue'||'red'||'yellow'||'green':'gray'}">${order.order_state?"Dang thanh toan":"Chua xac nhan"||"Dang giao hang"||"Da nhan hang"||"Thanh cong"}</td>
+                                        <td style="color: ${order.order_state?'blue'||'blue'||'yellow'||'green'||'gray':'red'}">${order.order_state?"Dang thanh toan"||"Chua xac nhan"||"Dang giao hang"||"Da nhan hang"||"Thanh cong":"Huy don"}</td>
                                         <td>${order.create_at}</td>
                                         <td>${order.update_at}</td>
                                         <td>${order.order_amount}</td>

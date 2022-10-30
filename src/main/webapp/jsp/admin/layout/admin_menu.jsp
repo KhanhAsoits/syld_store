@@ -198,12 +198,12 @@
                     <div class="collapse">
                         <ul class="sub-menu" id="authentication" data-parent="#sidebar-menu">
                             <li class="">
-                                <a href="../../../../../../../ekka-admin/sign-in.html">
+                                <a href="${pageContext.request.contextPath}/auth/login">
                                     <span class="nav-text">Sign In</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a href="../../../../../../../ekka-admin/sign-up.html">
+                                <a href="${pageContext.request.contextPath}/auth/register">
                                     <span class="nav-text">Sign Up</span>
                                 </a>
                             </li>
