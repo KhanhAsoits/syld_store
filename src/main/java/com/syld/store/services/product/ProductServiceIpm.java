@@ -262,46 +262,59 @@ public class ProductServiceIpm implements ProductService {
     @Override
     public long findProductNumOfCategory(CategoryDto categoryDto) {
         Category category = new Category();
-        BeanUtils.copyProperties(categoryDto,category);
+        BeanUtils.copyProperties(categoryDto, category);
         return productRepository.countByCategory(category);
     }
 
     @Override
+    public void updateQuantity(String product_id, int quantity) {
+        try {
+            Optional<Product> product = productRepository.findById(product_id);
+            if (product.isPresent()) {
+                product.get().setProduct_quantity(quantity);
+                productRepository.save(product.get());
+            }
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
+    }
+
+    @Override
     public Page<ProductViewDto> getByPage(int page, int limit) {
-        Pageable pageable = PageRequest.of(page - 1,limit);
+        Pageable pageable = PageRequest.of(page - 1, limit);
         Page<Product> products = productRepository.findAll(pageable);
-        return new PageImpl<>(products.stream().map(product -> new ModelMapper().map(product, ProductViewDto.class)).toList(),pageable,products.getTotalElements());
+        return new PageImpl<>(products.stream().map(product -> new ModelMapper().map(product, ProductViewDto.class)).toList(), pageable, products.getTotalElements());
     }
 
     @Override
     public List<ProductByCategoryDto> getProductByCategory(int count) {
-       List<ProductByCategoryDto> productByCategoryDtos = new ArrayList<>();
-       try {
-           List<Category> categories = categoryService.getListCategory(count);
-           for (Category category :  categories) {
-               ProductByCategoryDto product = new ProductByCategoryDto();
-               List<Product> products = productRepository.findAllByCategory(category);
-               product.setCategoryDto(modelMapper.map(category, CategoryDto.class));
-               List<ProductViewDto> productViewDtoList = products.stream().map(product1 -> modelMapper.map(product1, ProductViewDto.class)).toList();
-               for (ProductViewDto productViewDto : productViewDtoList) {
-                   productViewDto.convertData();
-               }
-               product.setProductViewDtoList(productViewDtoList);
-               productByCategoryDtos.add(product);
-           }
-       }catch (Exception e){
-           log.info(e.getMessage());
-       }
-       return productByCategoryDtos;
+        List<ProductByCategoryDto> productByCategoryDtos = new ArrayList<>();
+        try {
+            List<Category> categories = categoryService.getListCategory(count);
+            for (Category category : categories) {
+                ProductByCategoryDto product = new ProductByCategoryDto();
+                List<Product> products = productRepository.findAllByCategory(category);
+                product.setCategoryDto(modelMapper.map(category, CategoryDto.class));
+                List<ProductViewDto> productViewDtoList = products.stream().map(product1 -> modelMapper.map(product1, ProductViewDto.class)).toList();
+                for (ProductViewDto productViewDto : productViewDtoList) {
+                    productViewDto.convertData();
+                }
+                product.setProductViewDtoList(productViewDtoList);
+                productByCategoryDtos.add(product);
+            }
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
+        return productByCategoryDtos;
     }
 
     @Override
-    public Page<ProductViewDto> getProductByCategory(CategoryDto categoryDto,int page, int limit) {
+    public Page<ProductViewDto> getProductByCategory(CategoryDto categoryDto, int page, int limit) {
         Category category = new Category();
-        BeanUtils.copyProperties(categoryDto,category);
-        Pageable pageable = PageRequest.of(page - 1,limit);
-        Page<Product> products = productRepository.findAllByCategory(category,pageable);
-        return new PageImpl<>(products.stream().map(product -> modelMapper.map(product,ProductViewDto.class)).toList(),pageable,products.getTotalElements());
+        BeanUtils.copyProperties(categoryDto, category);
+        Pageable pageable = PageRequest.of(page - 1, limit);
+        Page<Product> products = productRepository.findAllByCategory(category, pageable);
+        return new PageImpl<>(products.stream().map(product -> modelMapper.map(product, ProductViewDto.class)).toList(), pageable, products.getTotalElements());
     }
 
     @Override
@@ -323,11 +336,12 @@ public class ProductServiceIpm implements ProductService {
             return null;
         }
     }
+
     @Override
-    public ProductViewDto findBySlugAndReturnDto(String slug){
+    public ProductViewDto findBySlugAndReturnDto(String slug) {
         Optional<Product> product = productRepository.findBySlug(slug);
-        if (product.isPresent()){
-            return modelMapper.map(product,ProductViewDto.class);
+        if (product.isPresent()) {
+            return modelMapper.map(product, ProductViewDto.class);
         }
         return null;
     }
@@ -364,15 +378,15 @@ public class ProductServiceIpm implements ProductService {
         List<Product> products = productRepository.findAll();
         List<ProductViewDto> productViewDtoList = new ArrayList<>();
         try {
-            if (products.size() > i){
-                productViewDtoList = products.stream().map(product -> modelMapper.map(product, ProductViewDto.class)).toList().subList(0,i);
-            }else {
-                productViewDtoList = products.stream().map(product -> modelMapper.map(product, ProductViewDto.class)).toList().subList(0,products.size());
+            if (products.size() > i) {
+                productViewDtoList = products.stream().map(product -> modelMapper.map(product, ProductViewDto.class)).toList().subList(0, i);
+            } else {
+                productViewDtoList = products.stream().map(product -> modelMapper.map(product, ProductViewDto.class)).toList().subList(0, products.size());
             }
-            for (ProductViewDto productViewDto : productViewDtoList){
+            for (ProductViewDto productViewDto : productViewDtoList) {
                 productViewDto.convertData();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             log.info(e.getMessage());
         }
         return productViewDtoList;
@@ -381,9 +395,9 @@ public class ProductServiceIpm implements ProductService {
     @Override
     public Page<ProductViewDto> getProductByTag(Tag tag, int page, int limit) {
         Tag tag_ = new Tag();
-        BeanUtils.copyProperties(tag,tag_);
-        Pageable pageable = PageRequest.of(page - 1,limit);
-        Page<Product> products = productRepository.findAllByTags(tag_,pageable);
-        return new PageImpl<>(products.stream().map(product -> modelMapper.map(product,ProductViewDto.class)).toList(),pageable,products.getTotalElements());
+        BeanUtils.copyProperties(tag, tag_);
+        Pageable pageable = PageRequest.of(page - 1, limit);
+        Page<Product> products = productRepository.findAllByTags(tag_, pageable);
+        return new PageImpl<>(products.stream().map(product -> modelMapper.map(product, ProductViewDto.class)).toList(), pageable, products.getTotalElements());
     }
 }

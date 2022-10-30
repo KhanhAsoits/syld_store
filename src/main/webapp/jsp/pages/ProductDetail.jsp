@@ -27,7 +27,8 @@
                             <div class="wn__fotorama__wrapper">
                                 <div class="fotorama wn__fotorama__action" data-nav="thumbs">
                                     <c:forEach var="thumbnail" items="${single_product.images_con}">
-                                        <a href="#"><img src="${pageContext.request.contextPath}${thumbnail.path}"  alt=""></a>
+                                        <a href="#"><img src="${pageContext.request.contextPath}${thumbnail.path}"
+                                                         alt=""></a>
                                     </c:forEach>
                                 </div>
                             </div>
@@ -48,21 +49,44 @@
                                     <span>$${single_product.getSalePrice()}</span>
                                 </div>
                                 <div class="product__overview">
-                                   ${single_product.product_desc}
+                                    ${single_product.product_desc}
                                 </div>
                                 <div class="box-tocart d-flex">
                                     <span>amount </span>
-                                    <input id="qty" class="input-text qty" name="qty" min="1" value="${single_product.product_quantity}"
+                                    <input id="qty" class="input-text qty" name="qty" min="1"
+                                           max="${single_product.product_quantity}" value="1"
                                            title="Qty" type="number">
                                     <div class="addtocart__actions">
-                                        <button class="tocart" type="submit" title="Add to Cart">Add to
-                                            Cart
-                                        </button>
+                                        <c:if test="${cart!=null}">
+                                            <button class="tocart" data-limit="${single_product.product_quantity}"
+                                                    onclick="addProductToCart(this)" href="javascript:void(0)"
+                                                    data-cart="${cart.id}" data-email="${email}"
+                                                    data-product="${single_product.id}">Add to Cart
+                                            </button>
+                                        </c:if>
+                                        <c:if test="${email!=null && cart == null}">
+                                            <button class="tocart" data-limit="${single_product.product_quantity}"
+                                                    onclick="addProductToCart(this)" data-email="${email}"
+                                                    href="javascript:void(0)" data-product="${single_product.id}">Add
+                                                to Cart
+                                            </button>
+                                        </c:if>
+                                        <c:if test="${email==null && cart == null}">
+                                            <a class="tocart py-2" data-limit="${single_product.product_quantity}"
+                                                    href="${pageContext.request.contextPath}/auth/login"
+                                                    data-product="${single_product.id}">Add to Cart
+                                            </a>
+                                        </c:if>
                                     </div>
                                     <div class="product-addto-links clearfix">
                                         <a class="wishlist" href="#"></a>
                                         <a class="compare" href="#"></a>
                                     </div>
+                                </div>
+                                <div>
+                                    <span>Remaining Amount :</span>
+                                    <input id="remaining_amount" name="remaining_amount" type="text" value="${single_product.product_quantity}" style="border: 0px" readonly="readonly">
+                                    <br><br>
                                 </div>
                                 <div class="product_meta">
 											<span class="posted_in">Category:
@@ -102,7 +126,7 @@
                     <div class="pro_details_nav nav justify-content-start" role="tablist">
                         <a class="nav-item nav-link active" data-bs-toggle="tab" href="#nav-details"
                            role="tab">Details</a>
-<%--                        <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-review" role="tab">Reviews</a>--%>
+                        <%--                        <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-review" role="tab">Reviews</a>--%>
                     </div>
                     <div class="tab__container tab-content">
                         <!-- Start Single Tab Content -->
@@ -113,107 +137,107 @@
                         </div>
                         <!-- End Single Tab Content -->
                         <!-- Start Single Tab Content -->
-<%--                        <div class="pro__tab_label tab-pane fade" id="nav-review" role="tabpanel">--%>
-<%--                            <div class="review__attribute">--%>
-<%--                                <h1>Customer Reviews</h1>--%>
-<%--                                <h2>Hastech</h2>--%>
-<%--                                <div class="review__ratings__type d-flex">--%>
-<%--                                    <div class="review-ratings">--%>
-<%--                                        <div class="rating-summary d-flex">--%>
-<%--                                            <span>Quality</span>--%>
-<%--                                            <ul class="rating d-flex">--%>
-<%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                            </ul>--%>
-<%--                                        </div>--%>
+                        <%--                        <div class="pro__tab_label tab-pane fade" id="nav-review" role="tabpanel">--%>
+                        <%--                            <div class="review__attribute">--%>
+                        <%--                                <h1>Customer Reviews</h1>--%>
+                        <%--                                <h2>Hastech</h2>--%>
+                        <%--                                <div class="review__ratings__type d-flex">--%>
+                        <%--                                    <div class="review-ratings">--%>
+                        <%--                                        <div class="rating-summary d-flex">--%>
+                        <%--                                            <span>Quality</span>--%>
+                        <%--                                            <ul class="rating d-flex">--%>
+                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                            </ul>--%>
+                        <%--                                        </div>--%>
 
-<%--                                        <div class="rating-summary d-flex">--%>
-<%--                                            <span>Price</span>--%>
-<%--                                            <ul class="rating d-flex">--%>
-<%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                            </ul>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="rating-summary d-flex">--%>
-<%--                                            <span>value</span>--%>
-<%--                                            <ul class="rating d-flex">--%>
-<%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                            </ul>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="review-content">--%>
-<%--                                        <p>Hastech</p>--%>
-<%--                                        <p>Review by Hastech</p>--%>
-<%--                                        <p>Posted on 11/6/2018</p>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="review-fieldset">--%>
-<%--                                <h2>You're reviewing:</h2>--%>
-<%--                                <h3>Chaz Kangeroo Hoodie</h3>--%>
-<%--                                <div class="review-field-ratings">--%>
-<%--                                    <div class="product-review-table">--%>
-<%--                                        <div class="review-field-rating d-flex">--%>
-<%--                                            <span>Quality</span>--%>
-<%--                                            <ul class="rating d-flex">--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                            </ul>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="review-field-rating d-flex">--%>
-<%--                                            <span>Price</span>--%>
-<%--                                            <ul class="rating d-flex">--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                            </ul>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="review-field-rating d-flex">--%>
-<%--                                            <span>Value</span>--%>
-<%--                                            <ul class="rating d-flex">--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-<%--                                            </ul>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="review_form_field">--%>
-<%--                                    <div class="input__box">--%>
-<%--                                        <span>Nickname</span>--%>
-<%--                                        <input id="nickname_field" type="text" name="nickname">--%>
-<%--                                    </div>--%>
-<%--                                    <div class="input__box">--%>
-<%--                                        <span>Summary</span>--%>
-<%--                                        <input id="summery_field" type="text" name="summery">--%>
-<%--                                    </div>--%>
-<%--                                    <div class="input__box">--%>
-<%--                                        <span>Review</span>--%>
-<%--                                        <textarea name="review"></textarea>--%>
-<%--                                    </div>--%>
-<%--                                    <div class="review-form-actions">--%>
-<%--                                        <button>Submit Review</button>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
+                        <%--                                        <div class="rating-summary d-flex">--%>
+                        <%--                                            <span>Price</span>--%>
+                        <%--                                            <ul class="rating d-flex">--%>
+                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                            </ul>--%>
+                        <%--                                        </div>--%>
+                        <%--                                        <div class="rating-summary d-flex">--%>
+                        <%--                                            <span>value</span>--%>
+                        <%--                                            <ul class="rating d-flex">--%>
+                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                            </ul>--%>
+                        <%--                                        </div>--%>
+                        <%--                                    </div>--%>
+                        <%--                                    <div class="review-content">--%>
+                        <%--                                        <p>Hastech</p>--%>
+                        <%--                                        <p>Review by Hastech</p>--%>
+                        <%--                                        <p>Posted on 11/6/2018</p>--%>
+                        <%--                                    </div>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                            <div class="review-fieldset">--%>
+                        <%--                                <h2>You're reviewing:</h2>--%>
+                        <%--                                <h3>Chaz Kangeroo Hoodie</h3>--%>
+                        <%--                                <div class="review-field-ratings">--%>
+                        <%--                                    <div class="product-review-table">--%>
+                        <%--                                        <div class="review-field-rating d-flex">--%>
+                        <%--                                            <span>Quality</span>--%>
+                        <%--                                            <ul class="rating d-flex">--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                            </ul>--%>
+                        <%--                                        </div>--%>
+                        <%--                                        <div class="review-field-rating d-flex">--%>
+                        <%--                                            <span>Price</span>--%>
+                        <%--                                            <ul class="rating d-flex">--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                            </ul>--%>
+                        <%--                                        </div>--%>
+                        <%--                                        <div class="review-field-rating d-flex">--%>
+                        <%--                                            <span>Value</span>--%>
+                        <%--                                            <ul class="rating d-flex">--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
+                        <%--                                            </ul>--%>
+                        <%--                                        </div>--%>
+                        <%--                                    </div>--%>
+                        <%--                                </div>--%>
+                        <%--                                <div class="review_form_field">--%>
+                        <%--                                    <div class="input__box">--%>
+                        <%--                                        <span>Nickname</span>--%>
+                        <%--                                        <input id="nickname_field" type="text" name="nickname">--%>
+                        <%--                                    </div>--%>
+                        <%--                                    <div class="input__box">--%>
+                        <%--                                        <span>Summary</span>--%>
+                        <%--                                        <input id="summery_field" type="text" name="summery">--%>
+                        <%--                                    </div>--%>
+                        <%--                                    <div class="input__box">--%>
+                        <%--                                        <span>Review</span>--%>
+                        <%--                                        <textarea name="review"></textarea>--%>
+                        <%--                                    </div>--%>
+                        <%--                                    <div class="review-form-actions">--%>
+                        <%--                                        <button>Submit Review</button>--%>
+                        <%--                                    </div>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
                         <!-- End Single Tab Content -->
                     </div>
                 </div>
@@ -227,10 +251,14 @@
                                 <!-- Start Single Product -->
                                 <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
                                     <div class="product__thumb">
-                                        <a class="first__img" href="${pageContext.request.contextPath}/products/${product.slug}"><img
-                                                src="${pageContext.request.contextPath}${product.images_con.get(0).path}" alt="product image"></a>
-                                        <a class="second__img animation1" href="${pageContext.request.contextPath}/products/${product.slug}"><img
-                                                src="${pageContext.request.contextPath}${product.images_con.get(0).path}" alt="product image"></a>
+                                        <a class="first__img"
+                                           href="${pageContext.request.contextPath}/products/${product.slug}"><img
+                                                src="${pageContext.request.contextPath}${product.images_con.get(0).path}"
+                                                alt="product image"></a>
+                                        <a class="second__img animation1"
+                                           href="${pageContext.request.contextPath}/products/${product.slug}"><img
+                                                src="${pageContext.request.contextPath}${product.images_con.get(0).path}"
+                                                alt="product image"></a>
                                         <div class="hot__box">
                                             <span class="hot-label">RELATED</span>
                                         </div>
@@ -245,19 +273,41 @@
                                             <div class="actions_inner">
                                                 <ul class="add_to_links">
                                                     <c:if test="${cart!=null}">
-                                                        <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${product.product_quantity}" onclick="addProductToCart(this)" href="javascript:void(0)" data-cart="${cart.id}" data-email="${email}" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
+                                                        <li>
+                                                            <a class="cart d-flex justify-content-center align-items-center"
+                                                               data-limit="${product.product_quantity}"
+                                                               onclick="addProductToCart(this)"
+                                                               href="javascript:void(0)" data-cart="${cart.id}"
+                                                               data-email="${email}" data-product="${new_product.id}"><i
+                                                                    class="bi bi-shopping-bag4"></i></a></li>
                                                     </c:if>
                                                     <c:if test="${email!=null && cart == null}">
-                                                        <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${product.product_quantity}" onclick="addProductToCart(this)" data-email="${email}" href="javascript:void(0)" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
+                                                        <li>
+                                                            <a class="cart d-flex justify-content-center align-items-center"
+                                                               data-limit="${product.product_quantity}"
+                                                               onclick="addProductToCart(this)" data-email="${email}"
+                                                               href="javascript:void(0)"
+                                                               data-product="${new_product.id}"><i
+                                                                    class="bi bi-shopping-bag4"></i></a></li>
                                                     </c:if>
                                                     <c:if test="${email==null && cart == null}">
-                                                        <li><a class="cart d-flex justify-content-center align-items-center" data-limit="${product.product_quantity}" href="${pageContext.request.contextPath}/auth/login" data-product="${new_product.id}"><i class="bi bi-shopping-bag4"></i></a></li>
+                                                        <li>
+                                                            <a class="cart d-flex justify-content-center align-items-center"
+                                                               data-limit="${product.product_quantity}"
+                                                               href="${pageContext.request.contextPath}/auth/login"
+                                                               data-product="${new_product.id}"><i
+                                                                    class="bi bi-shopping-bag4"></i></a></li>
                                                     </c:if>
-                                                    <li><a class="wishlist d-flex justify-content-center align-items-center" href="wishlist.html"><i
-                                                            class="bi bi-shopping-cart-full"></i></a></li>
-                                                    <li><a class="compare d-flex justify-content-center align-items-center" href="#"><i class="bi bi-heart-beat"></i></a></li>
+                                                    <li>
+                                                        <a class="wishlist d-flex justify-content-center align-items-center"
+                                                           href="wishlist.html"><i
+                                                                class="bi bi-shopping-cart-full"></i></a></li>
+                                                    <li>
+                                                        <a class="compare d-flex justify-content-center align-items-center"
+                                                           href="#"><i class="bi bi-heart-beat"></i></a></li>
                                                     <li><a data-bs-toggle="modal" title="Quick View"
-                                                           class="quickview d-flex justify-content-center align-items-center modal-view detail-link" href="#productmodal"><i
+                                                           class="quickview d-flex justify-content-center align-items-center modal-view detail-link"
+                                                           href="#productmodal"><i
                                                             class="bi bi-search"></i></a></li>
                                                 </ul>
                                             </div>
@@ -285,7 +335,9 @@
                         <h3 class="widget__title">Product Categories</h3>
                         <ul>
                             <c:forEach var="category" items="${category_and_tag.categories}">
-                                <li><a href="${pageContext.request.contextPath}/store?category=${category.categoryDto.category_slug}&page=1&limit=9">${category.categoryDto.category_name} <span>(${category.product_count})</span></a></li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/store?category=${category.categoryDto.category_slug}&page=1&limit=9">${category.categoryDto.category_name}
+                                        <span>(${category.product_count})</span></a></li>
                             </c:forEach>
                         </ul>
                     </aside>
@@ -313,7 +365,9 @@
                         <h3 class="widget__title">Product Tags</h3>
                         <ul>
                             <c:forEach var="tag" items="${category_and_tag.tags}">
-                                <li><a href="${pageContext.request.contextPath}/store?tag=${tag.tag_name}&page=1&limit=9">${tag.tag_name}</a></li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/store?tag=${tag.tag_name}&page=1&limit=9">${tag.tag_name}</a>
+                                </li>
                             </c:forEach>
 
                         </ul>

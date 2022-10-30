@@ -50,7 +50,7 @@
                         <div class="customar__field">
                             <div class="margin_between">
                                 <div class="input_box space_between">
-                                    <label>Full name <span>*</span></label>
+                                    <label>Full name </label>
 
 
                                     <spForm:input readonly="true" value="${cart.user.username}" path="user.username"
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="input_box">
-                                <label>Company name <span>*</span></label>
+                                <label>Company name </label>
                                 <input type="text" value="SYLD_SHOP" readonly>
                             </div>
                             <div class="input_box">
@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="input_box space_between">
-                                    <label>Email address <span>*</span></label>
+                                    <label>Email address </label>
                                     <spForm:input value="${cart.user.email}" path="user.email" readonly="true"
                                                   type="email"/>
                                 </div>
@@ -219,7 +219,6 @@
 </section>
 <script>
     function processShipPrice(self) {
-        console.log(document.getElementById("ship_mode").value)
         processTotal()
     }
 
@@ -236,41 +235,6 @@
         document.getElementById("sub_total").textContent = '$' + subtotal + '.00'
         document.getElementById("order-total").textContent = '$' + amount + ".00";
     }
-
     processTotal()
-
-
-    let btnAddCard = document.getElementById("btn-add-card")
-    btnAddCard.addEventListener('click', (e) => {
-
-        let user = document.getElementById("card_user_email")
-        let card_number = document.getElementById("card_number")
-        let card_bank = document.getElementById("card_bank")
-
-        if (user && card_bank && card_number) {
-            $.ajax({
-                url: "${pageContext.request.contextPath}/api/card/create",
-                method: "post",
-                dataType: "json",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                data: JSON.stringify({
-                    card_number: card_number,
-                    card_brand: card_bank,
-                    user_email: user
-                }),
-                success: (res) => {
-                    console.log(res)
-                },
-                error: (err) => {
-                    console.log(err)
-                }
-            })
-
-        }
-
-    })
 </script>
 <!-- End Checkout Area -->

@@ -41,9 +41,21 @@ public class AuthController extends BaseController {
     @Autowired
     MessageConfig messageConfig;
 
+    @GetMapping("/active_password")
+    public String ForgotPassword(@RequestParam String token) {
+
+        try {
+
+        } catch (Exception e) {
+
+        }
+
+        return token;
+    }
+
     @GetMapping(path = "/login")
     public String Login(Model model, @RequestParam(required = false, value = "error") String error, HttpServletRequest request) {
-        if (!Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), "anonymousUser")){
+        if (!Objects.equals(SecurityContextHolder.getContext().getAuthentication().getName(), "anonymousUser")) {
             return "redirect:/home";
         }
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);

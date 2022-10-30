@@ -24,15 +24,16 @@
             height: 80px !important;
         }
 
-        .owl-nav{
+        .owl-nav {
             display: none !important;
         }
+
         .copyright {
             display: none !important;
         }
 
-        .owl-nav{
-            display: none!important;
+        .owl-nav {
+            display: none !important;
         }
 
         .cart-quan {
@@ -71,7 +72,7 @@
                     <nav class="mainmenu__nav">
                         <ul class="meninmenu d-flex justify-content-start">
                             <li><a href="${pageContext.request.contextPath}/store?page=1&limit=18">Store</a></li>
-                            <c:forEach var="category" items="${navs}" >
+                            <c:forEach var="category" items="${navs}">
                                 <li class="drop with--one--item">
                                     <a href="${pageContext.request.contextPath}/store?category=${category.children[0].category_slug}&page=1&limit=18">${category.parent.category_name}</a>
                                     <div class="megamenu dropdown">
@@ -128,7 +129,17 @@
                                             </div>
                                             <div class="mini_action checkout">
                                                 <a class="checkout__btn" style="color: whitesmoke!important;"
-                                                   href="${pageContext.request.contextPath}/order/<%=Base64.getEncoder().encodeToString(request.getAttribute("email").toString().getBytes())%>">Go
+                                                   href="javascript:void(0)" onclick="function processBeforeCheckout() {
+                                                        if (document.getElementById('cart-total').textContent.replace('$','').trim() === '0'){
+                                                            Toast.fire({
+                                                                title:'Cart Empty'
+                                                            })
+                                                        }else {
+                                                            window.location.assign(document.querySelector('.checkout__btn').dataset.link)
+                                                        }
+                                                   }
+                                                   processBeforeCheckout()"
+                                                   data-link="${pageContext.request.contextPath}/order/<%=Base64.getEncoder().encodeToString(request.getAttribute("email").toString().getBytes())%>">Go
                                                     to
                                                     Checkout</a>
                                             </div>
@@ -201,7 +212,10 @@
                                             </strong>
                                             <div class="switcher-options">
                                                 <div class="switcher-currency-trigger">
-                                                    <span class="currency-trigger">My order</span>
+                                                    <a href="${pageContext.request.contextPath}/order/my_orders?page=1&limit=8">
+                                                         <span
+                                                                 class="currency-trigger">My order</span>
+                                                    </a>
                                                     <span class="currency-trigger">Purchase history</span>
                                                     <span class="currency-trigger">My rating</span>
                                                 </div>
@@ -218,7 +232,8 @@
                                                             <span><a
                                                                     href="${pageContext.request.contextPath}/admin/products">Admin</a></span>
                                                         </sec:authorize>
-                                                        <span><a href="${pageContext.request.contextPath}/my_account/detail">My Account</a></span>
+                                                        <span><a
+                                                                href="${pageContext.request.contextPath}/my_account/detail">My Account</a></span>
                                                         <span><a href="#">Change Password</a></span>
                                                         <span><a
                                                                 href="${pageContext.request.contextPath}/logout">Logout</a></span>
@@ -329,6 +344,7 @@
     <%@include file="./client_footer.jsp" %>
 
     <script>
+
         let listPrice = document.querySelectorAll(".content .price")
         let total = document.getElementById("cart-total")
 

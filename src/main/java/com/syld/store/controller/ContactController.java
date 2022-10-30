@@ -26,6 +26,6 @@ public class ContactController extends BaseController {
         }catch (Exception e) {
             log.info(e.getMessage());
         }
-        return view(model, "Contact", "contact", this.layout_path );
+        return view(model, "Contact", "contact", this.layout_path , true);
     }
 }
