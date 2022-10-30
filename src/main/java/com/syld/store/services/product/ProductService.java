@@ -14,7 +14,7 @@ public interface ProductService extends ICrudService<ProductDto,String> {
 
     long findProductNumOfCategory(CategoryDto categoryDto);
 
-
+    void updateQuantity(String product_id,int quantity);
     Page<ProductViewDto> getByPage(int page,int limit);
 
     List<ProductByCategoryDto> getProductByCategory(int count);

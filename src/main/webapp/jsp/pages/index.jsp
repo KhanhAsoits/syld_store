@@ -395,14 +395,3 @@
     </div>
 </div>
 <%--js--%>
-
-<script>
-    document.querySelector('actions_inner').addEventListener('onclick', (event)=>{
-        event.preventDefault();
-        Swal.fire(
-            'Add Success!',
-            'You clicked confirm!',
-            'success'
-        )
-    });
-</script>

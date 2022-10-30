@@ -26,7 +26,7 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td><c:forEach var="category" items="${navs}" >
+                                        <td><c:forEach var="category" items="${navs}">
                                             <li class="drop with--one--item" style="list-style: none">
                                                 <a href="${pageContext.request.contextPath}/store?category=${category.children[0].category_slug}&page=1&limit=18">${category.parent.category_name}</a>
 
@@ -35,7 +35,8 @@
                                         </td>
                                         <td><a href="#">Advise</a><br><a href=""> Make an Appointment</a></td>
                                         <td><a href="#">Search Store</a></td>
-                                        <td><a href="#">Contact</a><br><a href=""> Rules</a><br><a href=""> Support</a></td>
+                                        <td><a href="#">Contact</a><br><a href=""> Rules</a><br><a href=""> Support</a>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -68,7 +69,7 @@
                                 </div>
                             </div>
                         </li>
-                        <label > - </label>
+                        <label> - </label>
                         <li class="nav-item">
                             <div class="dropdown">
                                 <button type="button" class=" dropdown-toggle" data-toggle="dropdown">
@@ -81,7 +82,7 @@
                                 </div>
                             </div>
                         </li>
-
+                    </ul>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="payment text-end">
@@ -106,5 +107,41 @@
 <script src="${pageContext.request.contextPath}/assets/js/vendor/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/plugins.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/active.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.4/dist/sweetalert2.all.min.js"></script>
+
+
+<%--config sweet alert--%>
+<%--toast--%>
+
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    const Modal = (title, text, icon, showCancel, confirmBtnText, handlerAccept, ...params) => {
+        Swal.fire({
+            title: title,
+            text: text,
+            icon: icon,
+            showCancelButton: showCancel,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: confirmBtnText
+        }).then((result) => {
+            if (result.isConfirmed) {
+                handlerAccept(params)
+            }
+        })
+    }
+
+</script>
 
 </body>

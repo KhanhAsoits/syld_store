@@ -8,7 +8,11 @@ import com.syld.store.services.Cart.CartService;
 import com.syld.store.services.order.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +21,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.PublicKey;
+import java.util.ArrayList;
 import java.util.Base64;
 
 @Controller
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping(path = "/order")
+@PreAuthorize("isAuthenticated()")
 public class OrderClientController extends BaseController {
 
     private final CartService cartService;
@@ -63,5 +69,18 @@ public class OrderClientController extends BaseController {
             log.info(e.getMessage());
             return "redirect:/home";
         }
+    }
+
+    @GetMapping(path = "/my_orders")
+    public String OrderHistory(Model model, @RequestParam int page, @RequestParam int limit) {
+        try {
+            Page<OrderDto> orderDtos = new PageImpl<>(new ArrayList<OrderDto>());
+            orderDtos = orderService.getAll(SecurityContextHolder.getContext().getAuthentication().getName(), page, limit);
+            model.addAttribute("orders", orderDtos);
+            return view(model, "SYLD - My Orders", "orders", this.layout_path, true);
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
+        return "redirect:/home";
     }
 }

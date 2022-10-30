@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CartClientController extends BaseController {
 
 
-    @PreAuthorize("IsAuthenticated()")
+    @PreAuthorize("isAuthenticated()")
 
     @GetMapping(path = "/detail")
     public String Detail(Model model) {

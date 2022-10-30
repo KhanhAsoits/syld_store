@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div class="cart-main-area section-padding--lg bg--white">
+<div class="cart-main-area section-padding--lg bg--white my-5">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 ol-lg-12">

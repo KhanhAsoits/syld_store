@@ -21,8 +21,8 @@ import java.util.UUID;
 @Slf4j
 @RequiredArgsConstructor
 public class PaypalService {
-    private final String CLIENT_ID = "AfK-8BuzKRrKo4IJ2I5Il1k3dE6dIW3Fgn0jPXcL0NoWNreqSq8hsjBAOxq-YQs_QSbJFQVJaFX0cFsN";
-    private final String SECRET = "ELkGFAuh1hHWROYR1t6RflNpc0wtADyutwwKntHJbCN-eOPcnkB8f1k7cYYDJ74ns89MiGSDvf335h9-";
+    private final String CLIENT_ID = "AYnIGMvpns6FWQnfbGPcZL4Cc3BM7rDhzpAmlm7ecTHHbogg7BE-WGqyY2xBHdxqRKkZmvJUa9UU3zum";
+    private final String SECRET = "ENnUIDkMEHg5_eOPOsiXhrs33j-fVyJ9LLfCCHRfzDhxCKAIDx7ILthS97DIIhkpe_aX4q2eolIc_Qcl";
 
     private final String ReturnUrl = "/order/pay_success";
     private final String CancelUrl = "/order/cancel_pay";

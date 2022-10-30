@@ -219,7 +219,6 @@
 </section>
 <script>
     function processShipPrice(self) {
-        console.log(document.getElementById("ship_mode").value)
         processTotal()
     }
 
@@ -236,41 +235,6 @@
         document.getElementById("sub_total").textContent = '$' + subtotal + '.00'
         document.getElementById("order-total").textContent = '$' + amount + ".00";
     }
-
     processTotal()
-
-
-    let btnAddCard = document.getElementById("btn-add-card")
-    btnAddCard.addEventListener('click', (e) => {
-
-        let user = document.getElementById("card_user_email")
-        let card_number = document.getElementById("card_number")
-        let card_bank = document.getElementById("card_bank")
-
-        if (user && card_bank && card_number) {
-            $.ajax({
-                url: "${pageContext.request.contextPath}/api/card/create",
-                method: "post",
-                dataType: "json",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                data: JSON.stringify({
-                    card_number: card_number,
-                    card_brand: card_bank,
-                    user_email: user
-                }),
-                success: (res) => {
-                    console.log(res)
-                },
-                error: (err) => {
-                    console.log(err)
-                }
-            })
-
-        }
-
-    })
 </script>
 <!-- End Checkout Area -->

@@ -2,12 +2,13 @@ function addProductToCart(e) {
     let user_id = e.dataset.email;
     let product_id = e.dataset.product;
     let cart_id = e.dataset.cart;
+    let quantity = document.getElementById("qty");
 
     let data = {
         id: cart_id ? cart_id : "",
         product_id: product_id,
         user_id: user_id,
-        quantity: 1
+        quantity: quantity ? quantity.value : 1
     }
 
     $.ajax({
@@ -21,7 +22,10 @@ function addProductToCart(e) {
         data: JSON.stringify(data),
         success: (res) => {
             if (res) {
-                alert("Add Success!")
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Add To Cart Success!'
+                })
                 handleLoadCartUI(res.productCarts, res.user)
             }
         },
@@ -112,39 +116,32 @@ function totalProcess(self) {
     }
 }
 
+const handlerRemoveApi = ([email, product, dialog, loadUIFunc]) => {
+    const uri = `${window.location.origin}/cart/remove/${product}/${email}`
+    $.ajax({
+        url: uri,
+        method: "post",
+        success: (res) => {
+            if (res) {
+                if (dialog) {
+                    loadUIFunc(res.productCarts, res.user)
+                } else {
+                    window.location.assign(window.location.href)
+                }
+            }
+        },
+        error: (err) => {
+            console.log(err.statusText)
+        }
+    })
+}
+
 function removeFromCart(self, dialog = false) {
 
     if (self) {
         let email = self.dataset.user;
         let product = self.dataset.product;
-
-        if (confirm("Do you really remove  ? ")) {
-            const uri = `${window.location.origin}/cart/remove/${product}/${email}`
-            $.ajax({
-                url: uri,
-                method: "post",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                dataType: "json",
-                data: JSON.stringify([]),
-                success: (res) => {
-                    if (res) {
-                        console.log(res)
-                        if (dialog) {
-                            handleLoadCartUI(res.productCarts, res.user)
-                        } else {
-                            window.location.assign(window.location.href)
-                        }
-                        alert("Remove Success!")
-                    }
-                },
-                error: (err) => {
-                    console.log(err)
-                }
-            })
-        }
+        Modal("Remove product from cart", "Are you sure?", "warning", true, "Yes", handlerRemoveApi, email, product, dialog, handleLoadCartUI)
     }
 }
 

@@ -11,16 +11,16 @@ $(function() {
   "use strict";
   
   /*======== 1. RECNT ORDERS ========*/
-  if ($("#recent-orders")) {
+  if ($("#recent-orders.jsp")) {
     var start = moment().subtract(29, "days");
     var end = moment();
     var cb = function(start, end) {
-      $("#recent-orders .date-range-report span").html(
+      $("#recent-orders.jsp .date-range-report span").html(
         start.format("ll") + " - " + end.format("ll")
       );
     };
 
-    $("#recent-orders .date-range-report").daterangepicker(
+    $("#recent-orders.jsp .date-range-report").daterangepicker(
       {
         startDate: start,
         endDate: end,
