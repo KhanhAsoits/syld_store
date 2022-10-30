@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 public class JWTHelper {
     @Value("${secret_key}")
-    private static String secret_key;
+    private static String secret_key = "syld_shop";
     private static String issuer = "auth0";
 
     public static String generateToken(TokenDetail tokenDetail) {
@@ -18,6 +18,7 @@ public class JWTHelper {
             Algorithm algorithm = Algorithm.HMAC256(secret_key.getBytes());
             token = JWT.create()
                     .withIssuer(issuer)
+                    .withSubject(tokenDetail.getSubject())
                     .withExpiresAt(tokenDetail.getExpire_at())
                     .sign(algorithm);
         } catch (Exception e) {
@@ -26,7 +27,7 @@ public class JWTHelper {
         return token;
     }
 
-    public static boolean verifyToken(String token, TokenDetail tokenDetail) {
+    public static String verifyToken(String token) {
         try {
             DecodedJWT decodedJWT;
             Algorithm algorithm = Algorithm.HMAC256(secret_key.getBytes());
@@ -34,10 +35,10 @@ public class JWTHelper {
                     .withIssuer(issuer)
                     .build();
             decodedJWT = jwtVerifier.verify(token);
-            return true;
+            return decodedJWT.getSubject();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return "";
     }
 }

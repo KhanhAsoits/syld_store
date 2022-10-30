@@ -202,6 +202,19 @@ public class UserServiceIpm implements UserService {
         }
         return isSuccess;
     }
+
+    @Override
+    public void resetPassword(String email, String new_password) {
+        try {
+            Optional<User> user = userRepository.findByEmail(email);
+            if (user.isPresent()) {
+                user.get().setPassword(new BCryptPasswordEncoder().encode(new_password));
+                userRepository.save(user.get());
+            }
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
+    }
 }
 
 

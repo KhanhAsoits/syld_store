@@ -30,4 +30,6 @@ public interface UserService extends ICrudService<UserClientDto, String> {
     void updateAddressAndPhone(String email, String address, String phone_number);
 
     boolean changePassword(String email, ChangePasswordDto changePasswordDto);
+
+    void resetPassword(String email, String new_password);
 }

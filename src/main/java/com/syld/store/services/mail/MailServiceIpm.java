@@ -6,8 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
 
 @Service
@@ -22,12 +24,13 @@ public class MailServiceIpm implements MailService {
     @Override
     public boolean sendSimpleMail(MailDetail mailDetail) {
         try {
-            SimpleMailMessage msg = new SimpleMailMessage();
-            msg.setFrom(sender);
-            msg.setTo(mailDetail.getTo());
-            msg.setText(mailDetail.getMgs());
-            msg.setSubject(mailDetail.getSubject());
-            javaMailSender.send(msg);
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
+            helper.setFrom(sender);
+            helper.setTo(mailDetail.getTo());
+            helper.setText(mailDetail.getMgs(), true);
+            helper.setSubject(mailDetail.getSubject());
+            javaMailSender.send(mimeMessage);
             return true;
         } catch (Exception e) {
             log.info(e.getMessage());

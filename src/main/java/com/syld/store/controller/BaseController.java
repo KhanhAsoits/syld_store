@@ -22,11 +22,6 @@ public class BaseController {
 
     public String layout_path = "/layout/client_layout";
 
-
-    public String Base64Encode(String string) {
-        return Base64.getEncoder().encodeToString(string.getBytes());
-    }
-
     public String view(Model model, String title, String prefix, String layout_path) {
         if (prefix != null && layout_path != null) {
             model.addAttribute("web_content", prefix);
