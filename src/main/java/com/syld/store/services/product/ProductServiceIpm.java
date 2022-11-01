@@ -6,6 +6,7 @@ import com.syld.store.repositories.*;
 import com.syld.store.services.brand.BrandService;
 import com.syld.store.services.category.CategoryService;
 import com.syld.store.services.color.ColorService;
+import com.syld.store.services.search.SearchService;
 import com.syld.store.ultis.SlugGenerator;
 import com.syld.store.ultis.Uploader;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ import java.util.*;
 @Transactional
 @Slf4j
 @RequiredArgsConstructor
-public class ProductServiceIpm implements ProductService {
+public class ProductServiceIpm implements ProductService, SearchService<ProductViewDto> {
     private final ProductRepository productRepository;
 
     private final CategoryService categoryService;
@@ -399,5 +400,21 @@ public class ProductServiceIpm implements ProductService {
         Pageable pageable = PageRequest.of(page - 1, limit);
         Page<Product> products = productRepository.findAllByTags(tag_, pageable);
         return new PageImpl<>(products.stream().map(product -> modelMapper.map(product, ProductViewDto.class)).toList(), pageable, products.getTotalElements());
+    }
+
+    @Override
+    public Page<ProductViewDto> search(String keywords, int page, int limit) {
+        try {
+            Pageable pageable = PageRequest.of(page - 1, limit);
+            List<Product> productViewDtos = productRepository.findAllByKeyword(keywords, pageable);
+            List<ProductViewDto> productViewDtoList = productViewDtos.stream().map(product -> new ModelMapper().map(product, ProductViewDto.class)).toList();
+            for (ProductViewDto productViewDto : productViewDtoList) {
+                productViewDto.convertData();
+            }
+            return new PageImpl<>(productViewDtoList, pageable, 0);
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
+        return null;
     }
 }
