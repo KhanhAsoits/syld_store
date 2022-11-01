@@ -51,19 +51,19 @@ public class OrderDto {
         String result = "";
         switch (this.order_state) {
             case 0:
-                result = format("btn-warning", "UNPAID");
+                result = format("", "UNPAID");
                 break;
             case 1:
-                result = format("btn-primary", "WAITING CONFIRM");
+                result = format("", "WAITING CONFIRM");
                 break;
             case 2:
-                result = format("btn-secondary", "SHIPPING");
+                result = format("", "SHIPPING");
                 break;
             case 3:
-                result = format("btn-info", "RECEIVED");
+                result = format("", "RECEIVED");
                 break;
             case 4:
-                result = format("btn-success", "SUCCESS");
+                result = format("", "SUCCESS");
                 break;
         }
         return result;

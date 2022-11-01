@@ -61,6 +61,10 @@ public class OrderServiceIpm implements OrderService {
             BeanUtils.copyProperties(userClientDto, user);
             orderEntity.setUser(user);
             orderEntity.setOrder_name(String.format("Order_%s_User_%s", UUID.randomUUID().toString(), user.getEmail()));
+            OrderEntity order = orderRepository.findByName(orderEntity.getOrder_name());
+            if (order != null) {
+                return order.getId();
+            }
             orderRepository.save(orderEntity);
             return orderEntity.getId();
         } catch (Exception e) {

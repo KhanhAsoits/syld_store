@@ -55,7 +55,6 @@ public class ProductDetailController extends BaseController {
             log.info(e.getMessage());
         }
         return "redirect:/home";
-
     }
 
 }

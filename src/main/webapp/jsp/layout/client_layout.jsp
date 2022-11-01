@@ -95,7 +95,6 @@
                     <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
                         <li><a class="search__active" href="#">
                             <span class="fa fa-search" style="font-size: 20px">
-
                             </span>
                         </a></li>
                         <li><a href="#"><span class="fa fa-heart-o mx-4" style="font-size: 20px"></span></a></li>
@@ -326,9 +325,9 @@
     <!-- //Header -->
     <!-- Start Search Popup -->
     <div class="box-search-content search_active block-bg close__top">
-        <form id="search_mini_form" class="minisearch" action="#">
+        <form id="search_mini_form" class="minisearch" action="${pageContext.request.contextPath}/store?page=1&limit=9">
             <div class="field__search">
-                <input type="text" placeholder="Search entire store here...">
+                <input type="text" name="keyword" placeholder="Search entire store here...">
                 <div class="action">
                     <a href="#"><i class="zmdi zmdi-search"></i></a>
                 </div>
