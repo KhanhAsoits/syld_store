@@ -256,15 +256,16 @@
                             <c:forEach var="category" items="${navs}">
                                 <li class="drop with--one--item">
                                     <a href="${pageContext.request.contextPath}/store?category=${category.children[0].category_slug}&page=1&limit=18">${category.parent.category_name}</a>
-                                    <div class="megamenu dropdown">
-                                        <ul class="item item01">
+                                    <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+
+                                        <ul>
                                             <c:forEach var="child_category" items="${category.children}">
                                                 <li>
                                                     <a href="${pageContext.request.contextPath}/store?category=${child_category.category_slug}&page=1&limit=18">${child_category.category_name}</a>
                                                 </li>
                                             </c:forEach>
                                         </ul>
-                                    </div>
+
                                 </li>
                             </c:forEach>
                             <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
