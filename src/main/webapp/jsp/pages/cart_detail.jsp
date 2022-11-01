@@ -1,3 +1,4 @@
+<%@ page import="java.util.Base64" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="cart-main-area section-padding--lg bg--white my-5">
     <div class="container">
@@ -52,7 +53,17 @@
                     <ul
                             class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
                         <li><a href="#">Update Cart</a></li>
-                        <li><a href="#">Check Out</a></li>
+                        <li><a href="javascript:void(0)" onclick="function processBeforeCheckout() {
+                                                        if (document.getElementById('cart-total').textContent.replace('$','').trim() === '0'){
+                                                            Toast.fire({
+                                                                title:'Cart Empty'
+                                                            })
+                                                        }else {
+                                                            window.location.assign(document.querySelector('.checkout__btn').dataset.link)
+                                                        }
+                                                   }
+                                                   processBeforeCheckout()"
+                               data-link="${pageContext.request.contextPath}/order/<%=Base64.getEncoder().encodeToString(request.getAttribute("email").toString().getBytes())%>">Check Out</a></li>
                     </ul>
                 </div>
             </div>

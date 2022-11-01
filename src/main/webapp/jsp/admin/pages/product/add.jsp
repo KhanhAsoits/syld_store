@@ -395,16 +395,17 @@
     CKEDITOR.replace('product_detail',{
         on:{
             contentDom: function() {
-<<<<<<< HEAD
+
                 this.editable().on( 'input', function( evt ) {
-=======
+
                     this.editable().on( 'change', function( evt ) {
->>>>>>> 91c22a704d0daed8e01a1ab38eeaa4985edeef51
+
                     console.log(document.getElementById("detail"))
                     document.getElementById('detail').value = CKEDITOR.instances.product_detail.getData();
                 } );
-            }
+            })
         }
-    })
+    }}
+    )
 </script>
 

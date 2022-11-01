@@ -80,6 +80,7 @@
                     </aside>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="col-lg-9 col-12 order-1 order-lg-2">
                 <div class="row">
                     <div class="col-lg-12">
@@ -110,6 +111,67 @@
                             </div>
                         </div>
                     </div>
+=======
+        </aside>
+        <aside class="widget__categories products--tag">
+            <h3 class="widget__title">Product Tags</h3>
+            <ul>
+                <c:forEach var="tag" items="${data.tags}">
+                    <li>
+                        <a href="${pageContext.request.contextPath}/store?tag=${tag.tag_name}&page=1&limit=18">${tag.tag_name}</a>
+                    </li>
+                </c:forEach>
+            </ul>
+        </aside>
+    </div>
+</div>
+<div class="col-lg-9 col-12 order-1 order-lg-2">
+<div class="row">
+    <div class="col-lg-12">
+        <div
+                class="shop__list__wrapper d-flex flex-wrap flex-md-nowrap justify-content-between">
+            <div class="shop__list nav justify-content-center" role="tablist">
+                <a class="nav-item nav-link active d-flex justify-content-center align-items-center"
+                   data-bs-toggle="tab" href="#nav-grid" role="tab"><i
+                        class="fa fa-th"></i></a>
+                <a class="nav-item nav-link  d-flex justify-content-center align-items-center" data-bs-toggle="tab"
+                   href="#nav-list"
+                   role="tab"><i class="fa fa-list"></i></a>
+            </div>
+            <p>Showing ${data.productViewDtoList.getContent().size()} of ${data.productViewDtoList.getTotalElements()}
+                results</p>
+            <div class="orderby__wrapper">
+                <span>Sort By</span>
+                <select class="shot__byselect">
+                    <option>Default sorting</option>
+                    <option>HeadPhone</option>
+                    <option>Furniture</option>
+                    <option>Jewellery</option>
+                    <option>Handmade</option>
+                    <option>Kids</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab__container tab-content">
+<div class="shop-grid tab-pane fade active" id="nav-grid" role="tabpanel">
+<div class="row">
+    <c:forEach var="product" items="${data.productViewDtoList.getContent()}">
+        <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
+            <div class="product__thumb">
+                <a class="first__img" href="${pageContext.request.contextPath}/products/${product.slug}"><img
+                        style="height: 300px;object-fit:cover;"
+                        src="${pageContext.request.contextPath}${product.images_con.get(0).path}"
+                        alt="product image"></a>
+                <a class="second__img animation1"
+                   href="${pageContext.request.contextPath}/products/${product.slug}"><img
+                        style="height: 300px;object-fit:cover;"
+                        src="${pageContext.request.contextPath}${product.images_con.get(1).path}"
+                        alt="product image"></a>
+                <div class="hot__box">
+                    <span class="hot-label">BEST SALLER</span>
+>>>>>>> ca533873974c8f15e47aa05121607ce65ee75a92
                 </div>
                 <div class="tab__container tab-content">
                     <div class="shop-grid tab-pane fade active" id="nav-grid" role="tabpanel">

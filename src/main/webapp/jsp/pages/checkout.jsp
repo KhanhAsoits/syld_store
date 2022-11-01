@@ -50,7 +50,7 @@
                         <div class="customar__field">
                             <div class="margin_between">
                                 <div class="input_box space_between">
-                                    <label>Full name <span>*</span></label>
+                                    <label>Full name </label>
 
 
                                     <spForm:input readonly="true" value="${cart.user.username}" path="user.username"
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="input_box">
-                                <label>Company name <span>*</span></label>
+                                <label>Company name </label>
                                 <input type="text" value="SYLD_SHOP" readonly>
                             </div>
                             <div class="input_box">
@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="input_box space_between">
-                                    <label>Email address <span>*</span></label>
+                                    <label>Email address </label>
                                     <spForm:input value="${cart.user.email}" path="user.email" readonly="true"
                                                   type="email"/>
                                 </div>

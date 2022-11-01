@@ -98,7 +98,6 @@ public class BrandController extends BaseController {
             bindingResult.rejectValue("brand_slug", "", "Brand slug has taken !");
         }
 
-//        chua bat loi trung slug trung ten
         if (bindingResult.hasErrors()) {
             return view(model, "Edit - Brand", "brand/edit", this.admin_layout);
         }
