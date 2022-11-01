@@ -72,7 +72,7 @@
             <ul>
                 <c:forEach var="tag" items="${data.tags}">
                     <li>
-                        <a href="${pageContext.request.contextPath}/store?tag=${tag.tag_name}&page=1&limit=9">${tag.tag_name}</a>
+                        <a href="${pageContext.request.contextPath}/store?tag=${tag.tag_name}&page=1&limit=18">${tag.tag_name}</a>
                     </li>
                 </c:forEach>
             </ul>

@@ -14,5 +14,13 @@ public interface OrderService extends ICrudService<OrderDto, String> {
 
     void cancel_pay(String order_id);
 
+
+    List<OrderDto> getAll();
+
+    OrderDto getById(String id);
+
+    OrderDto getByNameNotSame(String order_name, String id);
+
     Page<OrderDto> getAll(String email, int page, int limit);
+
 }

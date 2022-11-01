@@ -83,6 +83,11 @@
                                         <a class="compare" href="#"></a>
                                     </div>
                                 </div>
+                                <div>
+                                    <span>Remaining Amount :</span>
+                                    <input id="remaining_amount" name="remaining_amount" type="text" value="${single_product.product_quantity}" style="border: 0px" readonly="readonly">
+                                    <br><br>
+                                </div>
                                 <div class="product_meta">
 											<span class="posted_in">Category:
 												<a href="${pageContext.request.contextPath}/store?category=${single_product.category.category_slug}">${single_product.category.category_name}</a>,
