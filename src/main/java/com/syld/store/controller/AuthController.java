@@ -59,7 +59,6 @@ public class AuthController extends BaseController {
         model.addAttribute("message", "Invalid Token");
         return view(model, "Syld - Notification", "notification", this.layout_path, true);
 
-        return token;
     }
 
     @PostMapping(path = "/reset_password")
