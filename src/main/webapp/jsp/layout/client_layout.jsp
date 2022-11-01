@@ -1,3 +1,4 @@
+
 <%@ page import="java.util.Base64" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -256,15 +257,16 @@
                             <c:forEach var="category" items="${navs}">
                                 <li class="drop with--one--item">
                                     <a href="${pageContext.request.contextPath}/store?category=${category.children[0].category_slug}&page=1&limit=18">${category.parent.category_name}</a>
-                                    <div class="megamenu dropdown">
-                                        <ul class="item item01">
-                                            <c:forEach var="child_category" items="${category.children}">
-                                                <li>
-                                                    <a href="${pageContext.request.contextPath}/store?category=${child_category.category_slug}&page=1&limit=18">${child_category.category_name}</a>
-                                                </li>
-                                            </c:forEach>
-                                        </ul>
-                                    </div>
+                                    <a class="mean-expand" href="#" style="font-size: 18px">+</a>
+
+                                    <ul>
+                                        <c:forEach var="child_category" items="${category.children}">
+                                            <li>
+                                                <a href="${pageContext.request.contextPath}/store?category=${child_category.category_slug}&page=1&limit=18">${child_category.category_name}</a>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+
                                 </li>
                             </c:forEach>
                             <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
@@ -312,3 +314,4 @@
             total.textContent = '$' + amount.toString();
         }
     </script>
+    Đang hiển thị 7073799140274432880.

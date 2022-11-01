@@ -1,9 +1,6 @@
 package com.syld.store.services.Cart;
 
-import com.syld.store.dto.CartClientView;
-import com.syld.store.dto.CartDto;
-import com.syld.store.dto.ProductViewDto;
-import com.syld.store.dto.UserClientDto;
+import com.syld.store.dto.*;
 import com.syld.store.entities.Cart;
 import com.syld.store.entities.Product;
 import com.syld.store.entities.ProductCart;
@@ -59,6 +56,24 @@ public class CartServiceIpm implements CartService {
     @Override
     public void update(CartDto entity) throws Exception {
 
+    }
+
+    public void update_(ListProductCartDto cartClientView) {
+        try {
+            Optional<Cart> cart = cartRepository.findById(cartClientView.getCart_id());
+            if (cart.isPresent()) {
+                for (ProductCart productCart : cart.get().getProductCarts()) {
+                    for (ProductCart productCart_ : cartClientView.getProductCarts()) {
+                        if (productCart_.getId().equals(productCart.getId())) {
+                            productCart.setQuantity(productCart_.getQuantity());
+                        }
+                    }
+                }
+                cartRepository.save(cart.get());
+            }
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
     }
 
     @Override

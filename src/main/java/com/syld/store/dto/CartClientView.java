@@ -18,8 +18,9 @@ public class CartClientView {
     private boolean state = Boolean.TRUE;
     private Timestamp create_at = new Timestamp(System.currentTimeMillis());
     private Timestamp update_at = new Timestamp(System.currentTimeMillis());
-    User user;
-    Set<ProductCart> productCarts = new HashSet<>();
+    private User user;
+    private Set<ProductCart> productCarts = new HashSet<>();
+
     public float getSalePrice(Product product) {
         return product.getProduct_price() - (product.getProduct_price() * (product.getSale_off() > 0 ? product.getSale_off() / 100 : 0));
     }
