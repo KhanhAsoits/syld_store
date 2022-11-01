@@ -16,10 +16,12 @@ public interface OrderRepository extends JpaRepository<OrderEntity, String> {
     @Query(value = "select * from order where  order_name = ?1", nativeQuery = true)
     OrderEntity findByName(String name);
 
-    @Query(value = "select * from order where order_name ?1", nativeQuery = true)
+    @Query(value = "select * from order_entity where order_name ?1", nativeQuery = true)
     Optional<OrderEntity> getByNameNotSame(String order_name, String id);
 
     Page<OrderEntity> findAllByUser(User user, Pageable pageable);
 
+    @Query(value = "select * from order_entity ",nativeQuery = true)
+    OrderEntity getAll();
 
 }

@@ -86,16 +86,16 @@ public class OrderServiceIpm implements OrderService {
     @Override
     public void update(OrderDto entity) throws Exception {
 
-        try{
+        try {
             OrderEntity order = orderRepository.findById(entity.getId()).orElse(null);
-            if(order != null) {
+            if (order != null) {
                 BeanUtils.copyProperties(entity, order);
                 orderRepository.save(order);
-            }else {
+            } else {
                 throw new Exception("No order found !");
             }
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.info(e.getMessage());
         }
     }
@@ -137,7 +137,7 @@ public class OrderServiceIpm implements OrderService {
     @Override
     public OrderDto getById(String id) {
         Optional<OrderEntity> order = orderRepository.findById(id);
-        if(order.isPresent()) {
+        if (order.isPresent()) {
             return modelMapper.map(order, OrderDto.class);
         }
         return null;
@@ -163,6 +163,19 @@ public class OrderServiceIpm implements OrderService {
             log.info(e.getMessage());
         }
         return null;
+    }
+
+    @Override
+    public void change_state(String id, int status) {
+        try {
+            Optional<OrderEntity> order = orderRepository.findById(id);
+            if (order.isPresent()) {
+                order.get().setOrder_state(status);
+                orderRepository.save(order.get());
+            }
+        } catch (Exception e) {
+            log.info(e.getMessage());
+        }
     }
 
 }

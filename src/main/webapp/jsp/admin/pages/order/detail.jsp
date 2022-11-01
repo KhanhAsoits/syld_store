@@ -17,11 +17,11 @@
             <div class="col-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Edit Order</h2>
+                        <h2>Detail Order</h2>
                     </div>
-                    <%--@elvariable id="order_edit" type=""--%>
+                    <%--@elvariable id="order_detail" type=""--%>
                     <spForm:form action="${pageContext.request.contextPath}/admin/orders/update" method="post"
-                                 modelAttribute="order_edit">
+                                 modelAttribute="order_detail">
                         <div class="card-body">
                             <div class="row ec-vendor-uploads">
                                 <div class="col-lg-4">
@@ -32,20 +32,29 @@
                                             <div class="col-md-6">
 
                                                 <spForm:input hidden="hidden" path="id" type="text"
-                                                              class="form-control slug-title" value="${order_edit.id}"/>
+                                                              class="form-control slug-title" value="${order_detail.id}"/>
 
                                                 <spForm:label path="order_name"
                                                               class="form-label">Order name</spForm:label>
                                                 <spForm:input path="order_name" type="text"
-                                                              class="form-control slug-title" required="true"/>
+                                                              class="form-control slug-title" value="${orders.order_name}" required="true"/>
                                                 <spForm:errors path="order_name" cssStyle="color: red;font-size: 12px"/>
                                                 <br/>
 
                                                 <spForm:label path="order_amount"
                                                               class="form-label">Amount</spForm:label>
                                                 <spForm:input path="order_amount" type="text"
-                                                              class="form-control slug-title" required="true"/>
+                                                              class="form-control slug-title" value="${orders.order_name}" required="true"/>
                                                 <spForm:errors path="order_amount" cssStyle="color: red;font-size: 12px"/>
+
+                                                <br/>
+
+                                                <spForm:label path="order_state"
+                                                              class="form-label">Amount</spForm:label>
+                                                <spForm:input path="order_state" type="text"
+                                                              class="form-control slug-title" value="${order.order_state}" required="true"/>
+                                                <spForm:errors path="order_state" cssStyle="color: red;font-size: 12px"/>
+
                                             </div>
 
                                             <div class="col-md-12 my-3">

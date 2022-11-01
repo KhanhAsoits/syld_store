@@ -206,6 +206,12 @@
                                                  alt="paypal">
                                         </button>
                                     </div>
+                                    <div class="col-12 col-md-4 border">
+                                        <button type="submit" class="btn">
+                                            <img src="${pageContext.request.contextPath}/assets/images/pay_money/paymoney.png"
+                                                 alt="money">
+                                        </button>
+                                    </div>
                                     <div class="col-12 col-md-4"></div>
                                     <div class="col-12 col-md-4"></div>
                                 </div>

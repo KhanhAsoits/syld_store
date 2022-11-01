@@ -23,4 +23,5 @@ public interface OrderService extends ICrudService<OrderDto, String> {
 
     Page<OrderDto> getAll(String email, int page, int limit);
 
+    void change_state(String id, int status);
 }
