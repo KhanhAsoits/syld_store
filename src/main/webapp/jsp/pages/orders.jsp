@@ -58,7 +58,7 @@
                                      style="cursor: pointer"
                                      class="my-2 flex-wrap d-flex justify-content-between align-items-center">
                                     <span class="order_name">${order.order_name}</span>
-                                    <span class="order_name">$${order.order_amount}</span>
+                                    <span class="order_name">${order.order_amount}</span>
                                     <span class="order_name">${order.create_at}</span>
                                         ${order.orderStateString()}
                                 </div>

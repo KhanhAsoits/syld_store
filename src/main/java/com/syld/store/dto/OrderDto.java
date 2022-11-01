@@ -5,9 +5,7 @@ import com.syld.store.entities.ProductCart;
 import com.syld.store.entities.User;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
 import javax.validation.constraints.Min;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -65,6 +63,8 @@ public class OrderDto {
             case 4:
                 result = format("btn-success", "SUCCESS");
                 break;
+            default:
+                result = format("btn-cancel", "CANCEL");
         }
         return result;
     }

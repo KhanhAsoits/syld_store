@@ -33,22 +33,22 @@
                                     <th>State</th>
                                     <th>Create order</th>
                                     <th>Update order</th>
-                                    <th>Amount</th>
+                                    <th>Total</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="order" items="${order}">
+                                <c:forEach var="orders" items="${orders}" >
                                     <tr>
-                                        <td>${order.order_name}</td>
-                                        <td style="color: ${order.order_state?'blue'||'blue'||'yellow'||'green'||'gray':'red'}">${order.order_state?"Dang thanh toan"||"Chua xac nhan"||"Dang giao hang"||"Da nhan hang"||"Thanh cong":"Huy don"}</td>
-                                        <td>${order.create_at}</td>
-                                        <td>${order.update_at}</td>
-                                        <td>${order.order_amount}</td>
+                                        <td class="order_name">${orders.order_name}</td>
+                                        <td style="color: ${order.state?'black'||'red'||'yellow'||'green'||'gray':'blue'}">${order.state?"Dang thanh toan"||"Huy don"||"Dang giao hang"||"Da nhan hang"||"Thanh cong":"Chua xac nhan"}</td>
+                                        <td class="order_name">${orders.create_at}</td>
+                                        <td class="order_name">${orders.update_at}</td>
+                                        <td>${orders.order_amount}</td>
                                         <td>
                                             <div class="btn-group mb-1">
                                                 <button type="button"
-                                                        class="btn btn-outline-success"><a href="${pageContext.request.contextPath}/admin/orders/${orders.id}">Info</a>
+                                                        class="btn btn-outline-success"><a href="${pageContext.request.contextPath}/admin/orders/detail/${orders.id}">Info</a>
                                                 </button>
                                                 <button type="button"
                                                         class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
@@ -57,11 +57,15 @@
                                                     <span class="sr-only">Info</span>
                                                 </button>
 
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/orders/update/${orders.id}">Edit</a>
-                                                    <c:if test="${order.order_state}">
-                                                        <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/orders/remove/${orders.id}">Delete</a>
-                                                    </c:if>
+                                                <div class="dropdown-menu" >
+                                                    <a class="dropdown-item" href="">Da Giao Hang</a>
+
+                                                    <a class="dropdown-item" href="">Da Nhan Hang</a>
+
+                                                    <a class="dropdown-item" href="">Thanh Cong</a>
+
+                                                    <a class="dropdown-item" href="">Huy Don</a>
+
                                                 </div>
                                             </div>
                                         </td>

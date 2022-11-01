@@ -11,6 +11,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.ResultSet;
+
+import static java.lang.String.format;
 
 @Controller
 @Slf4j@RequiredArgsConstructor
@@ -18,6 +21,7 @@ import javax.validation.Valid;
 public class OrderController extends BaseController {
 
     private final OrderService orderService;
+    private int order_state;
 
     @GetMapping
     public String GetByPage(Model model) {
@@ -29,24 +33,24 @@ public class OrderController extends BaseController {
         return view(model, "List order", "order/list", this.admin_layout);
     }
 
-    @GetMapping(path = "/update/{id}")
-    public String Update(Model model, @PathVariable String id) {
+    @GetMapping(path = "/detail/{id}")
+    public String Detail(Model model, @PathVariable String id) {
         try {
-            model.addAttribute("order_edit", orderService.getById(id));
+            model.addAttribute("order_detail", orderService.getById(id));
         }catch (Exception e) {
             log.info(e.getMessage());
         }
-        return view(model, "Edit - order", "order/edit", this.admin_layout);
+        return view(model, "Detail - order", "order/detail", this.admin_layout);
     }
 
-    @PostMapping(path = "/update")
-    public String Update(@Valid @ModelAttribute("order_edit") OrderDto orderDto, BindingResult bindingResult, Model model) {
+    @PostMapping(path = "/detail")
+    public String Detail(@Valid @ModelAttribute("order_detail") OrderDto orderDto, BindingResult bindingResult, Model model) {
         OrderDto orderDto_ = orderService.getByNameNotSame(orderDto.getOrder_name(), orderDto.getId());
         if(orderDto_ != null) {
             bindingResult.rejectValue("order_name", "", "order name has taken !");
         }
         if(bindingResult.hasErrors()) {
-            return view(model, "Edit - Order", "order/edit", this.admin_layout);
+            return view(model, "Detail- Order", "order/detail", this.admin_layout);
         }
         try {
             orderService.update(orderDto);
@@ -55,4 +59,12 @@ public class OrderController extends BaseController {
         }
         return "redirect:/admin/orders";
     }
+
+    private final OrderDto orderDto;
+    @GetMapping(path = "/change_state=?id")
+    public String Change_state( @RequestParam(required = false) String id) {
+
+        return null;
+    }
+
 }
