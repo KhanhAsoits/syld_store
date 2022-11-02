@@ -80,9 +80,8 @@
             </div>
         </div>
     </spForm:form>
-
     <div class="row">
-        <div class="col-lg-6 offset-lg-6">
+        <div class="col-lg-6 offset-lg-3 col-3">
             <div class="cartbox__total__area">
                 <div class="cart__total__amount">
                     <span>Grand Total</span>
@@ -91,5 +90,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>
