@@ -2549,10 +2549,10 @@ Header Styles
     padding: 30px;
 }
 
-.header__area .container-fluid {
-    padding: 0 80px;
-    box-shadow: 0 1px #bcaaaa;
-}
+/*.header__area .container-fluid {*/
+/*    padding: 0 80px;*/
+
+/*}*/
 
 .header__area .menubar {
     display: inline-block;
