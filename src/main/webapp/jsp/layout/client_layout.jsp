@@ -286,7 +286,7 @@
             <div class="field__search">
                 <input type="text" name="keyword" placeholder="Search entire store here...">
                 <div class="action">
-                    <a href="#"><i class="zmdi zmdi-search"></i></a>
+                    <a type="submit"><i class="zmdi zmdi-search"></i></a>
                 </div>
             </div>
         </form>

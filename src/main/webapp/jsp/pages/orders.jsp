@@ -99,6 +99,7 @@
                                                     <td>${product.product.product_name}</td>
                                                     <td>${product.quantity}</td>
                                                     <td>${product.product.product_price}</td>
+
                                                 </tr>
                                             </c:forEach>
                                         </table>
@@ -299,17 +300,17 @@
                                         </table>
                                     </div>
                                     <div class="collapse" id="order-detail${loop.index}">
-                                            <div class="d-flex flex-wrap justify-content-between align-items-center my-2">
-                                                <table class="table table-hover">
-                                                    <thead>
-                                                    <tr>
-                                                        <th>Image</th>
-                                                        <th>Name</th>
-                                                        <th>Quantity</th>
-                                                        <th>Price</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <c:forEach var="product" items="${order.productCart}">
+                                                 </thead>
+                                                    <div class="d-flex flex-wrap justify-content-between align-items-center my-2">
+                                                        <table class="table table-hover">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Image</th>
+                                                                <th>Name</th>
+                                                                <th>Quantity</th>
+                                                                <th>Price</th>
+                                                            </tr>
+                                                            <c:forEach var="product" items="${order.productCart}">
                                                     <tr>
                                                         <td>
                                                             <c:forEach varStatus="loop_in" var="image"
