@@ -43,7 +43,7 @@
             <%--@elvariable id="order" type="com.syld.store.dto.OrderDto"--%>
             <spForm:form cssClass="row" action="${pageContext.request.contextPath}/payment/create" method="post"
                          modelAttribute="order">
-                <spForm:input path="cart_id" value="${cart.id}" cssStyle="visibility: hidden"/>
+                <spForm:input path="id" value="${order_detail.id}" cssStyle="visibility: hidden"/>
                 <div class="col-lg-6 col-12">
                     <div class="customer_details">
                         <h3>Billing details</h3>
@@ -156,7 +156,7 @@
                             <li>Total</li>
                         </ul>
                         <ul class="order_product">
-                            <c:forEach var="product" items="${cart.productCarts}">
+                            <c:forEach var="product" items="${order_detail.productCart}">
                                 <li>${product.product.product_name} x ${product.quantity}<span
                                         class="single_total_price">$${cart.getSalePrice(product.product) * product.quantity}</span>
                                 </li>
@@ -239,6 +239,7 @@
         document.getElementById("sub_total").textContent = '$' + subtotal + '.00'
         document.getElementById("order-total").textContent = '$' + amount + ".00";
     }
+
     processTotal()
 </script>
 <!-- End Checkout Area -->

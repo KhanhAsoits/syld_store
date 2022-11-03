@@ -178,4 +178,9 @@ public class OrderServiceIpm implements OrderService {
         }
     }
 
+    @Override
+    public OrderEntity findUnpaidOrder() {
+        return orderRepository.findUnpaidOrder();
+    }
+
 }
