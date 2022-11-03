@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
     .orders .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-        background: #ffac00;
+        background: gray;
         color: whitesmoke !important;
     }
 
@@ -51,32 +51,57 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
+                        <%--page orders--%>
                         <div class="tab-pane fade show active my-2" id="orders" role="tabpanel"
                              aria-labelledby="home-tab">
                             <c:forEach var="order" items="${orders.getContent()}" varStatus="loop">
                                 <div data-bs-toggle="collapse" data-bs-target="#order-detail${loop.index}"
                                      style="cursor: pointer"
                                      class="my-2 flex-wrap d-flex justify-content-between align-items-center">
-                                    <span class="order_name">${order.order_name}</span>
-                                    <span class="order_name">${order.order_amount}</span>
-                                    <span class="order_name">${order.create_at}</span>
-                                        ${order.orderStateString()}
+                                    <table id="responsive-data-table" class="table">
+                                        <thead>
+                                            <tr style="background: lightgray">
+                                                <th>Name Order</th>
+                                                <th>Total</th>
+                                                <th>Time create order</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                            <tr>
+                                                <td class="order_name" >${order.order_name}</td>
+                                                <td class="order_name">$${order.order_amount}</td>
+                                                <td class="order_name">${order.create_at}</td>
+                                                <td clss="order_name" >${order.orderStateString()}</td>
+                                            </tr>
+                                    </table>
                                 </div>
                                 <div class="collapse" id="order-detail${loop.index}">
-                                    <c:forEach var="product" items="${order.productCart}">
-                                        <div class="d-flex flex-wrap justify-content-between align-items-center my-2">
-                                            <c:forEach varStatus="loop_in" var="image"
-                                                       items="${product.product.thumbnails}">
-                                                <c:if test="${loop_in.index == 0}">
-                                                    <img height="50" style="object-fit: cover"
-                                                         src="${pageContext.request.contextPath}${image.path}">
-                                                </c:if>
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Image</th>
+                                                <th>Name</th>
+                                                <th>Quantity</th>
+                                                <th>Price</th>
+                                            </tr>
+                                            </thead>
+                                            <c:forEach var="product" items="${order.productCart}">
+                                                <tr>
+                                                    <td>
+                                                        <c:forEach varStatus="loop_in" var="image"
+                                                                   items="${product.product.thumbnails}">
+                                                            <c:if test="${loop_in.index == 0}">
+                                                                <img height="50" style="object-fit: cover"
+                                                                     src="${pageContext.request.contextPath}${image.path}">
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </td>
+                                                    <td>${product.product.product_name}</td>
+                                                    <td>${product.quantity}</td>
+                                                    <td>${product.product.product_price}</td>
+                                                </tr>
                                             </c:forEach>
-                                            <span>name : ${product.product.product_name}</span>
-                                            <span>quantity : ${product.quantity}</span>
-                                            <span>price : ${product.product.product_price}</span>
-                                        </div>
-                                    </c:forEach>
+                                        </table>
                                 </div>
                             </c:forEach>
                         </div>
@@ -86,26 +111,53 @@
                                     <div data-bs-toggle="collapse" data-bs-target="#order-detail${loop.index}"
                                          style="cursor: pointer"
                                          class="my-2 flex-wrap d-flex justify-content-between align-items-center">
-                                        <span class="order_name">${order.order_name}</span>
-                                        <span class="order_name">$${order.order_amount}</span>
-                                        <span class="order_name">${order.create_at}</span>
-                                            ${order.orderStateString()}
+                                        <table id="responsive-data-table-1" class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Name Order</th>
+                                                <th>Total</th>
+                                                <th>Time create order</th>
+                                                <th>Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tr>
+                                                <td class="order_name" >${order.order_name}</td>
+                                                <td class="order_name">$${order.order_amount}</td>
+                                                <td class="order_name">${order.create_at}</td>
+                                                <td clss="order_name" >${order.orderStateString()}</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                     <div class="collapse" id="order-detail${loop.index}">
-                                        <c:forEach var="product" items="${order.productCart}">
                                             <div class="d-flex flex-wrap justify-content-between align-items-center my-2">
-                                                <c:forEach varStatus="loop_in" var="image"
-                                                           items="${product.product.thumbnails}">
-                                                    <c:if test="${loop_in.index == 0}">
-                                                        <img height="50" style="object-fit: cover"
-                                                             src="${pageContext.request.contextPath}${image.path}">
-                                                    </c:if>
-                                                </c:forEach>
-                                                <span>name : ${product.product.product_name}</span>
-                                                <span>quantity : ${product.quantity}</span>
-                                                <span>price : ${product.product.product_price}</span>
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Image</th>
+                                                        <th>Name</th>
+                                                        <th>Quantity</th>
+                                                        <th>Price</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <c:forEach var="product" items="${order.productCart}">
+                                                        <tr>
+                                                            <td>
+                                                                <c:forEach varStatus="loop_in" var="image"
+                                                                           items="${product.product.thumbnails}">
+                                                                    <c:if test="${loop_in.index == 0}">
+                                                                        <img height="50" style="object-fit: cover"
+                                                                             src="${pageContext.request.contextPath}${image.path}">
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                            </td>
+                                                            <td>${product.product.product_name}</td>
+                                                            <td>${product.quantity}</td>
+                                                            <td>${product.product.product_price}</td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </table>
                                             </div>
-                                        </c:forEach>
+
                                     </div>
                                 </c:if>
                             </c:forEach>
@@ -116,26 +168,52 @@
                                     <div data-bs-toggle="collapse" data-bs-target="#order-detail${loop.index}"
                                          style="cursor: pointer"
                                          class="my-2 flex-wrap d-flex justify-content-between align-items-center">
-                                        <span class="order_name">${order.order_name}</span>
-                                        <span class="order_name">$${order.order_amount}</span>
-                                        <span class="order_name">${order.create_at}</span>
-                                            ${order.orderStateString()}
+                                        <table id="responsive-data-table-2" class="table">
+                                            <thead>
+                                            <tr style="background: lightgray">
+                                                <th>Name Order</th>
+                                                <th>Total</th>
+                                                <th>Time create order</th>
+                                                <th>Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tr>
+                                                <td class="order_name" >${order.order_name}</td>
+                                                <td class="order_name">$${order.order_amount}</td>
+                                                <td class="order_name">${order.create_at}</td>
+                                                <td clss="order_name" >${order.orderStateString()}</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                     <div class="collapse" id="order-detail${loop.index}">
-                                        <c:forEach var="product" items="${order.productCart}">
                                             <div class="d-flex flex-wrap justify-content-between align-items-center my-2">
-                                                <c:forEach varStatus="loop_in" var="image"
-                                                           items="${product.product.thumbnails}">
-                                                    <c:if test="${loop_in.index == 0}">
-                                                        <img height="50" style="object-fit: cover"
-                                                             src="${pageContext.request.contextPath}${image.path}">
-                                                    </c:if>
-                                                </c:forEach>
-                                                <span>name : ${product.product.product_name}</span>
-                                                <span>quantity : ${product.quantity}</span>
-                                                <span>price : ${product.product.product_price}</span>
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Image</th>
+                                                        <th>Name</th>
+                                                        <th>Quantity</th>
+                                                        <th>Price</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <c:forEach var="product" items="${order.productCart}">
+                                                        <tr>
+                                                            <td>
+                                                                <c:forEach varStatus="loop_in" var="image"
+                                                                           items="${product.product.thumbnails}">
+                                                                    <c:if test="${loop_in.index == 0}">
+                                                                        <img height="50" style="object-fit: cover"
+                                                                             src="${pageContext.request.contextPath}${image.path}">
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                            </td>
+                                                            <td>${product.product.product_name}</td>
+                                                            <td>${product.quantity}</td>
+                                                            <td>${product.product.product_price}</td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </table>
                                             </div>
-                                        </c:forEach>
                                     </div>
                                 </c:if>
                             </c:forEach>
@@ -146,26 +224,52 @@
                                     <div data-bs-toggle="collapse" data-bs-target="#order-detail${loop.index}"
                                          style="cursor: pointer"
                                          class="my-2 flex-wrap d-flex justify-content-between align-items-center">
-                                        <span class="order_name">${order.order_name}</span>
-                                        <span class="order_name">$${order.order_amount}</span>
-                                        <span class="order_name">${order.create_at}</span>
-                                            ${order.orderStateString()}
+                                        <table id="responsive-data-table-3" class="table">
+                                            <thead>
+                                            <tr style="background: lightgray">
+                                                <th>Name Order</th>
+                                                <th>Total</th>
+                                                <th>Time create order</th>
+                                                <th>Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tr>
+                                                <td class="order_name" >${order.order_name}</td>
+                                                <td class="order_name">$${order.order_amount}</td>
+                                                <td class="order_name">${order.create_at}</td>
+                                                <td clss="order_name" >${order.orderStateString()}</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                     <div class="collapse" id="order-detail${loop.index}">
-                                        <c:forEach var="product" items="${order.productCart}">
                                             <div class="d-flex flex-wrap justify-content-between align-items-center my-2">
-                                                <c:forEach varStatus="loop_in" var="image"
-                                                           items="${product.product.thumbnails}">
-                                                    <c:if test="${loop_in.index == 0}">
-                                                        <img height="50" style="object-fit: cover"
-                                                             src="${pageContext.request.contextPath}${image.path}">
-                                                    </c:if>
-                                                </c:forEach>
-                                                <span>name : ${product.product.product_name}</span>
-                                                <span>quantity : ${product.quantity}</span>
-                                                <span>price : ${product.product.product_price}</span>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Image</th>
+                                                            <th>Name</th>
+                                                            <th>Quantity</th>
+                                                            <th>Price</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <c:forEach var="product" items="${order.productCart}">
+                                                            <tr>
+                                                                <td>
+                                                                    <c:forEach varStatus="loop_in" var="image"
+                                                                               items="${product.product.thumbnails}">
+                                                                        <c:if test="${loop_in.index == 0}">
+                                                                            <img height="50" style="object-fit: cover"
+                                                                                 src="${pageContext.request.contextPath}${image.path}">
+                                                                        </c:if>
+                                                                    </c:forEach>
+                                                                </td>
+                                                                <td>${product.product.product_name}</td>
+                                                                <td>${product.quantity}</td>
+                                                                <td>${product.product.product_price}</td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </table>
                                             </div>
-                                        </c:forEach>
                                     </div>
                                 </c:if>
                             </c:forEach>
@@ -177,26 +281,52 @@
                                     <div data-bs-toggle="collapse" data-bs-target="#order-detail${loop.index}"
                                          style="cursor: pointer"
                                          class="my-2 flex-wrap d-flex justify-content-between align-items-center">
-                                        <span class="order_name">${order.order_name}</span>
-                                        <span class="order_name">$${order.order_amount}</span>
-                                        <span class="order_name">${order.create_at}</span>
-                                            ${order.orderStateString()}
+                                        <table id="responsive-data-table-4" class="table">
+                                            <thead>
+                                            <tr style="background: lightgray">
+                                                <th>Name Order</th>
+                                                <th>Total</th>
+                                                <th>Time create order</th>
+                                                <th>Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tr>
+                                                <td class="order_name" >${order.order_name}</td>
+                                                <td class="order_name">$${order.order_amount}</td>
+                                                <td class="order_name">${order.create_at}</td>
+                                                <td clss="order_name" >${order.orderStateString()}</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                     <div class="collapse" id="order-detail${loop.index}">
-                                        <c:forEach var="product" items="${order.productCart}">
                                             <div class="d-flex flex-wrap justify-content-between align-items-center my-2">
-                                                <c:forEach varStatus="loop_in" var="image"
-                                                           items="${product.product.thumbnails}">
-                                                    <c:if test="${loop_in.index == 0}">
-                                                        <img height="50" style="object-fit: cover"
-                                                             src="${pageContext.request.contextPath}${image.path}">
-                                                    </c:if>
-                                                </c:forEach>
-                                                <span>name : ${product.product.product_name}</span>
-                                                <span>quantity : ${product.quantity}</span>
-                                                <span>price : ${product.product.product_price}</span>
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Image</th>
+                                                        <th>Name</th>
+                                                        <th>Quantity</th>
+                                                        <th>Price</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <c:forEach var="product" items="${order.productCart}">
+                                                    <tr>
+                                                        <td>
+                                                            <c:forEach varStatus="loop_in" var="image"
+                                                                       items="${product.product.thumbnails}">
+                                                                <c:if test="${loop_in.index == 0}">
+                                                                    <img height="50" style="object-fit: cover"
+                                                                         src="${pageContext.request.contextPath}${image.path}">
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </td>
+                                                        <td>${product.product.product_name}</td>
+                                                        <td>${product.quantity}</td>
+                                                        <td>${product.product.product_price}</td>
+                                                    </tr>
+                                                    </c:forEach>
+                                                </table>
                                             </div>
-                                        </c:forEach>
                                     </div>
                                 </c:if>
                             </c:forEach>
