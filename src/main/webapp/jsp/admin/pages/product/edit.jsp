@@ -206,8 +206,8 @@
                                                       class="form-label">Sort Description</spForm:label>
                                         <spForm:input path="product_desc" id="product_desc" hidden="hidden"/>
                                         <spForm:textarea path="product_desc" id="desc" cssClass="form-control"
-                                                  cssStyle="border: 2px solid #ced4da!important;" rows="2"
-                                                  required="true"></spForm:textarea>
+                                                         cssStyle="border: 2px solid #ced4da!important;" rows="2"
+                                                         required="true" value="${single_product.product_desc}" />
                                     </div>
                                         <%-- colors--%>
                                     <div class="col-md-4 mb-25  mt-3">
@@ -264,10 +264,10 @@
                                         <label class="form-label">Full Detail</label>
                                         <spForm:input path="product_detail" id="detail" hidden="hidden"
                                                       required="true"/>
-                                        <spForm:textarea path="edit_detail" id="edit_detail"
-                                                  cssStyle="border: 2px solid #ced4da!important;"
-                                                  cssClass="form-control" rows="4"
-                                                  required="true"></spForm:textarea>
+                                        <spForm:textarea path="product_detail" id="edit_detail"
+                                                         cssStyle="border: 2px solid #ced4da!important;"
+                                                         cssClass="form-control" rows="4"
+                                                         required="true" value="${single_product.product_detail}"/>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Product Tags
