@@ -5,10 +5,10 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -18,6 +18,11 @@ public class ProductCart {
     private String Id;
 
     int quantity;
+    @OneToMany
+    Set<Color> pickedColors = new HashSet<>();
+
+    @OneToMany
+    Set<Size> pickedSizes = new HashSet<>();
 
     @OneToOne
     private Product product;

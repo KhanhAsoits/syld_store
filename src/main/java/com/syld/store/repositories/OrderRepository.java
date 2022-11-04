@@ -21,7 +21,9 @@ public interface OrderRepository extends JpaRepository<OrderEntity, String> {
 
     Page<OrderEntity> findAllByUser(User user, Pageable pageable);
 
-    @Query(value = "select * from order_entity ",nativeQuery = true)
+    @Query(value = "select * from order_entity ", nativeQuery = true)
     OrderEntity getAll();
 
+    @Query(value = "select * from order_entity where order_state = 0", nativeQuery = true)
+    OrderEntity findUnpaidOrder();
 }

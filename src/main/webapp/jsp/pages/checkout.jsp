@@ -51,8 +51,6 @@
                             <div class="margin_between">
                                 <div class="input_box space_between">
                                     <label>Full name </label>
-
-
                                     <spForm:input readonly="true" value="${cart.user.username}" path="user.username"
                                                   type="text"/>
                                 </div>

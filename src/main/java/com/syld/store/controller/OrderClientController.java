@@ -4,6 +4,7 @@ import com.syld.store.dto.CardDto;
 import com.syld.store.dto.CartClientView;
 import com.syld.store.dto.OrderDetail;
 import com.syld.store.dto.OrderDto;
+import com.syld.store.entities.OrderEntity;
 import com.syld.store.services.Cart.CartService;
 import com.syld.store.services.order.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -65,6 +66,20 @@ public class OrderClientController extends BaseController {
             model.addAttribute("card", new CardDto());
             model.addAttribute("cart", cartClientView);
             return view(model, "Order Detail", "checkout", this.layout_path, true);
+        } catch (Exception e) {
+            log.info(e.getMessage());
+            return "redirect:/home";
+        }
+    }
+
+    @GetMapping(path = "/paid/{order_id}")
+    public String OrderDetailById(Model model, @PathVariable String order_id) {
+        try {
+            OrderDto orderEntity = orderService.getById(order_id);
+            model.addAttribute("order", new OrderDto());
+            model.addAttribute("card", new CardDto());
+            model.addAttribute("order_detail", orderEntity);
+            return view(model, "Order Detail", "checkout_order", this.layout_path, true);
         } catch (Exception e) {
             log.info(e.getMessage());
             return "redirect:/home";
