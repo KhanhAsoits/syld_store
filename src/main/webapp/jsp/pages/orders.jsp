@@ -2,11 +2,13 @@
 <style>
     .orders .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
         background: gray;
+        margin-inside: 0 50px !important;
         color: whitesmoke !important;
     }
 
     .orders .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link {
         color: black !important;
+
         font-weight: 700 !important;
     }
 </style>
@@ -19,36 +21,34 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="orders-tab" data-bs-toggle="tab"
                                     data-bs-target="#orders" type="button" role="tab" aria-controls="home"
-                                    aria-selected="true">Orders
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link " id="order-wait-tab" data-bs-toggle="tab"
-                                    data-bs-target="#waiting" type="button" role="tab" aria-controls="home"
-                                    aria-selected="true">Confirming Orders
+                                    aria-selected="true"><img style="width: 60px; height: 60px" src="${pageContext.request.contextPath}/assets/images/icons/list.png" />
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
                                     data-bs-target="#unpaid_order"
-                                    type="button" role="tab" aria-controls="profile" aria-selected="false">Unpaid
-                                Orders
+                                    type="button" role="tab" aria-controls="profile" aria-selected="false"><img style="width: 60px; height: 60px" src="${pageContext.request.contextPath}/assets/images/icons/unpaid-money.png" />
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
-                                    data-bs-target="#success_order"
-                                    type="button" role="tab" aria-controls="contact" aria-selected="false">Success
-                                Orders
+                            <button class="nav-link " id="order-wait-tab" data-bs-toggle="tab"
+                                    data-bs-target="#waiting" type="button" role="tab" aria-controls="home"
+                                    aria-selected="true"><img style="width: 60px; height: 60px" src="${pageContext.request.contextPath}/assets/images/icons/confirmation.png" />
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="acac-tab" data-bs-toggle="tab"
                                     data-bs-target="#shipping_order"
-                                    type="button" role="tab" aria-controls="contact" aria-selected="false">Shipping
-                                Orders
+                                    type="button" role="tab" aria-controls="contact" aria-selected="false"><img style="width: 60px; height: 60px" src="${pageContext.request.contextPath}/assets/images/icons/shiping.png" />
                             </button>
                         </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+                                    data-bs-target="#success_order"
+                                    type="button" role="tab" aria-controls="contact" aria-selected="false"><img style="width: 60px; height: 60px;" src="${pageContext.request.contextPath}/assets/images/icons/success.png" />
+                            </button>
+                        </li>
+
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <%--page orders--%>

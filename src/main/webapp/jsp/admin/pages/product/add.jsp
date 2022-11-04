@@ -304,8 +304,7 @@
                                             <c:forEach var="size" items="${sizes}" varStatus="loop">
                                                 <div class="form-check form-check-inline ">
                                                     <c:if test="${loop.index == 0 }">
-                                                        <spForm:checkbox path="sizes" value="${size.size_name}"
-                                                                         required="true"/>
+                                                        <spForm:checkbox path="sizes" value="${size.size_name}"/>
                                                         <label>${size.size_name}</label>
                                                     </c:if>
                                                     <c:if test="${loop.index!=0}">

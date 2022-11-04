@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spForm" uri="http://www.springframework.org/tags/form" %>
 <div class="ht__breadcrumb__area bg--gray">
     <div class="container">
         <div class="row">
@@ -88,6 +90,54 @@
                                     <input id="remaining_amount" name="remaining_amount" type="text" value="${single_product.product_quantity}" style="border: 0px" readonly="readonly">
                                     <br><br>
                                 </div>
+                                <div class="col-md-4 mb-25  mt-3">
+                                <spForm:form var="color" onclick="checkbox" cssStyle="align-content: center"/>
+                                    <label class="form-label">Colors</label>
+                                    <div class="form-checkbox-box d-flex justify-content-start align-items-center colors">
+                                        <c:forEach var="color" items="${colors}" varStatus="loop">
+                                            <div class="form-check form-check-inline ">
+                                                <c:if test="${loop.index == 0 }">
+                                                    <spForm:checkbox path="colors" value="${color.color_code}"/>
+                                                    <label>${color.color_code}</label>
+                                                </c:if>
+                                                <c:if test="${loop.index!=0}">
+                                                    <spForm:checkbox path="colors" value="${color.color_code}"/>
+                                                    <label>${color.color_code}</label>
+                                                </c:if>
+                                                <c:if test="${loop.index == 0 }">
+                                                    <spForm:checkbox path="colors" value="${color.color_code}"/>
+                                                    <label>${color.color_code}</label>
+                                                </c:if>
+                                                <c:if test="${loop.index!=0}">
+                                                    <spForm:checkbox path="colors" value="${color.color_code}"/>
+                                                    <label>${color.color_code}</label>
+                                                </c:if>
+                                            </div>
+                                        </c:forEach>
+                                    </div>
+                                <spForm:form/>
+                                </div>
+
+                                <div class="col-md-8 mb-25  mt-3">
+                                    <spForm:form var="size" onclick="checkbox" cssStyle="align-content: center"/>
+                                    <label path="sizes" class="form-label">Size</label>
+                                    <div class="form-checkbox-box d-flex justify-content-start align-items-center sizes">
+                                        <c:forEach var="size" items="${sizes}" varStatus="loop">
+                                            <div class="form-check form-check-inline ">
+                                                <c:if test="${loop.index == 0 }">
+                                                    <spForm:checkbox path="sizes" value="${size.size_name}"/>
+                                                    <label>${size.size_name}</label>
+                                                </c:if>
+                                                <c:if test="${loop.index!=0}">
+                                                    <spForm:checkbox path="sizes" value="${size.size_name}"/>
+                                                    <label>${size.size_name}</label>
+                                                </c:if>
+                                            </div>
+                                        </c:forEach>
+                                    </div>
+                                    <spForm:form/>
+                                </div>
+                                <br>
                                 <div class="product_meta">
 											<span class="posted_in">Category:
 												<a href="${pageContext.request.contextPath}/store?category=${single_product.category.category_slug}">${single_product.category.category_name}</a>,
