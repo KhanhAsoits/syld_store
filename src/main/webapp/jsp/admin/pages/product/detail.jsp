@@ -86,16 +86,19 @@
                                             </c:forEach>
                                         </p>
                                         <ul class="product-size">
+                                            <p class="product-sku">Size :
                                             <c:forEach var="size" items="${single_product.sizes}">
                                                 <li class="size"><span>${size.size_name}</span></li>
                                             </c:forEach>
+                                            </p>
                                         </ul>
                                         <ul class="product-color">
+                                            <p class="product-sku">Color :
                                             <c:forEach var="color" items="${single_product.colors}">
                                                 <li class="color"><span
                                                         style="background-color:${color.color_code};"></span></li>
                                             </c:forEach>
-
+                                            </p>
                                         </ul>
                                         <div class="product-stock">
                                             <div class="stock">

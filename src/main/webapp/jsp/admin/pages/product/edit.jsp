@@ -286,7 +286,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <spForm:button type="submit" class="btn btn-primary">Submit</spForm:button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
 
                                 </div>
@@ -345,8 +345,8 @@
         }
     })
 
-    CKEDITOR.instances['edit_detail'].setData('${single_product.product_detail}')
-    CKEDITOR.instances['desc'].setData('${single_product.product_desc}')
+    CKEDITOR.instances['edit_detail'].setData(`${single_product.product_detail}`)
+    CKEDITOR.instances['desc'].setData(`${single_product.product_desc}`)
 
     const handleSetup = e => {
         let input = document.getElementById(e.target.dataset.id)
