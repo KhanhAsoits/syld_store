@@ -6,7 +6,7 @@
                 <div class="breadcrumb__inner text-center">
                     <h2 class="breadcrumb-title">Shopping Cart</h2>
                     <nav class="breadcrumb-content">
-                        <a class="breadcrumb_item" href="index.html">Home</a>
+                        <a class="breadcrumb_item" href="/home">Home</a>
                         <span class="brd-separator">/</span>
                         <span class="breadcrumb_item active">Shopping Cart</span>
                     </nav>
