@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping(path = "/admin/dashbroads")
-public class DashbroadController extends BaseController {
+public class DashBroadController extends BaseController {
 
     private final DashbroadService dashbroadService;
 

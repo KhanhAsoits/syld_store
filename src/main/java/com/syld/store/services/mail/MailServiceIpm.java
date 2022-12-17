@@ -42,4 +42,5 @@ public class MailServiceIpm implements MailService {
     public boolean sendAttachment(MailDetail mailDetail) {
         return false;
     }
+
 }
