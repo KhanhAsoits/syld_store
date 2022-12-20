@@ -5,7 +5,5 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public interface DashbroadService extends ICrudService {
-
-    List getAll();
+public interface DashboardService extends ICrudService<String,String> {
 }

@@ -8,6 +8,7 @@ import com.syld.store.entities.ProductCart;
 import com.syld.store.entities.User;
 import com.syld.store.repositories.OrderRepository;
 import com.syld.store.services.Cart.CartService;
+import com.syld.store.services.mail.MailService;
 import com.syld.store.services.product.ProductService;
 import com.syld.store.services.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,7 @@ import java.util.UUID;
 @Slf4j
 public class OrderServiceIpm implements OrderService {
     private final CartService cartService;
+    private final MailService mailService;
     private final UserService userService;
     private final ProductService productService;
 
@@ -115,7 +117,15 @@ public class OrderServiceIpm implements OrderService {
             }
             order.get().setOrder_state(1);
             orderRepository.save(order.get());
+//            mail body
 
+
+            MailDetail mailDetail = new MailDetail();
+            mailDetail.setTo(order.get().getUser().getEmail());
+            mailDetail.setMgs("Bạn vừa đặt một đơn hàng thành công");
+            mailDetail.setSubject("Đặt hàng thành công");
+//           send mail
+            mailService.sendSimpleMail(mailDetail);
             cartService.clear(order.get().getUser());
         }
     }
