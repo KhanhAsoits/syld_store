@@ -10,4 +10,8 @@ public class CartDto {
     String product_id;
     String user_id;
     int quantity = 1;
+
+    String picked_color;
+
+    String picked_size;
 }

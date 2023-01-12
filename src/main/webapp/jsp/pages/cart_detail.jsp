@@ -27,16 +27,16 @@
                                 <tr>
                                     <spForm:input path="productCarts[${loop.index}].id" readonly="true"
                                                   value="${cart.productCarts.stream().toList().get(loop.index).id}" cssStyle="visibility: hidden"/>
-                                    <td class="product-thumbnail"><a href="#">
+                                    <td class="product-thumbnail"><a href="${pageContext.request.contextPath}/products/${product.product.slug}">
                                         <c:forEach var="image" items="${product.product.thumbnails}"
                                                    varStatus="loop_in">
                                         <c:if test="${loop_in.index == 1}">
-                                        <a href="${pageContext.request.contextPath}">
-                                            <img src="${pageContext.request.contextPath}${image.path}" style="border-radius:4px"
+                                        <a href="${pageContext.request.contextPath}/products/${product.product.slug}">
+                                            <img src="${pageContext.request.contextPath}${image.path}" style="border-radius:4px;max-height: 200px;min-height: 100px"
                                                  alt="product images"></a>
                                         </c:if>
                                         </c:forEach>
-                                    <td class="product-name"><a href="#">${product.product.product_name}</a></td>
+                                    <td class="product-name"><a href="${pageContext.request.contextPath}/products/${product.product.slug}">${product.product.product_name}</a></td>
                                     <td class="product-price"><span
                                             class="amount">${cart.getSalePrice(product.product)}00 VND</span></td>
                                     <td class="product-quantity">

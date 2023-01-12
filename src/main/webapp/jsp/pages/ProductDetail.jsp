@@ -95,15 +95,18 @@
 
                                     <ul class="product-size">
                                         <span>Size:</span>
-                                        <c:forEach var="size" items="${single_product.sizes}">
-                                            <checkbox class="size" ><span>${size.size_name}</span></checkbox>
+                                        <c:forEach var="size"  varStatus="loop" items="${single_product.sizes}">
+                                            <input type="radio" value=${size.id}"  style="margin: 4px" name="size" class="size"  ><span>${size.size_name}</span></input>
                                         </c:forEach>
                                     </ul>
                                     <ul class="product-color">
                                         <span>Color:</span>
+
                                         <c:forEach var="color" items="${single_product.colors}">
-                                            <checkbox class="color"><span
-                                                    style="background-color:${color.color_code};"></span></checkbox>
+                                            <input type="radio"  value="${color.id}" style="margin: 0 2px" name="color" class="size" />
+                                            <span style="background-color:${color.color_code}; width: 30px; height: 30px; border-radius: 100px; display: inline-block;">
+                                            </span>
+
                                         </c:forEach>
 
                                     </ul>

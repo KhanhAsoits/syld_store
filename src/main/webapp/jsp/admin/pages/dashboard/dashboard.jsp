@@ -202,7 +202,7 @@
                                     </td>
                                     <td class="d-none d-lg-table-cell">${order.getProductQuantity()}</td>
                                     <td class="d-none d-lg-table-cell">${order.create_at}</td>
-                                    <td class="d-none d-lg-table-cell">$${order.order_amount}</td>
+                                    <td class="d-none d-lg-table-cell">${order.order_amount}00 VND</td>
                                     <td>
                                         <span class="badge badge-success">${order.order_state}</span>
                                     </td>

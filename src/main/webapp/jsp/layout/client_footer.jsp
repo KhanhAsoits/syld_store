@@ -1,4 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!-- Footer Area -->
 <footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
     <div class="footer-static-top">
@@ -18,10 +20,10 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th scope="col">Discover Syld</th>
-                                        <th scope="col"> Online Service</th>
-                                        <th scope="col">In-store Service</th>
-                                        <th scope="col">About Syld</th>
+                                        <th scope="col">Danh mục Syld</th>
+                                        <th scope="col"> Dịch vụ online</th>
+                                        <th scope="col">Dịch vụ tại cửa hàng</th>
+                                        <th scope="col">Thông tin Syld</th>
                                     </tr>
                                     </thead>
                                     <tbody>
