@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <footer class="footer mt-auto">
     <div class="copyright bg-white">
         <p>

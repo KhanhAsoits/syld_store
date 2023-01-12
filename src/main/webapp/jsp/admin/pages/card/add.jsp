@@ -1,5 +1,6 @@
 <%@ taglib prefix="spForm" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <style>
     .form-control {
         border: 2px solid #ced4da !important;
@@ -73,11 +74,11 @@
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
                 <h1>Add Cards</h1>
-                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/admin">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Cards</p>
+                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/admin">Trang chủ</a></span>
+                    <span><i class="mdi mdi-chevron-right"></i></span>Thẻ ngân hàng</p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/cards" class="btn btn-primary"> View All
+                <a href="${pageContext.request.contextPath}/admin/cards" class="btn btn-primary"> Danh sách thẻ ngân hàng
                 </a>
             </div>
         </div>
@@ -85,7 +86,7 @@
             <div class="col-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Add Card</h2>
+                        <h2>Thêm thẻ ngân hàng</h2>
                     </div>
                     <div class="card-body">
                         <%--@elvariable id="cards" type=""--%>
@@ -118,7 +119,7 @@
                                 <div class="ec-vendor-upload-detail row">
                                     <div class="col-md-6">
                                         <spForm:label path="card_brand"
-                                                      class="form-label">Name Card</spForm:label>
+                                                      class="form-label">Tên thẻ ngân hàng</spForm:label>
                                         <spForm:input path="card_brand" cssClass="form-control slug-title"
                                                       cssStyle="border: 2px solid #ced4da!important"
                                                       required="true"/>
@@ -126,7 +127,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <spForm:label path="card_number"
-                                                      class="form-label">Number Card</spForm:label>
+                                                      class="form-label">Số thẻ tài khoản</spForm:label>
                                         <spForm:input path="card_number" cssClass="form-control slug-title" type="email"
                                                       cssStyle="border: 2px solid #ced4da!important"
                                                       required="true"/>
@@ -138,7 +139,7 @@
 
                                     <div class="col-md-6">
                                         <spForm:label path="user_id"
-                                                      class="form-label">User Name</spForm:label>
+                                                      class="form-label">Tên Chủ tài khoản</spForm:label>
                                         <spForm:select path="user_id" cssClass="form-control">
                                             <c:forEach var="user_id" items="${users}">
                                                 <option value="${user.user_name}">${user.user_name}</option>
@@ -149,7 +150,7 @@
                                     <div class="my-2 col-12"></div>
 
                                     <div class="col-md-12">
-                                        <spForm:button type="submit" class="btn btn-primary">Submit</spForm:button>
+                                        <spForm:button type="submit" class="btn btn-primary">Xác nhận</spForm:button>
                                     </div>
                                 </div>
                             </div>

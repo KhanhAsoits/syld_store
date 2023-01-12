@@ -1,15 +1,16 @@
 <%@ taglib prefix="spForm" uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="ec-content-wrapper">
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Add Brand</h1>
-                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/home">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Brand</p>
+                <h1>Thêm thương hiệu mới</h1>
+                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/home">Trang chủ</a></span>
+                    <span><i class="mdi mdi-chevron-right"></i></span>Thương hiệu</p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/brands" class="btn btn-primary"> View All
+                <a href="${pageContext.request.contextPath}/admin/brands" class="btn btn-primary"> Danh sách thương hiệu
                 </a>
             </div>
         </div>
@@ -17,7 +18,7 @@
             <div class="col-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Add Brand</h2>
+                        <h2>Thêm thương hiệu mới</h2>
                     </div>
 
                     <%--@elvariable id="brands" type=""--%>
@@ -53,25 +54,25 @@
                                         <div class="row g-3">
                                             <div class="col-md-6">
                                                 <spForm:label path="brand_name"
-                                                              class="form-label">Brand name</spForm:label>
+                                                              class="form-label">Tên thương hiệu</spForm:label>
                                                 <spForm:input path="brand_name" type="text"
                                                               class="form-control slug-title" required="true"/>
                                                 <spForm:errors path="brand_name" cssStyle="color: red;font-size: 12px"/>
                                                 <br/>
                                                 <spForm:label path="brand_slug"
-                                                              class="form-label">Brand Slug</spForm:label>
+                                                              class="form-label">Tên thương hiệu ( không dấu )</spForm:label>
                                                 <spForm:input path="brand_slug" type="text"
                                                               class="form-control slugstitle" required="true"/>
                                                 <spForm:errors path="brand_slug" cssStyle="color: red;font-size: 12px"/>
                                                 <br/>
                                                 <spForm:label path="brand_desc"
-                                                              class="form-label">Brand Descrition</spForm:label>
+                                                              class="form-label">Mô tả về thương hiệu</spForm:label>
                                                 <spForm:textarea path="brand_desc" type="text"
                                                               class="form-control slug-title" required="true"/>
                                                 <spForm:errors path="brand_desc" cssStyle="color: red;font-size: 12px"/>
                                             </div>
                                             <div class="col-md-12 my-3">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-primary">Xác nhận</button>
                                             </div>
                                         </div>
                                     </div>

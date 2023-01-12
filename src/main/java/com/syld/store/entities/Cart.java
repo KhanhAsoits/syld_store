@@ -29,5 +29,4 @@ public class Cart {
     @OneToMany
     Set<ProductCart> productCarts = new HashSet<>();
 
-
 }

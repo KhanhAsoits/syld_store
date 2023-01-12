@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <style>
     .bottom-information {
         width: 100% !important;
@@ -12,13 +13,12 @@
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Card</h1>
-                <p class="breadcrumbs"><span><a href="home">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Card</p>
+                <h1>Thẻ ngân hàng</h1>
+                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/admin/dashboard">Trang chủ</a></span>
+                    <span><i class="mdi mdi-chevron-right"></i></span>Danh sách thẻ ngân hàng</p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/cards/create" class="btn btn-primary"> Add
-                    Card</a>
+                <a href="${pageContext.request.contextPath}/admin/cards/create" class="btn btn-primary"> Thêm thẻ ngân hàng mới</a>
             </div>
 
         </div>
@@ -32,11 +32,11 @@
                                 <thead>
                                 <tr>
 
-                                    <th>Image Card</th>
-                                    <th>Name Card</th>
-                                    <th>Number Card</th>
-                                    <th>State</th>
-                                    <th>Action</th>
+                                    <th>Hình ảnh thẻ</th>
+                                    <th>Tên thẻ ngân hàng</th>
+                                    <th>Số thẻ ngân hàng</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thao tác</th>
                                 </tr>
                                 </thead>
                                 <tbody>

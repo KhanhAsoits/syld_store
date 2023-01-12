@@ -1,6 +1,7 @@
 <%@ page import="java.util.Base64" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spForm" uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%--@elvariable id="cart_update" type=""--%>
 <div class="cart-main-area section-padding--lg bg--white my-5">
     <spForm:form modelAttribute="cart_update" method="post"
@@ -12,12 +13,12 @@
                         <table>
                             <thead>
                             <tr class="title-top">
-                                <th class="product-thumbnail">Image</th>
-                                <th class="product-name">Product</th>
-                                <th class="product-price">Price</th>
-                                <th class="product-quantity">Quantity</th>
-                                <th class="product-subtotal">Total</th>
-                                <th class="product-remove">Remove</th>
+                                <th class="product-thumbnail">Hình ảnh</th>
+                                <th class="product-name">Sản phẩm</th>
+                                <th class="product-price">Đơn giá</th>
+                                <th class="product-quantity">Số lượng</th>
+                                <th class="product-subtotal">Tổng giá</th>
+                                <th class="product-remove">Xóa</th>
                             </tr>
                             </thead>
                             <tbody id="cart-detail-table">
@@ -31,13 +32,13 @@
                                                    varStatus="loop_in">
                                         <c:if test="${loop_in.index == 1}">
                                         <a href="${pageContext.request.contextPath}">
-                                            <img src="${pageContext.request.contextPath}${image.path}"
+                                            <img src="${pageContext.request.contextPath}${image.path}" style="border-radius:4px"
                                                  alt="product images"></a>
                                         </c:if>
                                         </c:forEach>
                                     <td class="product-name"><a href="#">${product.product.product_name}</a></td>
                                     <td class="product-price"><span
-                                            class="amount">$${cart.getSalePrice(product.product)}</span></td>
+                                            class="amount">${cart.getSalePrice(product.product)}00 VND</span></td>
                                     <td class="product-quantity">
                                         <spForm:input onchange="totalProcess(this)"
                                                       data-per="${cart.getSalePrice(product.product)}"
@@ -45,7 +46,7 @@
                                                       max="${product.product.product_quantity}"
                                                       path="productCarts[${loop.index}].quantity"/></td>
                                     <td class="product-subtotal">
-                                        $${cart.getSalePrice(product.product) * product.quantity}</td>
+                                        ${cart.getSalePrice(product.product) * product.quantity}00 VND</td>
                                     <td class="product-remove"><a data-product="${product.id}"
                                                                   data-user="${email}"
                                                                   onclick="removeFromCart(this)"
@@ -60,7 +61,7 @@
                         <ul
                                 class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
                             <li><button type="submit" style="border: none;padding:0">
-                                <a>Update Cart</a>
+                                <a>Cập nhật giỏ hàng</a>
                             </button></li>
                             <li><a href="javascript:void(0)" onclick="function processBeforeCheckout() {
                                                         if (document.getElementById('cart-total').textContent.replace('$','').trim() === '0'){
@@ -72,8 +73,7 @@
                                                         }
                                                    }
                                                    processBeforeCheckout()"
-                                   data-link="${pageContext.request.contextPath}/order/<%=Base64.getEncoder().encodeToString(request.getAttribute("email").toString().getBytes())%>">Check
-                                Out</a></li>
+                                   data-link="${pageContext.request.contextPath}/order/<%=Base64.getEncoder().encodeToString(request.getAttribute("email").toString().getBytes())%>">Thanh toán</a></li>
                         </ul>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
             <div class="cartbox__total__area">
                 <div class="cart__total__amount">
                     <span>Grand Total</span>
-                    <span class="grand-total">$140</span>
+                    <span class="grand-total">14000 VND</span>
                 </div>
             </div>
         </div>

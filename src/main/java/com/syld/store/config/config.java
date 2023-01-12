@@ -13,12 +13,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebSecurity
 @Configuration
 @RequiredArgsConstructor
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class config {
+public class config implements WebMvcConfigurer {
     private final HandleSuccessAuthentication handleSuccessAuthentication;
     private final HandleFailureAuthentication handleFailureAuthentication;
 
@@ -51,5 +53,11 @@ public class config {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().antMatchers("/assets/**");
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedMethods("*");
     }
 }
