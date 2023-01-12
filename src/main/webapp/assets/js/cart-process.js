@@ -52,7 +52,7 @@ const handleLoadCartUI = (products, user) => {
                     <h6>
                         <a href="${window.location.origin}/products/${val.product.slug}">${val.product.product_name}</a>
                     </h6>
-                    <span class="price" data-quantity="${val.quantity}">$${val.product.product_price}</span>
+                    <span class="price" data-quantity="${val.quantity}">${val.product.product_price}00 VND</span>
                     <span style="font-size: 14px">Quantity : ${val.quantity}</span>
                 </div>
                 <div class="product_price d-flex justify-content-between">
@@ -96,7 +96,7 @@ function processGrandTotal() {
     let grand_total = 0;
     if (list_total) {
         list_total.forEach((val, index) => {
-            grand_total += parseInt(val.textContent.replace("$", "").trim())
+            grand_total += parseInt(val.textContent.replace(".000 VND", "").trim())
         })
         let grand_el = document.querySelector(".grand-total")
         if (grand_el) {

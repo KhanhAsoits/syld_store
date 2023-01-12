@@ -2,6 +2,7 @@
 <%@ page import="com.syld.store.dto.ProductViewDto" %>
 <%@ page import="com.syld.store.dto.ShopViewDto" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!-- End Search Popup -->
 <!-- Start breadcrumb area -->
 <div class="ht__breadcrumb__area bg-image--5">
@@ -13,17 +14,17 @@
                         <h2 style="color: black" class="breadcrumb-title">${category.category_name}</h2>
                     </c:if>
                     <c:if test="${category==null}">
-                        <h2 style="color:black;" class="breadcrumb-title">Store</h2>
+                        <h2 style="color:black;" class="breadcrumb-title">Cửa hàng</h2>
                     </c:if>
                     <nav class="breadcrumb-content">
                         <a class="breadcrumb_item" style="color: black"
-                           href="${pageContext.request.contextPath}/">Home</a>
+                           href="${pageContext.request.contextPath}/">Trang chủ</a>
                         <span class="brd-separator" style="color: black">/</span>
                         <c:if test="${category!=null}">
                             <span style="color: black" class="breadcrumb_item active">${category.category_name}</span>
                         </c:if>
                         <c:if test="${category==null}">
-                            <span style="color:black;" class="breadcrumb_item active">Store</span>
+                            <span style="color:black;" class="breadcrumb_item active">Cửa hàng</span>
                         </c:if>
                     </nav>
                 </div>
@@ -39,7 +40,7 @@
             <div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
                 <div class="shop__sidebar">
                     <aside class="widget__categories products--cat">
-                        <h3 class="widget__title">Product Categories</h3>
+                        <h3 class="widget__title">Danh mục sản phẩm</h3>
                         <ul>
                             <c:forEach var="category" items="${data.categories}">
                                 <li>
@@ -49,7 +50,7 @@
                         </ul>
                     </aside>
                     <aside class="widget__categories pro--range">
-                        <h3 class="widget__title">Filter by price</h3>
+                        <h3 class="widget__title">Lọc theo giá </h3>
                         <div class="content-shopby">
                             <div class="price_filter s-filter clear">
                                 <form action="#" method="GET">
@@ -57,10 +58,10 @@
                                     <div class="slider__range--output">
                                         <div class="price__output--wrap">
                                             <div class="price--output">
-                                                <span>Price :</span><input type="text" id="amount" readonly="">
+                                                <span>Giá :</span><input type="text" id="amount" readonly="">
                                             </div>
                                             <div class="price--filter">
-                                                <a href="#">Filter</a>
+                                                <a href="#">Bộ lọc</a>
                                             </div>
                                         </div>
                                     </div>
@@ -69,7 +70,7 @@
                         </div>
                     </aside>
                     <aside class="widget__categories products--tag">
-                        <h3 class="widget__title">Product Tags</h3>
+                        <h3 class="widget__title">Từ khóa sản phẩm</h3>
                         <ul>
                             <c:forEach var="tag" items="${data.tags}">
                                 <li>
@@ -94,18 +95,19 @@
                                    href="#nav-list"
                                    role="tab"><i class="fa fa-list"></i></a>
                             </div>
-                            <p>Showing ${data.productViewDtoList.getContent().size()}
-                                of ${data.productViewDtoList.getTotalElements()}
-                                results</p>
+                            <p>Hiển thị ${data.productViewDtoList.getContent().size()}
+                                trên ${data.productViewDtoList.getTotalElements()}
+                                Kết quả</p>
                             <div class="orderby__wrapper">
-                                <span>Sort By</span>
+                                <span>Sắp xếp theo</span>
                                 <select class="shot__byselect">
-                                    <option>Default sorting</option>
-                                    <option>HeadPhone</option>
-                                    <option>Furniture</option>
-                                    <option>Jewellery</option>
-                                    <option>Handmade</option>
-                                    <option>Kids</option>
+
+                                    <option>Mặc định</option>
+                                    <option>Trang sức</option>
+                                    <option>Nước hoa</option>
+                                    <option>Quần áo</option>
+                                    <option>Phụ kiện</option>
+                                    <option>Giày</option>
                                 </select>
                             </div>
                         </div>
@@ -128,7 +130,7 @@
                                                 src="${pageContext.request.contextPath}${product.images_con.get(1).path}"
                                                 alt="product image"></a>
                                         <div class="hot__box">
-                                            <span class="hot-label">BEST SALLER</span>
+                                            <span class="hot-label">Siêu giảm giá</span>
                                         </div>
                                     </div>
                                     <div class="product__content content--center">
@@ -313,77 +315,16 @@
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="modal-product">
-                        <!-- Start product images -->
-                        <div class="product-images">
-                            <div class="main-image images">
-                                <img alt="big images" src="images/product/big-img/1.jpg">
-                            </div>
-                        </div>
-                        <!-- end product images -->
-                        <div class="product-info">
-                            <h1>Simple Fabric Bags</h1>
-                            <div class="rating__and__review">
-                                <ul class="rating">
-                                    <li><span class="ti-star"></span></li>
-                                    <li><span class="ti-star"></span></li>
-                                    <li><span class="ti-star"></span></li>
-                                    <li><span class="ti-star"></span></li>
-                                    <li><span class="ti-star"></span></li>
-                                </ul>
-                                <div class="review">
-                                    <a href="#">4 customer reviews</a>
-                                </div>
-                            </div>
-                            <div class="price-box-3">
-                                <div class="s-price-box">
-                                    <span class="new-price">$17.20</span>
-                                    <span class="old-price">$45.00</span>
-                                </div>
-                            </div>
-                            <div class="quick-desc">
-                                Designed for simplicity and made from high quality materials. Its sleek geometry
-                                and material combinations creates a modern look.
-                            </div>
-                            <div class="select__color">
-                                <h2>Select color</h2>
-                                <ul class="color__list">
-                                    <li class="red"><a title="Red" href="#">Red</a></li>
-                                    <li class="gold"><a title="Gold" href="#">Gold</a></li>
-                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
-                                    <li class="orange"><a title="Orange" href="#">Orange</a></li>
-                                </ul>
-                            </div>
-                            <div class="select__size">
-                                <h2>Select size</h2>
-                                <ul class="color__list">
-                                    <li class="l__size"><a title="L" href="#">L</a></li>
-                                    <li class="m__size"><a title="M" href="#">M</a></li>
-                                    <li class="s__size"><a title="S" href="#">S</a></li>
-                                    <li class="xl__size"><a title="XL" href="#">XL</a></li>
-                                    <li class="xxl__size"><a title="XXL" href="#">XXL</a></li>
-                                </ul>
-                            </div>
-                            <div class="social-sharing">
-                                <div class="widget widget_socialsharing_widget">
-                                    <h3 class="widget-title-modal">Share this product</h3>
-                                    <ul class="social__net social__net--2 d-flex justify-content-start">
-                                        <li class="facebook"><a href="#" class="rss social-icon"><i
-                                                class="zmdi zmdi-rss"></i></a></li>
-                                        <li class="linkedin"><a href="#" class="linkedin social-icon"><i
-                                                class="zmdi zmdi-linkedin"></i></a></li>
-                                        <li class="pinterest"><a href="#" class="pinterest social-icon"><i
-                                                class="zmdi zmdi-pinterest"></i></a></li>
-                                        <li class="tumblr"><a href="#" class="tumblr social-icon"><i
-                                                class="zmdi zmdi-tumblr"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="addtocart-btn">
-                                <a href="#">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
+                   <h1>Điều khoản & Chú ý</h1>
+                    <br><br>
+                    <h3>I. Thời gian giao hàng</h3>
+                    <p> Thời gian giao hàng sẽ từ 5-7 ngày (slow) và 2-3 ngày (Nhanh).</p>
+                    <br>
+                    <h3>II. Điều khoản đổi trả hàng.</h3>
+                    <p>Hàng được hoàn lại nếu có lỗi phát sinh trong vòng 7 ngày và điều kiện chưa bóc nhãn mác dán của sản phẩm.</p>
+                    <br>
+                    <h3>III. Chăm sóc khách hàng</h3>
+                    <p>Khách hàng sẽ được hỗ trợ tư vấn miễn phí về các vấn đề về sản phẩm và cách sử dụng.</p>
                 </div>
             </div>
         </div>

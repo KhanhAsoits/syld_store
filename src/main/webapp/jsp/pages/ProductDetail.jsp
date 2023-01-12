@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spForm" uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="ht__breadcrumb__area bg--gray">
     <div class="container">
         <div class="row">
@@ -8,7 +9,7 @@
                 <div class="breadcrumb__inner text-center">
                     <h2 class="breadcrumb-title" style="color: black">${single_product.product_name}</h2>
                     <nav class="breadcrumb-content">
-                        <a class="breadcrumb_item" style="color: black" href="index.html">Home</a>
+                        <a class="breadcrumb_item" style="color: black" href="${pageContext.request.contextPath}/home">Trang chủ</a>
                         <span style="color: black" class="brd-separator">/</span>
                         <span class="breadcrumb_item active" style="color: black">${single_product.product_name}</span>
                     </nav>
@@ -48,47 +49,10 @@
                                     </ul>
                                 </div>
                                 <div class="price-box">
-                                    <span>$${single_product.getSalePrice()}</span>
+                                    <span>${single_product.getSalePrice()}00 VND</span>
                                 </div>
                                 <div class="product__overview">
                                     ${single_product.product_desc}
-                                </div>
-                                <div class="box-tocart d-flex">
-                                    <span>amount </span>
-                                    <input id="qty" class="input-text qty" name="qty" min="1"
-                                           max="${single_product.product_quantity}" value="1"
-                                           title="Qty" type="number">
-                                    <div class="addtocart__actions">
-                                        <c:if test="${cart!=null}">
-                                            <button class="tocart" data-limit="${single_product.product_quantity}"
-                                                    onclick="addProductToCart(this)" href="javascript:void(0)"
-                                                    data-cart="${cart.id}" data-email="${email}"
-                                                    data-product="${single_product.id}">Add to Cart
-                                            </button>
-                                        </c:if>
-                                        <c:if test="${email!=null && cart == null}">
-                                            <button class="tocart" data-limit="${single_product.product_quantity}"
-                                                    onclick="addProductToCart(this)" data-email="${email}"
-                                                    href="javascript:void(0)" data-product="${single_product.id}">Add
-                                                to Cart
-                                            </button>
-                                        </c:if>
-                                        <c:if test="${email==null && cart == null}">
-                                            <a class="tocart py-2" data-limit="${single_product.product_quantity}"
-                                                    href="${pageContext.request.contextPath}/auth/login"
-                                                    data-product="${single_product.id}">Add to Cart
-                                            </a>
-                                        </c:if>
-                                    </div>
-                                    <div class="product-addto-links clearfix">
-                                        <a class="wishlist" href="#"></a>
-                                        <a class="compare" href="#"></a>
-                                    </div>
-                                </div>
-                                <div>
-                                    <span>Remaining Amount :</span>
-                                    <input id="remaining_amount" name="remaining_amount" type="text" value="${single_product.product_quantity}" style="border: 0px" readonly="readonly">
-                                    <br><br>
                                 </div>
 
                                 <div class="col-md-4 mb-25  mt-3">
@@ -96,7 +60,7 @@
                                     <ul class="product-size">
                                         <span>Size:</span>
                                         <c:forEach var="size"  varStatus="loop" items="${single_product.sizes}">
-                                            <input type="radio" value=${size.id}"  style="margin: 4px" name="size" class="size"  ><span>${size.size_name}</span></input>
+                                            <input type="radio" value=${size.id}"  style="margin: 4px; height= 10px;" name="size" class="size"  ><span>${size.size_name}</span></input>
                                         </c:forEach>
                                     </ul>
                                     <ul class="product-color">
@@ -111,15 +75,52 @@
 
                                     </ul>
                                 </div>
+                                <div class="box-tocart d-flex">
+                                    <span>Số lượng </span>
+                                    <input id="qty" class="input-text qty" name="qty" min="1"
+                                           max="${single_product.product_quantity}" value="1"
+                                           title="Qty" type="number">
+                                    <div class="addtocart__actions">
+                                        <c:if test="${cart!=null}">
+                                            <button class="tocart" data-limit="${single_product.product_quantity}"
+                                                    onclick="addProductToCart(this)" href="javascript:void(0)"
+                                                    data-cart="${cart.id}" data-email="${email}"
+                                                    data-product="${single_product.id}">Thêm vào giỏ hàng
+                                            </button>
+                                        </c:if>
+                                        <c:if test="${email!=null && cart == null}">
+                                            <button class="tocart" data-limit="${single_product.product_quantity}"
+                                                    onclick="addProductToCart(this)" data-email="${email}"
+                                                    href="javascript:void(0)" data-product="${single_product.id}">Thêm vào giỏ hàng
+                                            </button>
+                                        </c:if>
+                                        <c:if test="${email==null && cart == null}">
+                                            <a class="tocart py-2" data-limit="${single_product.product_quantity}"
+                                                    href="${pageContext.request.contextPath}/auth/login"
+                                                    data-product="${single_product.id}">Thêm vào giỏ hàng
+                                            </a>
+                                        </c:if>
+                                    </div>
+                                    <div class="product-addto-links clearfix">
+                                        <a class="wishlist" href="#"></a>
+                                        <a class="compare" href="#"></a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span>Số lượng còn lại :</span>
+                                    <input id="remaining_amount" name="remaining_amount" type="text" value="${single_product.product_quantity}" style="border: 0px" readonly="readonly">
+                                    <br><br>
+                                </div>
+
                                 <br>
                                 <div class="product_meta">
-											<span class="posted_in">Category:
+											<span class="posted_in">Danh mục:
 												<a href="${pageContext.request.contextPath}/store?category=${single_product.category.category_slug}">${single_product.category.category_name}</a>,
 											</span>
                                 </div>
                                 <div class="product-share">
                                     <ul>
-                                        <li class="categories-title">Share :</li>
+                                        <li class="categories-title">Chia sẻ :</li>
                                         <li>
                                             <a href="#" class="d-flex justify-content-center align-items-center">
                                                 <i class="icon-social-twitter icons"></i>
@@ -149,7 +150,7 @@
                 <div class="product__info__detailed">
                     <div class="pro_details_nav nav justify-content-start" role="tablist">
                         <a class="nav-item nav-link active" data-bs-toggle="tab" href="#nav-details"
-                           role="tab">Details</a>
+                           role="tab">Chi tiết</a>
                         <%--                        <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-review" role="tab">Reviews</a>--%>
                     </div>
                     <div class="tab__container tab-content">
@@ -159,115 +160,11 @@
                                 ${single_product.product_detail}
                             </div>
                         </div>
-                        <!-- End Single Tab Content -->
-                        <!-- Start Single Tab Content -->
-                        <%--                        <div class="pro__tab_label tab-pane fade" id="nav-review" role="tabpanel">--%>
-                        <%--                            <div class="review__attribute">--%>
-                        <%--                                <h1>Customer Reviews</h1>--%>
-                        <%--                                <h2>Hastech</h2>--%>
-                        <%--                                <div class="review__ratings__type d-flex">--%>
-                        <%--                                    <div class="review-ratings">--%>
-                        <%--                                        <div class="rating-summary d-flex">--%>
-                        <%--                                            <span>Quality</span>--%>
-                        <%--                                            <ul class="rating d-flex">--%>
-                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                            </ul>--%>
-                        <%--                                        </div>--%>
-
-                        <%--                                        <div class="rating-summary d-flex">--%>
-                        <%--                                            <span>Price</span>--%>
-                        <%--                                            <ul class="rating d-flex">--%>
-                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                            </ul>--%>
-                        <%--                                        </div>--%>
-                        <%--                                        <div class="rating-summary d-flex">--%>
-                        <%--                                            <span>value</span>--%>
-                        <%--                                            <ul class="rating d-flex">--%>
-                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                            </ul>--%>
-                        <%--                                        </div>--%>
-                        <%--                                    </div>--%>
-                        <%--                                    <div class="review-content">--%>
-                        <%--                                        <p>Hastech</p>--%>
-                        <%--                                        <p>Review by Hastech</p>--%>
-                        <%--                                        <p>Posted on 11/6/2018</p>--%>
-                        <%--                                    </div>--%>
-                        <%--                                </div>--%>
-                        <%--                            </div>--%>
-                        <%--                            <div class="review-fieldset">--%>
-                        <%--                                <h2>You're reviewing:</h2>--%>
-                        <%--                                <h3>Chaz Kangeroo Hoodie</h3>--%>
-                        <%--                                <div class="review-field-ratings">--%>
-                        <%--                                    <div class="product-review-table">--%>
-                        <%--                                        <div class="review-field-rating d-flex">--%>
-                        <%--                                            <span>Quality</span>--%>
-                        <%--                                            <ul class="rating d-flex">--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                            </ul>--%>
-                        <%--                                        </div>--%>
-                        <%--                                        <div class="review-field-rating d-flex">--%>
-                        <%--                                            <span>Price</span>--%>
-                        <%--                                            <ul class="rating d-flex">--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                            </ul>--%>
-                        <%--                                        </div>--%>
-                        <%--                                        <div class="review-field-rating d-flex">--%>
-                        <%--                                            <span>Value</span>--%>
-                        <%--                                            <ul class="rating d-flex">--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                                <li class="off"><i class="zmdi zmdi-star"></i></li>--%>
-                        <%--                                            </ul>--%>
-                        <%--                                        </div>--%>
-                        <%--                                    </div>--%>
-                        <%--                                </div>--%>
-                        <%--                                <div class="review_form_field">--%>
-                        <%--                                    <div class="input__box">--%>
-                        <%--                                        <span>Nickname</span>--%>
-                        <%--                                        <input id="nickname_field" type="text" name="nickname">--%>
-                        <%--                                    </div>--%>
-                        <%--                                    <div class="input__box">--%>
-                        <%--                                        <span>Summary</span>--%>
-                        <%--                                        <input id="summery_field" type="text" name="summery">--%>
-                        <%--                                    </div>--%>
-                        <%--                                    <div class="input__box">--%>
-                        <%--                                        <span>Review</span>--%>
-                        <%--                                        <textarea name="review"></textarea>--%>
-                        <%--                                    </div>--%>
-                        <%--                                    <div class="review-form-actions">--%>
-                        <%--                                        <button>Submit Review</button>--%>
-                        <%--                                    </div>--%>
-                        <%--                                </div>--%>
-                        <%--                            </div>--%>
-                        <%--                        </div>--%>
-                        <!-- End Single Tab Content -->
                     </div>
                 </div>
                 <div class="wn__related__product pt--80 pb--50">
                     <div class="section__title text-center">
-                        <h2 class="title__be--2">Related Products</h2>
+                        <h2 class="title__be--2">Những sản phẩm liên quan</h2>
                     </div>
                     <div class="row mt--60">
                         <div class="productcategory__slide--2 arrows_style owl-carousel owl-theme">
@@ -284,7 +181,7 @@
                                                 src="${pageContext.request.contextPath}${product.images_con.get(0).path}"
                                                 alt="product image"></a>
                                         <div class="hot__box">
-                                            <span class="hot-label">RELATED</span>
+                                            <span class="hot-label">Có liên quan</span>
                                         </div>
                                     </div>
                                     <div class="product__content content--center">
