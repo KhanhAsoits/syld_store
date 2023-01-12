@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <style>
     .bottom-information {
         width: 100% !important;
@@ -12,13 +13,12 @@
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Brand</h1>
-                <p class="breadcrumbs"><span><a href="home">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Brand</p>
+                <h1>Thương hiệu</h1>
+                <p class="breadcrumbs"><span><a href="home">Trang chủ </a></span>
+                    <span><i class="mdi mdi-chevron-right"></i></span>Thương hiệu</p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/brands/create" class="btn btn-primary"> Add
-                    Brand</a>
+                <a href="${pageContext.request.contextPath}/admin/brands/create" class="btn btn-primary"> Thêm mới thương hiệu</a>
             </div>
         </div>
         <div class="row">
@@ -31,12 +31,12 @@
                                 <thead>
                                 <tr>
 
-                                    <th>Logo Image</th>
-                                    <th>Name</th>
-                                    <th>Slug</th>
-                                    <th>State</th>
-                                    <th>Describe</th>
-                                    <th>Action</th>
+                                    <th>Logo thương hiệu</th>
+                                    <th>Tên thương hiệu</th>
+                                    <th>Tên không dấu </th>
+                                    <th>Trạng thái</th>
+                                    <th>Mô tả</th>
+                                    <th>Thao tác</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -52,19 +52,19 @@
                                         <td>
                                             <div class="btn-group mb-1">
                                                 <button type="button"
-                                                        class="btn btn-outline-success"><a href="${pageContext.request.contextPath}/admin/brands/${brand.brand_slug}">Info</a>
+                                                        class="btn btn-outline-success"><a href="${pageContext.request.contextPath}/admin/brands/${brand.brand_slug}">Chi tiết</a>
                                                 </button>
                                                 <button type="button"
                                                         class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false" data-display="static">
-                                                    <span class="sr-only">Info</span>
+                                                    <span class="sr-only">Chi tiết</span>
                                                 </button>
 
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/brands/update/${brand.brand_slug}">Edit</a>
+                                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/brands/update/${brand.brand_slug}">Sửa</a>
                                                     <c:if test="${brand.state}">
-                                                        <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/brands/remove/${brand.id}">Delete</a>
+                                                        <a class="dropdown-item" href="${pageContext.request.contextPath}/admin/brands/remove/${brand.id}">Xóa</a>
                                                     </c:if>
                                                 </div>
                                             </div>

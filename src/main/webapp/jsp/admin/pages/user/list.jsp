@@ -52,7 +52,7 @@
                                         <td>${user.username}</td>
                                         <td>${user.email}</td>
                                         <td>${user.address}</td>
-                                        <td>${user.phoneNumber}</td>
+                                        <td>${user.phone_number || ""}</td>
                                         <td>${user.role.role_name}</td>
                                         <td style="color: ${user.state?'blue':'red'}">${user.state?"Active":"Deleted"}</td>
                                         <td>

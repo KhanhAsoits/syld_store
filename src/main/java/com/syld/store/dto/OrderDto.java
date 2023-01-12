@@ -1,6 +1,7 @@
 package com.syld.store.dto;
 
 import com.syld.store.entities.Cart;
+import com.syld.store.entities.Product;
 import com.syld.store.entities.ProductCart;
 import com.syld.store.entities.User;
 import lombok.Data;
@@ -9,7 +10,10 @@ import lombok.Data;
 import javax.validation.constraints.Min;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Data
 public class OrderDto {
@@ -61,23 +65,43 @@ public class OrderDto {
         return String.format("<button class='btn %s' style='%s'>%s</button>", cssClass,cssStyle, content.toLowerCase());
     }
 
+    public int getProductQuantity(){
+        List<Integer> quantities = this.productCart.stream().map(productCart1 -> productCart1.getQuantity()).toList();
+        int quan = 0;
+        for (int quantity : quantities){
+            quan+=quantity;
+        }
+        return quan;
+    }
+
+
+    public String productNameJoin(){
+        List<ProductCart> productCarts =  this.productCart;
+        List<Product> products = new ArrayList<>();
+        productCarts.forEach(productCart1 -> {
+            products.add(productCart1.getProduct());
+        });
+        List<String> productNameList = products.stream().map(product -> product.getProduct_name()).toList();
+        String [] productNameArr = productNameList.toArray(String[]::new);
+        return  Arrays.stream(productNameArr).collect(Collectors.joining(","));
+    }
     public String orderStateString() {
         String result = "";
         switch (this.order_state) {
             case 0:
-                result = format("", "UNPAID", "");
+                result = format("red", "UNPAID", "");
                 break;
             case 1:
-                result = format("", "WAITING CONFIRM", "");
+                result = format("yellow", "WAITING CONFIRM", "");
                 break;
             case 2:
-                result = format("", "SHIPPING", "");
+                result = format("orange", "SHIPPING", "");
                 break;
             case 3:
-                result = format("", "RECEIVED", "");
+                result = format("blue", "RECEIVED", "");
                 break;
             case 4:
-                result = format("", "SUCCESS", "");
+                result = format("lightgreen", "SUCCESS", "");
                 break;
             default:
                 result = format("btn-cancel", "CANCEL", "");
