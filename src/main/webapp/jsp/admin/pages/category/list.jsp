@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <style>
     .bottom-information {
         width: 100% !important;
@@ -12,13 +13,12 @@
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Category</h1>
-                <p class="breadcrumbs"><span><a href="home">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Category</p>
+                <h1>Danh mục sản phẩm</h1>
+                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/admin/dashboard">Trang chủ</a></span>
+                    <span><i class="mdi mdi-chevron-right"></i></span>Danh sách danh mục</p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/categories/create" class="btn btn-primary"> Add
-                    Category</a>
+                <a href="${pageContext.request.contextPath}/admin/categories/create" class="btn btn-primary">Thêm danh mục sản phẩm</a>
             </div>
         </div>
         <div class="row">
@@ -30,12 +30,12 @@
                                    style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Slug</th>
-                                    <th>Parent</th>
-                                    <th>State</th>
-                                    <th>Action</th>
+                                    <th>Ảnh danh mục</th>
+                                    <th>Tên danh mục</th>
+                                    <th>tênn không dấu</th>
+                                    <th>Danh mục chính</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thao tác</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -47,7 +47,7 @@
                                         <td>${category.category_name}</td>
                                         <td>${category.category_slug}</td>
                                         <c:if test="${category.parent==null}">
-                                            <td>Parent</td>
+                                            <td>Danh mục chính</td>
                                         </c:if>
                                         <c:if test="${category.parent!=null}">
                                             <td>${category.parent.category_name}</td>
@@ -57,21 +57,21 @@
                                             <div class="btn-group mb-1">
                                                 <button type="button"
                                                         class="btn btn-outline-success"><a
-                                                        href="${pageContext.request.contextPath}/admin/categories/${category.category_slug}">Info</a>
+                                                        href="${pageContext.request.contextPath}/admin/categories/${category.category_slug}">Chi tiết</a>
                                                 </button>
                                                 <button type="button"
                                                         class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false" data-display="static">
-                                                    <span class="sr-only">Info</span>
+                                                    <span class="sr-only">Chi tiết</span>
                                                 </button>
 
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item"
-                                                       href="${pageContext.request.contextPath}/admin/categories/update/${category.category_slug}">Edit</a>
+                                                       href="${pageContext.request.contextPath}/admin/categories/update/${category.category_slug}">Sửa</a>
                                                     <c:if test="${category.state}">
                                                         <a class="dropdown-item"
-                                                           href="${pageContext.request.contextPath}/admin/categories/remove/${category.id}">Delete</a>
+                                                           href="${pageContext.request.contextPath}/admin/categories/remove/${category.id}">Xóa</a>
                                                     </c:if>
                                                 </div>
                                             </div>

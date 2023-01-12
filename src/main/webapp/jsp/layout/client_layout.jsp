@@ -1,7 +1,7 @@
 <%@ page import="java.util.Base64" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <head>
     <%@include file="./client_header.jsp" %>
     <title>${title}</title>
@@ -71,7 +71,7 @@
                 <div class="col-lg-8 d-none d-lg-block">
                     <nav class="mainmenu__nav">
                         <ul class="meninmenu d-flex justify-content-start">
-                            <li><a href="${pageContext.request.contextPath}/store?page=1&limit=18">Store</a></li>
+                            <li><a href="${pageContext.request.contextPath}/store?page=1&limit=18">Cửa hàng</a></li>
                             <c:forEach var="category" items="${navs}">
                                 <li class="drop with--one--item">
                                     <a href="${pageContext.request.contextPath}/store?category=${category.children[0].category_slug}&page=1&limit=18">${category.parent.category_name}</a>
@@ -87,7 +87,7 @@
                                 </li>
                             </c:forEach>
 
-                            <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
+                            <li><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -116,12 +116,12 @@
                                 <div class="block-minicart minicart__active">
                                     <div class="minicart-content-wrapper">
                                         <div class="micart__close">
-                                            <span>close</span>
+                                            <span>đóng</span>
                                         </div>
                                         <c:if test="${cart!=null}">
                                             <div class="items-total d-flex justify-content-between">
-                                                <span id="cart-item">${cart.productCarts.size()} items</span>
-                                                <span>Cart Subtotal</span>
+                                                <span id="cart-item">${cart.productCarts.size()} Sản phẩm</span>
+                                                <span>Giỏ hàng</span>
                                             </div>
                                             <div class="total_amount text-end">
                                                 <span id="cart-total">$0</span>
@@ -138,9 +138,7 @@
                                                         }
                                                    }
                                                    processBeforeCheckout()"
-                                                   data-link="${pageContext.request.contextPath}/order/<%=Base64.getEncoder().encodeToString(request.getAttribute("email").toString().getBytes())%>">Go
-                                                    to
-                                                    Checkout</a>
+                                                   data-link="${pageContext.request.contextPath}/order/<%=Base64.getEncoder().encodeToString(request.getAttribute("email").toString().getBytes())%>">Thanh toán giỏ hàng</a>
                                             </div>
                                             <div class="single__items">
                                                 <div class="miniproduct" id="cart-product"
@@ -163,8 +161,8 @@
                                                                 <h6>
                                                                     <a href="${pageContext.request.contextPath}/products/${product.product.slug}">${product.product.product_name}</a>
                                                                 </h6>
-                                                                <span class="price" data-quantity="${product.quantity}">$${product.product.product_price}</span>
-                                                                <span style="font-size: 14px">Quantity : ${product.quantity}</span>
+                                                                <span class="price" data-quantity="${product.quantity}">${product.product.product_price}.000VND</span>
+                                                                <span style="font-size: 14px">Số lượng : ${product.quantity}</span>
                                                             </div>
                                                             <div class="product_price d-flex justify-content-between">
                                                                 <ul class="d-flex justify-content-end">
@@ -184,17 +182,15 @@
                                             </div>
                                             <div class="mini_action cart">
                                                 <a class="cart__btn"
-                                                   href="${pageContext.request.contextPath}/cart/client/detail">View and
-                                                    edit cart</a>
+                                                   href="${pageContext.request.contextPath}/cart/client/detail">Xem và sửa giỏ hàng</a>
                                             </div>
                                         </c:if>
                                         <c:if test="${cart==null}">
 
                                             <h6 style="color: rgba(0,0,0,0.5);font-weight: 500;font-size: 18px;text-align: center">
-                                                Nothing in cart >.<
+                                                Chưa có gì trong giỏ hàng >.<
                                             </h6>
-                                            <a href="${pageContext.request.contextPath}/store?page=1&limit=18">shop
-                                                now</a>
+                                            <a href="${pageContext.request.contextPath}/store?page=1&limit=18">Vào cửa hàng nào !</a>
                                         </c:if>
                                     </div>
                                 </div>
@@ -207,35 +203,34 @@
                                     <div class="content-inner">
                                         <div class="switcher-currency">
                                             <strong class="label switcher-label">
-                                                <span>Account</span>
+                                                <span>Tài khoản</span>
                                             </strong>
                                             <div class="switcher-options">
                                                 <div class="switcher-currency-trigger">
                                                     <a href="${pageContext.request.contextPath}/order/my_orders?page=1&limit=8">
                                                          <span
-                                                                 class="currency-trigger">My order</span>
+                                                                 class="currency-trigger">Đơn hàng của tôi</span>
                                                     </a>
-                                                    <span class="currency-trigger">Purchase history</span>
-                                                    <span class="currency-trigger">My rating</span>
+                                                    <span class="currency-trigger">Lịch sử mua hàng</span>
+                                                    <span class="currency-trigger">Đánh giá của tôi</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="switcher-currency">
                                             <strong class="label switcher-label">
-                                                <span>Setting</span>
+                                                <span>Cài đặt</span>
                                             </strong>
                                             <div class="switcher-options">
                                                 <div class="switcher-currency-trigger">
                                                     <div class="setting__menu">
                                                         <sec:authorize access="hasAnyAuthority('role_admin')">
                                                             <span><a
-                                                                    href="${pageContext.request.contextPath}/admin/products">Admin</a></span>
+                                                                    href="${pageContext.request.contextPath}/admin/dashboard">Trang quản trị viên</a></span>
                                                         </sec:authorize>
                                                         <span><a
-                                                                href="${pageContext.request.contextPath}/my_account/detail">My Account</a></span>
-                                                        <span><a href="#">Change Password</a></span>
+                                                                href="${pageContext.request.contextPath}/my_account/detail">Tài khoản của tôi</a></span>
                                                         <span><a
-                                                                href="${pageContext.request.contextPath}/logout">Logout</a></span>
+                                                                href="${pageContext.request.contextPath}/logout">Đăng xuất</a></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -268,7 +263,7 @@
 
                                 </li>
                             </c:forEach>
-                            <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
+                            <li><a href="${pageContext.request.contextPath}/contact">Liên hệ</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -284,14 +279,14 @@
     <div class="box-search-content search_active block-bg close__top">
         <form id="search_mini_form" class="minisearch" action="${pageContext.request.contextPath}/store?page=1&limit=9">
             <div class="field__search">
-                <input type="text" name="keyword" placeholder="Search entire store here...">
+                <input type="text" name="keyword" placeholder="Tìm mọi thứ ở đây...">
                 <div class="action">
                     <a type="submit"><i class="zmdi zmdi-search"></i></a>
                 </div>
             </div>
         </form>
         <div class="close__wrap">
-            <span>close</span>
+            <span>Đóng</span>
         </div>
     </div>
 

@@ -1,4 +1,5 @@
 <!-- Start breadcrumb area -->
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="ht__breadcrumb__area bg-image--3">
     <div class="container">
         <div class="row">
@@ -6,9 +7,9 @@
                 <div class="breadcrumb__inner text-center">
                     <h2 class="breadcrumb-title">Shopping Cart</h2>
                     <nav class="breadcrumb-content">
-                        <a class="breadcrumb_item" href="/home">Home</a>
+                        <a class="breadcrumb_item" href="${pageContext.request.contextPath}/">Trang chủ</a>
                         <span class="brd-separator">/</span>
-                        <span class="breadcrumb_item active">Shopping Cart</span>
+                        <span class="breadcrumb_item active">Giỏ hàng</span>
                     </nav>
                 </div>
             </div>
@@ -26,12 +27,12 @@
                         <table>
                             <thead>
                             <tr class="title-top">
-                                <th class="product-thumbnail">Image</th>
-                                <th class="product-name">Product</th>
-                                <th class="product-price">Price</th>
-                                <th class="product-quantity">Quantity</th>
-                                <th class="product-subtotal">Total</th>
-                                <th class="product-remove">Remove</th>
+                                <th class="product-thumbnail border-radius:3px">Hình ảnh</th>
+                                <th class="product-name">Sản phẩm</th>
+                                <th class="product-price">Đơn giá</th>
+                                <th class="product-quantity">Số lượng</th>
+                                <th class="product-subtotal">Tổng giá</th>
+                                <th class="product-remove">Xóa</th>
                             </tr>
                             </thead>
                             <tbody>

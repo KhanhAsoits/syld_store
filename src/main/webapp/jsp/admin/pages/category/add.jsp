@@ -1,16 +1,18 @@
 <%@ taglib prefix="spForm" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spFOrm" uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="ec-content-wrapper">
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Add Category</h1>
-                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/home">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Category</p>
+                <h1>Thêm danh mục mới</h1>
+                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/dashboard">trang chủ</a></span>
+                    <span><i class="mdi mdi-chevron-right"></i></span></span>Danh sách danh mục
+                    <span><i class="mdi mdi-chevron-right"></i></span>Thêm mới danh mục</p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/categories" class="btn btn-primary"> View All
+                <a href="${pageContext.request.contextPath}/admin/categories" class="btn btn-primary"> Danh sách danh mục
                 </a>
             </div>
         </div>
@@ -18,7 +20,7 @@
             <div class="col-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Add Category</h2>
+                        <h2>Thêm mới danh mục</h2>
                     </div>
                     <%--@elvariable id="category" type=""--%>
                     <spForm:form enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/categories/create" method="post"
@@ -53,28 +55,28 @@
                                         <div class="row g-3">
                                             <div class="col-md-6">
                                                 <spForm:label path="category_name"
-                                                              class="form-label">Category name</spForm:label>
+                                                              class="form-label">Tên danh mục</spForm:label>
                                                 <spForm:input path="category_name" type="text"
                                                               class="form-control slug-title" required="true"/>
                                                 <spFOrm:errors path="category_name" cssStyle="color: red;font-size: 12px"/>
                                                 <br/>
                                                 <spForm:label path="category_slug"
-                                                              class="form-label">Category Slug</spForm:label>
+                                                              class="form-label">Tên không dấu</spForm:label>
                                                 <spForm:input path="category_slug" type="text"
                                                               class="form-control slug-title" required="true"/>
                                                 <spFOrm:errors path="category_slug" cssStyle="color: red;font-size: 12px"/>
                                             </div>
                                             <div class="col-md-6">
-                                                <label class="form-label">Select Parent Categories</label>
+                                                <label class="form-label">Chọn danh mục chính</label>
                                                 <spForm:select path="parent_id" class="form-select">
-                                                    <spForm:option value="parent"><h6>Parent</h6></spForm:option>
+                                                    <spForm:option value="parent"><h6>Danh mục chính (Parent)</h6></spForm:option>
                                                     <c:forEach var="category" items="${parent_categories}">
                                                         <spForm:option value="${category.id}"><h6>${category.category_name}</h6></spForm:option>
                                                     </c:forEach>
                                                 </spForm:select>
                                             </div>
                                             <div class="col-md-12 my-3">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-primary">Xác nhận</button>
                                             </div>
                                         </div>
                                     </div>

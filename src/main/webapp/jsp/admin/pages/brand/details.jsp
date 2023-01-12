@@ -56,7 +56,7 @@
                                         <label class="form-label">Mô tả về thương hiệu</label>
                                         <textarea class="form-control slug-title"
                                                value=" ${brand_detail.category_slug}" readonly>
-
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>

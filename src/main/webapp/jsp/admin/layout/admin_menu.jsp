@@ -3,7 +3,7 @@
     <div id="sidebar" class="sidebar ec-sidebar-footer">
 
         <div class="ec-brand">
-            <a href="index.html" title="Ekka">
+            <a href="${pageContext.request.contextPath}/admin/dashboard" title="Ekka">
                 <img class="ec-brand-icon" src="${pageContext.request.contextPath}/assets/admin/img/logo/Logo.png" alt="" />
                 <span class="ec-brand-name text-truncate">Syld </span>
             </a>
