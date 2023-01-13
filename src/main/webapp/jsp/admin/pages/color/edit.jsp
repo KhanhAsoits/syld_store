@@ -5,9 +5,10 @@
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Edit Color</h1>
-                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/home">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Color</p>
+                <h1>Sửa màu</h1>
+                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/admin/dashboard">Trang chủ</a></span>
+                    <span><i class="mdi mdi-chevron-right"></i></span>Danh sách màu
+                    <span><i class="mdi mdi-chevron-right"></i></span>Sửa màu</p>
             </div>
             <div>
                 <a href="${pageContext.request.contextPath}/admin/colors" class="btn btn-primary"> View All

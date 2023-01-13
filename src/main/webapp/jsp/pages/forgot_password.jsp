@@ -15,22 +15,22 @@
                 <div class="my__account__wrapper">
                     <br>
 
-                    <h4 class="account__title">Reset Password</h4>
+                    <h4 class="account__title">Cập nhật lại mật khẩu</h4>
                     <p style="color: red" class="lead fw-normal mb-0 me-3">${message}</p> <br>
                     <%--@elvariable id="user" type="com.syld.store.dto.UserForgotPassword"--%>
                     <spForm:form action="${pageContext.request.contextPath}/auth/forgot_password" id="loginForm"
                                  method="post" modelAttribute="user">
                         <div class="account__form">
                             <div class="input__box">
-                                <label>Email or Phone <span>*</span></label>
+                                <label>Email hoặc số điện thoại<span>*</span></label>
                                 <spForm:input path="emailOrPhone" id="email" type="email" required="required"/>
                                 <spForm:errors path="emailOrPhone" cssStyle="font-size: 12px;color: red;"/>
                             </div>
                             <div class="form__btn">
-                                <button id="sendBtn">Confirm</button>
+                                <button id="sendBtn">Xác nhận</button>
                             </div>
-                            <p class="small fw-bold mt-2 pt-1 mb-0">Remember your password? </p><a
-                                class="${pageContext.request.contextPath}/auth/login" href="">Login</a>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">Đã nhớ lại mật khẩu ? </p><a
+                                class="${pageContext.request.contextPath}/auth/login" href="">Đăng nhập</a>
 
                         </div>
                     </spForm:form>

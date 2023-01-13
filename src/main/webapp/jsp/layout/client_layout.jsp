@@ -332,9 +332,9 @@
         let amount = 0;
 
         listPrice.forEach((val, index) => {
-            amount += (parseFloat(val.textContent.replace("$", "").trim()) * parseInt(val.dataset.quantity))
+            amount += (parseFloat(val.textContent.replace(".000 VND", "").trim()) * parseInt(val.dataset.quantity))
         })
         if (total) {
-            total.textContent = '$' + amount.toString();
+            total.textContent =   amount.toString() + '.000 VND';
         }
     </script>

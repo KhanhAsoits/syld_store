@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <style>
     .bottom-information {
         width: 100% !important;
@@ -12,13 +13,12 @@
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>PRODUCT</h1>
-                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Product</p>
+                <h1>Danh sách sản phẩm</h1>
+                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/admin/dashboard">Trang chủ</a></span>
+                    <span><i class="mdi mdi-chevron-right"></i></span>Danh sách sản phẩm</p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/products/create" class="btn btn-primary"> Add
-                    Product</a>
+                <a href="${pageContext.request.contextPath}/admin/products/create" class="btn btn-primary"> Thêm mới sản phẩm</a>
             </div>
         </div>
         <div class="row">
@@ -30,17 +30,17 @@
                                    style="width:100%;vertical-align: middle">
                                 <thead>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>Name</th>
-                                    <th>Slug</th>
-                                    <th>Category</th>
-                                    <th>Brand</th>
-                                    <th>Price</th>
-                                    <th>Sale Off</th>
-                                    <th>Stock</th>
-                                    <th>State</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Tên không dấu</th>
+                                    <th>Danh mục</th>
+                                    <th>Thương hiệu</th>
+                                    <th>Giá tiền</th>
+                                    <th>Giảm giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thời gian tạo</th>
+                                    <th>Thao tác</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -59,7 +59,7 @@
                                         <td>${product.slug}</td>
                                         <td>${product.category.category_name}</td>
                                         <td>${product.brand.brand_name}</td>
-                                        <td>${product.product_price}</td>
+                                        <td>${product.product_price}00 VND</td>
                                         <td>${product.sale_off}</td>
                                         <td>${product.product_quantity}</td>
                                         <td style="color: ${product.state?'blue':'red'}">${product.state?"Active":"Deleted"}</td>
@@ -68,21 +68,21 @@
                                             <div class="btn-group mb-1">
                                                 <button type="button"
                                                         class="btn btn-outline-success"><a
-                                                        href="${pageContext.request.contextPath}/admin/products/${product.id}">Info</a>
+                                                        href="${pageContext.request.contextPath}/admin/products/${product.id}">Chi tiết</a>
                                                 </button>
                                                 <button type="button"
                                                         class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false" data-display="static">
-                                                    <span class="sr-only">Info</span>
+                                                    <span class="sr-only">Chi tiết</span>
                                                 </button>
 
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item"
-                                                       href="${pageContext.request.contextPath}/admin/products/update/${product.id}">Edit</a>
+                                                       href="${pageContext.request.contextPath}/admin/products/update/${product.id}">Sửa</a>
                                                     <c:if test="${product.state}">
                                                         <a class="dropdown-item"
-                                                           href="${pageContext.request.contextPath}/admin/products/remove/${product.id}">Delete</a>
+                                                           href="${pageContext.request.contextPath}/admin/products/remove/${product.id}">Xóa</a>
                                                     </c:if>
                                                 </div>
                                             </div>

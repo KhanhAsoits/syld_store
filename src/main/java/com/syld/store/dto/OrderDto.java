@@ -89,19 +89,19 @@ public class OrderDto {
         String result = "";
         switch (this.order_state) {
             case 0:
-                result = format("red", "UNPAID", "");
+                result = format("red", "Chưa thanh toán ", "");
                 break;
             case 1:
-                result = format("yellow", "WAITING CONFIRM", "");
+                result = format("yellow", "Chờ xác nhận", "");
                 break;
             case 2:
-                result = format("orange", "SHIPPING", "");
+                result = format("orange", "Đang giao", "");
                 break;
             case 3:
-                result = format("blue", "RECEIVED", "");
+                result = format("blue", "Đơn Hủy", "");
                 break;
             case 4:
-                result = format("lightgreen", "SUCCESS", "");
+                result = format("lightgreen", "Đã xác nhận", "");
                 break;
             default:
                 result = format("btn-cancel", "CANCEL", "");

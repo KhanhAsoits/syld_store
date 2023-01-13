@@ -10,7 +10,9 @@ function addProductToCart(e) {
         id: cart_id ? cart_id : "",
         product_id: product_id,
         user_id: user_id,
-        quantity: quantity ? quantity.value : 1
+        quantity: quantity ? quantity.value : 1,
+        picked_color:pickedColor,
+        picked_size:pickedSize
     }
 
     $.ajax({

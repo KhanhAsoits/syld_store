@@ -35,9 +35,9 @@
                                             </li>
                                         </c:forEach>
                                         </td>
-                                        <td><a href="#">Advise</a><br><a href=""> Make an Appointment</a></td>
-                                        <td><a href="#">Search Store</a></td>
-                                        <td><a href="#">Contact</a><br><a href=""> Rules</a><br><a href=""> Support</a>
+                                        <td><a href="#">Tư vấn</a><br><a href="">Hẹn trước mua hàng</a></td>
+                                        <td><a href="#">Tìm kiếm cửa hàng</a><br><a href="#">Tư vấn trực tiếp</a></td>
+                                        <td><a href="#">Liên hệ</a><br><a href=""> Điều khoản</a><br><a href=""> Hỗ trợ</a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -57,12 +57,12 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <ul class="nav">
                         <li class="nav-item">
-                            <h4>Change Area - Language :</h4>
+                            <h4>Đổi Khu vực - Ngôn ngữ :</h4>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
                                 <button type="button" class=" dropdown-toggle" data-toggle="dropdown">
-                                    Viet Nam
+                                    Việt Nam
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">America</a>
@@ -75,7 +75,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <button type="button" class=" dropdown-toggle" data-toggle="dropdown">
-                                    Vietnamese
+                                    Tiếng Việt
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">English</a>

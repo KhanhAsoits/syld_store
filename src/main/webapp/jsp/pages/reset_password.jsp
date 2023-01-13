@@ -13,7 +13,7 @@
             <div class="col-12 col-md-3 col-lg-4"></div>
             <div class="col-12 col-md-6  col-lg-4">
                 <div class="my__account__wrapper">
-                    <h4 class="account__title">Forgot Password</h4>
+                    <h4 class="account__title">Quên mật khẩu</h4>
                     <p style="color: red" class="lead fw-normal mb-0 me-3">${message}</p> <br>
                     <%--@elvariable id="user" type="com.syld.store.dto.ResetPasswordDto"--%>
                     <spForm:form action="${pageContext.request.contextPath}/auth/reset_password" id="loginForm"
@@ -21,20 +21,20 @@
                         <spForm:input path="email" value="${user_email}" cssStyle="visibility: hidden"/>
                         <div class="account__form">
                             <div class="input__box">
-                                <label>New Password<span>*</span></label>
+                                <label>Mật khẩu mới<span>*</span></label>
                                 <spForm:input path="new_password" id="email" type="password" required="required"/>
                                 <spForm:errors path="new_password" cssStyle="font-size: 12px;color: red;"/>
                             </div>
                             <div class="input__box">
-                                <label>Re New Password<span>*</span></label>
+                                <label>Nhập lại mật khẩu mới<span>*</span></label>
                                 <spForm:input path="re_new_password" id="email" type="password" required="required"/>
                                 <spForm:errors path="re_new_password" cssStyle="font-size: 12px;color: red;"/>
                             </div>
                             <div class="form__btn">
-                                <button id="sendBtn">Confirm</button>
+                                <button id="sendBtn">Xác nhận</button>
                             </div>
-                            <p class="small fw-bold mt-2 pt-1 mb-0">Remember your password? </p><a
-                                class="${pageContext.request.contextPath}/auth/login" href="">Login</a>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">Đã nhớ mật khẩu </p><a
+                                class="${pageContext.request.contextPath}/auth/login" href="">Đăng nhập</a>
 
                         </div>
                     </spForm:form>

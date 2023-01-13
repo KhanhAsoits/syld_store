@@ -64,7 +64,7 @@
                                 <a>Cập nhật giỏ hàng</a>
                             </button></li>
                             <li><a href="javascript:void(0)" onclick="function processBeforeCheckout() {
-                                                        if (document.getElementById('cart-total').textContent.replace('$','').trim() === '0'){
+                                                        if (document.getElementById('cart-total').textContent.replace('00 VND','').trim() === '0'){
                                                             Toast.fire({
                                                                 title:'Cart Empty'
                                                             })

@@ -1,16 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spForm" uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!-- Start breadcrumb area -->
 <div class="ht__breadcrumb__area bg-image--4">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__inner text-center">
-                    <h2 class="breadcrumb-title">Checkout</h2>
+                    <h2 class="breadcrumb-title">Thanh toán</h2>
                     <nav class="breadcrumb-content">
-                        <a class="breadcrumb_item" href="index.html">Home</a>
+                        <a class="breadcrumb_item" href="${pageContext.request.contextPath}/home">Trang chủ</a>
                         <span class="brd-separator">/</span>
-                        <span class="breadcrumb_item active">Checkout</span>
+                        <span class="breadcrumb_item active">Thanh toán</span>
                     </nav>
                 </div>
             </div>
@@ -25,14 +26,14 @@
             <div class="col-lg-12">
                 <div class="wn_checkout_wrap">
                     <div class="checkout_info">
-                        <span>Have a coupon? </span>
-                        <a class="showcoupon" href="#">Click here to enter your code</a>
+                        <span>Bạn có phiếu giảm giá ? </span>
+                        <a class="showcoupon" href="#">Hãy nhập mã giảm giá vào đây !</a>
                     </div>
                     <div class="checkout_coupon">
                         <form action="#">
                             <div class="form__coupon">
-                                <input type="text" placeholder="Coupon code">
-                                <button>Apply coupon</button>
+                                <input type="text" placeholder="Nhập mã giảm giá">
+                                <button>Xác nhận phiếu giảm giá</button>
                             </div>
                         </form>
                     </div>
@@ -46,34 +47,34 @@
                 <spForm:input path="id" value="${order_detail.id}" cssStyle="visibility: hidden"/>
                 <div class="col-lg-6 col-12">
                     <div class="customer_details">
-                        <h3>Billing details</h3>
+                        <h3>Hóa đơn thanh toán</h3>
                         <div class="customar__field">
                             <div class="margin_between">
                                 <div class="input_box space_between">
-                                    <label>Full name </label>
+                                    <label>Họ và tên  </label>
                                     <spForm:input readonly="true" value="${cart.user.username}" path="user.username"
                                                   type="text"/>
                                 </div>
                             </div>
                             <div class="input_box">
-                                <label>Company name </label>
+                                <label>Tên cửa hàng </label>
                                 <input type="text" value="SYLD_SHOP" readonly>
                             </div>
                             <div class="input_box">
-                                <label>Address <span>*</span></label>
+                                <label>Địa chỉ <span>*</span></label>
                                 <spForm:input value="${cart.user.address}" path="user.address" type="text"
                                               placeholder="Full address"/>
                             </div>
 
                             <div class="margin_between">
                                 <div class="input_box space_between">
-                                    <label>Phone <span>*</span></label>
+                                    <label>Số điện thoại <span>*</span></label>
                                     <spForm:input value="${cart.user.phone_number}" placeholder="Phone"
                                                   path="user.phone_number" type="tel"/>
                                 </div>
 
                                 <div class="input_box space_between">
-                                    <label>Email address </label>
+                                    <label>Địa chỉ Email</label>
                                     <spForm:input value="${cart.user.email}" path="user.email" readonly="true"
                                                   type="email"/>
                                 </div>
@@ -83,25 +84,25 @@
                     <div class="customer_details mt--20">
                         <div class="differt__address">
                             <input name="ship_to_different_address" value="1" type="checkbox">
-                            <span>Ship to a different address ?</span>
+                            <span>Giao đến một địa chỉ khác ?</span>
                         </div>
                         <div class="customar__field differt__form mt--40">
                             <div class="margin_between">
                                 <div class="input_box space_between">
-                                    <label>First name <span>*</span></label>
+                                    <label>Họ <span>*</span></label>
                                     <input type="text">
                                 </div>
                                 <div class="input_box space_between">
-                                    <label>last name <span>*</span></label>
+                                    <label>Tên <span>*</span></label>
                                     <input type="text">
                                 </div>
                             </div>
                             <div class="input_box">
-                                <label>Company name <span>*</span></label>
+                                <label>Tên cửa hàng <span>*</span></label>
                                 <input type="text">
                             </div>
                             <div class="input_box">
-                                <label>Country<span>*</span></label>
+                                <label>Quốc gia<span>*</span></label>
                                 <select class="select__option">
                                     <option>Select a country…</option>
                                     <option>Afghanistan</option>
@@ -113,7 +114,7 @@
                                 </select>
                             </div>
                             <div class="input_box">
-                                <label>Address <span>*</span></label>
+                                <label>Địa chỉ <span>*</span></label>
                                 <input type="text" placeholder="Street address">
                             </div>
                             <div class="input_box">
@@ -122,7 +123,7 @@
                             <div class="input_box">
                                 <label>District<span>*</span></label>
                                 <select class="select__option">
-                                    <option>Select a country…</option>
+                                    <option>Chọn quốc gia</option>
                                     <option>Afghanistan</option>
                                     <option>American Samoa</option>
                                     <option>Anguilla</option>
@@ -132,16 +133,16 @@
                                 </select>
                             </div>
                             <div class="input_box">
-                                <label>Postcode / ZIP <span>*</span></label>
+                                <label>mã bưu chính <span>*</span></label>
                                 <input type="text">
                             </div>
                             <div class="margin_between">
                                 <div class="input_box space_between">
-                                    <label>Phone <span>*</span></label>
+                                    <label>Số điện thoại <span>*</span></label>
                                     <input type="text">
                                 </div>
                                 <div class="input_box space_between">
-                                    <label>Email address <span>*</span></label>
+                                    <label>Địa chỉ Email<span>*</span></label>
                                     <input type="email">
                                 </div>
                             </div>
@@ -150,41 +151,41 @@
                 </div>
                 <div class="col-lg-6 col-12 md-mt-40 sm-mt-40">
                     <div class="wn__order__box">
-                        <h3 class="order__title">Your order</h3>
+                        <h3 class="order__title">Hóa đơn của bạn</h3>
                         <ul class="order__total">
-                            <li>Product</li>
-                            <li>Total</li>
+                            <li>Sản phẩm</li>
+                            <li>Tổng số tiền</li>
                         </ul>
                         <ul class="order_product">
                             <c:forEach var="product" items="${order_detail.productCart}">
                                 <li>${product.product.product_name} x ${product.quantity}<span
-                                        class="single_total_price">$${cart.getSalePrice(product.product) * product.quantity}</span>
+                                        class="single_total_price">${cart.getSalePrice(product.product) * product.quantity}00 VND</span>
                                 </li>
                             </c:forEach>
                         </ul>
                         <ul class="shipping__method">
-                            <li>Shipping
+                            <li>Giao hàng
                                 <ul>
                                     <li>
                                         <input name="ship_mode" data-mode="fast" onchange="processShipPrice(this)"
                                                data-index="0"
                                                value="48"
                                                type="radio"/>
-                                        <label>Flat Rate: $48.00</label>
+                                        <label>Giao hàng nhanh: 100.000 VND</label>
                                     </li>
                                     <li>
                                         <input name="ship_mode" data-index="0" data-mode="slow"
                                                onchange="processShipPrice(this)"
                                                value="16"
                                                checked="checked" type="radio"/>
-                                        <label>Slow Rate: $16.00</label>
+                                        <label>Giao hàng bình thường: 30.000 VND</label>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                         <ul class="total__amount">
-                            <li>SubTotal <span id="sub_total">$223.00</span></li>
-                            <li>Order Total <span id="order-total">$223.00</span></li>
+                            <li>Tiền đơn hàng <span id="sub_total">$223.00</span></li>
+                            <li>Tổng hóa đơn <span id="order-total">$223.00</span></li>
                         </ul>
                     </div>
                     <div id="accordion" class="checkout_accordion mt--30" role="tablist">
@@ -192,7 +193,7 @@
                             <div class="che__header" role="tab" id="headingOne">
                                 <a class="checkout__title" data-bs-toggle="collapse" href="#collapseOne"
                                    aria-expanded="true" aria-controls="collapseOne">
-                                    <span>Chose Payment Method</span>
+                                    <span>Chọn phương thức thanh toán</span>
                                 </a>
                             </div>
                             <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingFour"

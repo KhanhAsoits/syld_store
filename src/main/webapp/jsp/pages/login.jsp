@@ -1,4 +1,5 @@
 <%@ taglib prefix="spForm" uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <style>
     .disabled {
         background-color: rgba(0, 0, 0, 0.1) !important;
@@ -15,34 +16,34 @@
                 <div class="my__account__wrapper">
                     <br>
 
-                    <h4 class="account__title">Login</h4>
+                    <h4 class="account__title">Đăng nhập</h4>
                     <p style="color: red" class="lead fw-normal mb-0 me-3">${message}</p> <br>
                     <%--@elvariable id="user" type=""--%>
                     <spForm:form action="login" id="loginForm" method="post" modelAttribute="user">
                         <div class="account__form">
                             <div class="input__box">
-                                <label>Username or email address <span>*</span></label>
+                                <label>Tên đăng nhập hoặc địa chỉ email <span>*</span></label>
                                 <spForm:input path="email" id="email" type="email"/>
                                 <spForm:errors path="email"/>
                                 <span id="email_err" style="color: red;font-size: 12px"></span>
                             </div>
                             <div class="input__box">
-                                <label>Password<span>*</span></label>
+                                <label>Mật khẩu<span>*</span></label>
                                 <spForm:input id="password" path="password" type="password"/>
                                 <spForm:errors path="password"/>
                                 <span id="password_err" style="color: red;font-size: 12px"></span>
                             </div>
                             <div class="form__btn">
-                                <button id="sendBtn">Login</button>
+                                <button id="sendBtn">Đăng nhập</button>
                                 <label class="label-for-checkbox">
                                     <input id="rememberme" class="input-checkbox" name="rememberme"
                                            value="forever" type="checkbox">
-                                    <span>Remember me</span>
+                                    <span>Lưu tài khoản & mật khẩu</span>
                                 </label>
                             </div>
-                            <a class="forget_pass" href="${pageContext.request.contextPath}/auth/forgot_password">Lost your password?</a>
-                            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? </p><a class="Register"
-                                                                                                  href="register">Register.</a>
+                            <a class="forget_pass" href="${pageContext.request.contextPath}/auth/forgot_password">Quên mật khẩu?</a>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">Bạn chưa có tài khoản ? </p><a class="Register"
+                                                                                                  href="register">Đăng kí ngay.</a>
                         </div>
                     </spForm:form>
                 </div>

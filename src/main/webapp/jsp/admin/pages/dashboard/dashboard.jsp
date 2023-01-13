@@ -18,7 +18,7 @@
                 <div class="card card-mini dash-card card-2">
                     <div class="card-body">
                         <h2 class="mb-1">${data.order_count}</h2>
-                        <p>Đơn trong tháng</p>
+                        <p>Tổng số đơn</p>
                         <span class="mdi mdi-account-clock"></span>
                     </div>
                 </div>
@@ -35,8 +35,8 @@
             <div class="col-xl-3 col-sm-6 p-b-15 lbl-card">
                 <div class="card card-mini dash-card card-4">
                     <div class="card-body">
-                        <h2 class="mb-1">$${data.daily_income}</h2>
-                        <p>Doanh số</p>
+                        <h2 class="mb-1">${data.daily_income}00 VND</h2>
+                        <p>Doanh số trong tháng</p>
                         <span class="mdi mdi-currency-usd"></span>
                     </div>
                 </div>

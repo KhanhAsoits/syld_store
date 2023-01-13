@@ -114,7 +114,6 @@ public class ProductController extends BaseController {
     }
 
     public ResponseEntity<?> remove(String Id) {
-
         return null;
     }
 }

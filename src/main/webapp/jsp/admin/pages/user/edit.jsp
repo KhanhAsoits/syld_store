@@ -137,12 +137,12 @@
                                     <div class="py-2 col-12"></div>
 
                                     <div class="col-md-6">
-                                        <spForm:label path="phoneNumber"
+                                        <spForm:label path="phone_number"
                                                       class="form-label">NumberPhone</spForm:label>
-                                        <spForm:input  type="tel" path="phoneNumber" cssClass="form-control slug-title"
+                                        <spForm:input  type="tel" path="phone_number" cssClass="form-control slug-title"
                                                        cssStyle="border: 2px solid #ced4da!important"
                                                        required="true"/>
-                                        <spForm:errors path="phoneNumber" cssStyle="color: red;font-size: 12px;"/>
+                                        <spForm:errors path="phone_number" cssStyle="color: red;font-size: 12px;"/>
                                     </div>
                                     <div class="py-2 col-12"></div>
 

@@ -1,17 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="ec-content-wrapper">
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Product Detail</h1>
-                <p class="breadcrumbs"><span><a href="/home">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Product
+                <h1>Chi tiết sản phẩm</h1>
+                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/admin/dashboard">Trang chủ</a></span>
+                    <span><i class="mdi mdi-chevron-right"></i></span>Danh sách sản phẩm
+                    <span><i class="mdi mdi-chevron-right"></i></span>Chi tiết sản phẩm
                 </p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/products" class="btn btn-primary"> View All
+                <a href="${pageContext.request.contextPath}/admin/products" class="btn btn-primary"> Danh sách sản phẩm
                 </a>
-                <a href="${pageContext.request.contextPath}/admin/products/update/${single_product.id}" class="btn btn-primary"> Edit
+                <a href="${pageContext.request.contextPath}/admin/products/update/${single_product.id}" class="btn btn-primary"> Sửa
                 </a>
             </div>
         </div>
@@ -19,7 +21,7 @@
             <div class="col-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Product Detail</h2>
+                        <h2>Chi tiết sản phẩm</h2>
                     </div>
 
                     <div class="card-body product-detail">
@@ -79,21 +81,21 @@
                                             </ul>
                                         </div>
 
-                                        <p class="product-price">Price: $${single_product.product_price}</p>
-                                        <p class="product-sku">Tag:
+                                        <p class="product-price">Giá tiền: ${single_product.product_price}00 VND</p>
+                                        <p class="product-sku">Từ khóa:
                                             <c:forEach var="tag" items="${single_product.tags}">
                                                 <span class="btn btn-outline-primary">${tag.tag_name}</span>
                                             </c:forEach>
                                         </p>
                                         <ul class="product-size">
-                                            <p class="product-sku">Size :
-                                            <c:forEach var="size" items="${single_product.sizes}">
-                                                <li class="size"><span>${size.size_name}</span></li>
+                                            <p class="product-sku">Kích thước :
+                                            <c:forEach var="size"  items="${single_product.sizes}">
+                                                <li class="size" style="border-radius: 4px"><span>${size.size_name}</span></li>
                                             </c:forEach>
                                             </p>
                                         </ul>
                                         <ul class="product-color">
-                                            <p class="product-sku">Color :
+                                            <p class="product-sku">Màu :
                                             <c:forEach var="color" items="${single_product.colors}">
                                                 <li class="color"><span
                                                         style="background-color:${color.color_code};"></span></li>
@@ -127,7 +129,7 @@
                                            id="product-detail-tab" data-bs-toggle="tab"
                                            data-bs-target="#productdetail" href="#productdetail" role="tab"
                                            aria-selected="true">
-                                            <i class="mdi mdi-library-books mr-1"></i> Detail</a>
+                                            <i class="mdi mdi-library-books mr-1"></i> Mô tả</a>
                                     </li>
 
                                     <li class="nav-item">
@@ -135,7 +137,7 @@
                                            id="product-information-tab" data-bs-toggle="tab"
                                            data-bs-target="#productinformation" href="#productinformation"
                                            role="tab" aria-selected="false">
-                                            <i class="mdi mdi-information mr-1"></i>Info</a>
+                                            <i class="mdi mdi-information mr-1"></i>Chi tiết</a>
                                     </li>
 
                                     <li class="nav-item">
@@ -143,7 +145,7 @@
                                            id="product-reviews-tab" data-bs-toggle="tab"
                                            data-bs-target="#productreviews" href="#productreviews"
                                            role="tab" aria-selected="false">
-                                            <i class="mdi mdi-star-half mr-1"></i> Reviews</a>
+                                            <i class="mdi mdi-star-half mr-1"></i> Đánh giá</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent2">

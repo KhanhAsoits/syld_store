@@ -60,17 +60,29 @@
                                     <ul class="product-size">
                                         <span>Size:</span>
                                         <c:forEach var="size"  varStatus="loop" items="${single_product.sizes}">
-                                            <input type="radio" value=${size.id}"  style="margin: 4px; height= 10px;" name="size" class="size"  ><span>${size.size_name}</span></input>
+
+                                            <c:if test="${loop.index == 0 }">
+                                                <input type="radio" checked="checked" value=${size.id}"  style="margin: 4px; height= 10px;" name="size" class="size"  ><span>${size.size_name}</span></input>
+                                            </c:if>
+                                            <c:if test="${loop.index != 0 }">
+                                                <input type="radio" value=${size.id}"  style="margin: 4px; height= 10px;" name="size" class="size"  ><span>${size.size_name}</span></input>
+                                            </c:if>
+
                                         </c:forEach>
                                     </ul>
                                     <ul class="product-color">
                                         <span>Color:</span>
 
-                                        <c:forEach var="color" items="${single_product.colors}">
-                                            <input type="radio"  value="${color.id}" style="margin: 0 2px" name="color" class="size" />
-                                            <span style="background-color:${color.color_code}; width: 30px; height: 30px; border-radius: 100px; display: inline-block;">
+                                        <c:forEach var="color" varStatus="loop" items="${single_product.colors}">
+                                            <c:if test="${loop.index == 0 }">
+                                                <input type="radio" checked="checked"  value="${color.id}" style="margin: 0 2px" name="color" class="size" />
+                                                <span style="background-color:${color.color_code}; width: 30px; height: 30px; border-radius: 100px; display: inline-block;">
+                                            </c:if>
+                                            <c:if test="${loop.index != 0 }">
+                                                <input type="radio"  value="${color.id}" style="margin: 0 2px" name="color" class="size" />
+                                                <span style="background-color:${color.color_code}; width: 30px; height: 30px; border-radius: 100px; display: inline-block;">
+                                            </c:if>
                                             </span>
-
                                         </c:forEach>
 
                                     </ul>
@@ -187,8 +199,8 @@
                                     <div class="product__content content--center">
                                         <h4><a href="single-product.html">${product.product_name}</a></h4>
                                         <ul class="price d-flex">
-                                            <li>$${product.getSalePrice()}</li>
-                                            <li class="old_price">$${product.product_price}</li>
+                                            <li>${product.getSalePrice()}00 VND</li>
+                                            <li class="old_price">${product.product_price}00 VND</li>
                                         </ul>
                                         <div class="action">
                                             <div class="actions_inner">
@@ -253,7 +265,7 @@
             <div class="col-lg-3 col-12 md-mt-40 sm-mt-40">
                 <div class="shop__sidebar">
                     <aside class="widget__categories products--cat">
-                        <h3 class="widget__title">Product Categories</h3>
+                        <h3 class="widget__title">Danh mục sản phẩm :</h3>
                         <ul>
                             <c:forEach var="category" items="${category_and_tag.categories}">
                                 <li>
@@ -274,7 +286,7 @@
                                                 <span>Price :</span><input type="text" id="amount" readonly="">
                                             </div>
                                             <div class="price--filter">
-                                                <a href="#">Filter</a>
+                                                <a href="#">Bộ lọc :</a>
                                             </div>
                                         </div>
                                     </div>
@@ -283,7 +295,7 @@
                         </div>
                     </aside>
                     <aside class="widget__categories products--tag">
-                        <h3 class="widget__title">Product Tags</h3>
+                        <h3 class="widget__title">Từ khóa sản phẩm :</h3>
                         <ul>
                             <c:forEach var="tag" items="${category_and_tag.tags}">
                                 <li>

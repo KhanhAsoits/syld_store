@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <style>
     .best-sale{
         width: 80%;
@@ -24,10 +24,10 @@
                 <div class="col-lg-12">
                     <div class="slider__content">
                         <div class="contentbox">
-                            <h2 >Buy <span style="color: floralwhite">your </span></h2>
-                            <h2>favourite <span style="color: floralwhite">fashion </span></h2>
-                            <h2>from <span style="color: floralwhite">Here </span></h2>
-                            <a class="shopbtn" href="${pageContext.request.contextPath}/store?page=1&limit=9">shop now</a>
+                            <h2 >Mua <span style="color: floralwhite">các bộ thời trang </span></h2>
+                            <h2>Yêu thích <span style="color: floralwhite">của bạn </span></h2>
+                            <h2>Tại <span style="color: floralwhite">đây </span></h2>
+                            <a class="shopbtn" href="${pageContext.request.contextPath}/store?page=1&limit=9">Vào cửa hàng ngay</a>
                         </div>
                     </div>
                 </div>
@@ -42,10 +42,10 @@
                 <div class="col-lg-12">
                     <div class="slider__content">
                         <div class="contentbox">
-                            <h2>Buy <span style="color: lightpink">your </span></h2>
-                            <h2>favourite <span style="color: lightpink">fashion </span></h2>
-                            <h2>from <span style="color: lightpink">Here </span></h2>
-                            <a class="shopbtn" href="${pageContext.request.contextPath}/store?page=1&limit=9">shop now</a>
+                            <h2>Mua <span style="color: lightpink">các bộ thời trang </span></h2>
+                            <h2>Yêu thích  <span style="color: lightpink">của bạn  </span></h2>
+                            <h2>Tại <span style="color: lightpink">đây </span></h2>
+                            <a class="shopbtn" href="${pageContext.request.contextPath}/store?page=1&limit=9">Vào cửa hàng ngay</a>
                         </div>
                     </div>
                 </div>
@@ -60,9 +60,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section__title text-center">
-                    <h2 class="title__be--2">New <span class="color--theme" style="color: lightslategray">Products</span></h2>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                        suffered lebmid alteration in some ledmid form</p>
+                    <h2 class="title__be--2">Sản phẩm <span class="color--theme" style="color: lightslategray">mới nhất</span></h2>
+                    <p>Những sản phẩm mới nhất của chúng tôi được cập nhật hàng tuần từ tất cả
+                    mọi nơi trên thế giới với những sản phẩm được lựa chọn kỹ càng nhất !</p>
                 </div>
             </div>
         </div>
@@ -79,14 +79,14 @@
                         <a class="second__img animation1" href="${pageContext.request.contextPath}/products/${new_product.slug}">
                             <img style="height: 300px;object-fit: cover"  src="${pageContext.request.contextPath}${new_product.images_con.get(1).path}" alt="product image"></a>
                         <div class="hot__box">
-                            <span class="hot-label">NEW</span>
+                            <span class="hot-label">Mới nhất</span>
                         </div>
                     </div>
                     <div class="product__content content--center">
                         <h4><a href="${pageContext.request.contextPath}/products/${new_product.slug}">${new_product.product_name}</a></h4>
                         <ul class="price d-flex">
-                            <li>$${new_product.product_price - (new_product.product_price * (new_product.sale_off + 1 / 100))}</li>
-                            <li class="old_price">$${new_product.product_price}</li>
+                            <li>${new_product.product_price - (new_product.product_price * (new_product.sale_off + 1 / 100))}00 VND</li>
+                            <li class="old_price">${new_product.product_price}00 VND</li>
                         </ul>
                         <div class="action">
                             <div class="actions_inner">
@@ -133,15 +133,14 @@
         <div class="row">
             <div class="col-lg-7 offset-lg-5 col-md-12 col-12 ptb--150">
                 <div class="section__title text-center">
-                    <h2 style="color: whitesmoke">Stay With Us</h2>
+                    <h2 style="color: whitesmoke">Để lại email để nhận những thông tin về các sản phẩm mới nhất</h2>
                 </div>
                 <div class="newsletter__block text-center">
-                    <p style="color: whitesmoke">Subscribe to our newsletters now and stay up-to-date with new collections, the latest
-                        lookbooks and exclusive offers.</p>
+                    <p style="color: whitesmoke">Đăng kí email tại đây bạn sẽ luôn được ưu tiên và nhận nhiều ưu đãi nhất.</p>
                     <form action="#">
                         <div class="newsletter__box">
-                            <input type="email" style="color: whitesmoke"   placeholder="Enter your e-mail">
-                            <button style="color: whitesmoke">Subscribe</button>
+                            <input type="email" style="color: whitesmoke" style="font-color:white"   placeholder="Nhập email của bạn tại đây...">
+                            <button style="color: whitesmoke">Đăng kí</button>
                         </div>
                     </form>
                 </div>
@@ -156,16 +155,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section__title text-center">
-                    <h2 class="title__be--2">Hot Sale <span class="color--theme" style="color: lightpink">Products</span></h2>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                        suffered lebmid alteration in some ledmid form</p>
+                    <h2 class="title__be--2">Siêu giảm giá <span class="color--theme" style="color: lightpink">của sản phẩm hot nhất</span></h2>
+                    <p>Những sản phẩm được nhiều người mua nhất trong tháng vừa qua và những ưu đãi bất tận của chúng tôi !</p>
                 </div>
             </div>
         </div>
         <div class="row mt--50">
             <div class="col-md-12 col-lg-12 col-sm-12">
                 <div class="product__nav nav justify-content-center" role="tablist">
-                    <a class="nav-item nav-link active" data-bs-toggle="tab" href="#nav-all" role="tab">ALL</a>
+                    <a class="nav-item nav-link active" data-bs-toggle="tab" href="#nav-all" role="tab">Tất cả</a>
                     <c:forEach var="categoryP" items="${data.productByCategoryDtos}">
                         <a class="nav-item nav-link" data-bs-toggle="tab" href="#nav-${categoryP.toSlug()}"
                            role="tab">${categoryP.categoryDto.category_name}</a>
@@ -189,14 +187,14 @@
                                             <a class="second__img animation1" href="${pageContext.request.contextPath}/products/${single_product.slug}"><img
                                                     style="height: 300px;object-fit: cover;" src="${pageContext.request.contextPath}${single_product.images_con.get(1).path}" alt="product image"></a>
                                             <div class="hot__box">
-                                                <span class="hot-label">BEST SALER</span>
+                                                <span class="hot-label">Giảm nhiều nhất</span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center content--center">
                                             <h4><a href="${pageContext.request.contextPath}/products/${single_product.slug}">${single_product.product_name}</a></h4>
                                             <ul class="price d-flex">
-                                                <li>$${single_product.product_price - (single_product.product_price * (single_product.sale_off/100))}</li>
-                                                <li class="old_price">$${single_product.product_price}</li>
+                                                <li>${single_product.product_price - (single_product.product_price * (single_product.sale_off/100))}00 VND</li>
+                                                <li class="old_price">${single_product.product_price}00 VND</li>
                                             </ul>
                                             <div class="action">
                                                 <div class="actions_inner">
