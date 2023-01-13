@@ -3,6 +3,8 @@ function addProductToCart(e) {
     let product_id = e.dataset.product;
     let cart_id = e.dataset.cart;
     let quantity = document.getElementById("qty");
+    let pickedColor = document.querySelector('input[name="color"]:checked').value;
+    let pickedSize = document.querySelector('input[name="size"]:checked').value;
 
     let data = {
         id: cart_id ? cart_id : "",
@@ -50,7 +52,7 @@ const handleLoadCartUI = (products, user) => {
                     <h6>
                         <a href="${window.location.origin}/products/${val.product.slug}">${val.product.product_name}</a>
                     </h6>
-                    <span class="price" data-quantity="${val.quantity}">$${val.product.product_price}</span>
+                    <span class="price" data-quantity="${val.quantity}">${val.product.product_price}00 VND</span>
                     <span style="font-size: 14px">Quantity : ${val.quantity}</span>
                 </div>
                 <div class="product_price d-flex justify-content-between">
@@ -82,26 +84,23 @@ function quantityProcess(count) {
 function totalProcess_() {
     let listPrice = document.querySelectorAll(".content .price")
     let total = document.getElementById("cart-total")
-
     let amount = 0;
-
     listPrice.forEach((val, index) => {
-        amount += (parseFloat(val.textContent.replace("$", "").trim()) * parseInt(val.dataset.quantity))
+        amount += (parseFloat(val.textContent.replace("VND", "").trim()) * parseInt(val.dataset.quantity))
     })
-    total.textContent = '$' + amount.toString();
+    total.textContent =   amount.toString() + 'VND';
 }
 
 function processGrandTotal() {
     let list_total = document.querySelectorAll("#cart-detail-table .product-subtotal")
     let grand_total = 0;
-    console.log(list_total)
     if (list_total) {
         list_total.forEach((val, index) => {
-            grand_total += parseInt(val.textContent.replace("$", "").trim())
+            grand_total += parseInt(val.textContent.replace(".000 VND", "").trim())
         })
         let grand_el = document.querySelector(".grand-total")
         if (grand_el) {
-            grand_el.textContent = '$' + grand_total;
+            grand_el.textContent =  grand_total + '.000 VND';
         }
     }
 }
@@ -111,7 +110,7 @@ function totalProcess(self) {
         let per_price = self.dataset.per;
         let total = self.parentNode.nextElementSibling;
         let amount = per_price * self.value
-        total.textContent = `$${amount}`
+        total.textContent = `${amount} .000 VND`
         processGrandTotal()
     }
 }

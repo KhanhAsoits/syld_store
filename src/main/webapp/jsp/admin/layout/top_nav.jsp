@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <header class="ec-main-header" id="header">
     <nav class="navbar navbar-static-top navbar-expand-lg">
         <!-- Sidebar toggle button -->
@@ -35,22 +36,22 @@
                         </li>
                         <li>
                             <a href="/my_account/detail">
-                                <i class="mdi mdi-account"></i> My Profile
+                                <i class="mdi mdi-account"></i> Thông tin người dùng
                             </a>
                         </li>
                         <li>
                             <a href="#">
-                                <i class="mdi mdi-email"></i> Message
+                                <i class="mdi mdi-email"></i> Tin nhắn
                             </a>
                         </li>
                         <li>
-                            <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
+                            <a href="${pageContext.request.contextPath}/home"> <i class="mdi mdi-diamond-stone"></i> Trang chủ người dùng </a>
                         </li>
                         <li class="right-sidebar-in">
-                            <a href="javascript:0"> <i class="mdi mdi-settings-outline"></i> Setting </a>
+                            <a href="javascript:0"> <i class="mdi mdi-settings-outline"></i> Cài đặt </a>
                         </li>
                         <li class="dropdown-footer">
-                            <a href="/logout"> <i class="mdi mdi-logout"></i> Log Out </a>
+                            <a href="/logout"> <i class="mdi mdi-logout"></i> Đăng xuất </a>
                         </li>
                     </ul>
                 </li>
@@ -61,7 +62,7 @@
 
                     <div class="card card-default dropdown-notify dropdown-menu-right mb-0">
                         <div class="card-header card-header-border-bottom px-3">
-                            <h2>Notifications</h2>
+                            <h2>Thông báo</h2>
                         </div>
 
                         <div class="card-body px-0 py-0">
@@ -70,19 +71,19 @@
                                 <li class="nav-item mx-3 my-0 py-0">
                                     <a href="#" class="nav-link active pb-3" id="home2-tab"
                                        data-bs-toggle="tab" data-bs-target="#home2" role="tab"
-                                       aria-controls="home2" aria-selected="true">All (10)</a>
+                                       aria-controls="home2" aria-selected="true">Tất cả (10)</a>
                                 </li>
 
                                 <li class="nav-item mx-3 my-0 py-0">
                                     <a href="#" class="nav-link pb-3" id="profile2-tab" data-bs-toggle="tab"
                                        data-bs-target="#profile2" role="tab" aria-controls="profile2"
-                                       aria-selected="false">Msgs (5)</a>
+                                       aria-selected="false">Tin nhắn (5)</a>
                                 </li>
 
                                 <li class="nav-item mx-3 my-0 py-0">
                                     <a href="#" class="nav-link pb-3" id="contact2-tab" data-bs-toggle="tab"
                                        data-bs-target="#contact2" role="tab" aria-controls="contact2"
-                                       aria-selected="false">Others (5)</a>
+                                       aria-selected="false">Khác (5)</a>
                                 </li>
                             </ul>
 

@@ -124,7 +124,7 @@
                                                 <span>Giỏ hàng</span>
                                             </div>
                                             <div class="total_amount text-end">
-                                                <span id="cart-total">$0</span>
+                                                <span id="cart-total">0 VND</span>
                                             </div>
                                             <div class="mini_action checkout">
                                                 <a class="checkout__btn" style="color: whitesmoke!important;"
@@ -161,7 +161,7 @@
                                                                 <h6>
                                                                     <a href="${pageContext.request.contextPath}/products/${product.product.slug}">${product.product.product_name}</a>
                                                                 </h6>
-                                                                <span class="price" data-quantity="${product.quantity}">${product.product.product_price}.000VND</span>
+                                                                <span class="price" data-quantity="${product.quantity}">${product.product.product_price}00 VND</span>
                                                                 <span style="font-size: 14px">Số lượng : ${product.quantity}</span>
                                                             </div>
                                                             <div class="product_price d-flex justify-content-between">

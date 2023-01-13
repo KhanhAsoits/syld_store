@@ -1,13 +1,12 @@
 package com.syld.store.services.Cart;
 
 import com.syld.store.dto.*;
-import com.syld.store.entities.Cart;
-import com.syld.store.entities.Product;
-import com.syld.store.entities.ProductCart;
-import com.syld.store.entities.User;
+import com.syld.store.entities.*;
 import com.syld.store.repositories.CartRepository;
 import com.syld.store.repositories.ProductCartRepository;
+import com.syld.store.services.color.ColorService;
 import com.syld.store.services.product.ProductService;
+import com.syld.store.services.size.SizeService;
 import com.syld.store.services.user.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +31,9 @@ public class CartServiceIpm implements CartService {
     private final ProductService productService;
     private final UserService userService;
 
+    private final ColorService colorService;
+
+    private final SizeService sizeService;
     private final ProductCartRepository productCartRepository;
 
     public Cart save_(CartDto entity) throws Exception {
@@ -116,6 +118,19 @@ public class CartServiceIpm implements CartService {
                     productCart.setId(UUID.randomUUID().toString());
                     productCart.setProduct(product_);
                     productCart.setQuantity(cartDto.getQuantity());
+                    ColorDto pickedColor = colorService.getByColor_name(cartDto.getPicked_color());
+                    if (pickedColor != null) {
+                        Color color = new Color();
+                        BeanUtils.copyProperties(color,pickedColor);
+                        productCart.getPickedColors().add(color);
+                    }
+                    SizeDto sizeDto = sizeService.getById(cartDto.getPicked_size());
+                    if (sizeDto!=null){
+                        Size size = new Size();
+                        BeanUtils.copyProperties(size,sizeDto);
+                        productCart.getPickedSizes().add(size);
+                    }
+
                     String id = productCart.getId();
                     productCartRepository.save(productCart);
 
