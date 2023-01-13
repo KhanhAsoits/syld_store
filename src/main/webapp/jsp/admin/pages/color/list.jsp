@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <style>
     .bottom-information {
         width: 100% !important;
@@ -12,13 +13,12 @@
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>List Color</h1>
-                <p class="breadcrumbs"><span><a href="home">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span> List Color</p>
+                <h1>Danh sách màu</h1>
+                <p class="breadcrumbs"><span><a href="home">Trang chủ</a></span>
+                    <span><i class="mdi mdi-chevron-right"></i></span> Danh sách màu</p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/colors/create" class="btn btn-primary"> Add
-                    Color</a>
+                <a href="${pageContext.request.contextPath}/admin/colors/create" class="btn btn-primary"> Thêm màu mới</a>
             </div>
         </div>
         <div class="row">
@@ -29,10 +29,10 @@
                             <table id="responsive-data-table" class="table">
                                 <thead>
                                 <tr>
-                                    <th>Color Code</th>
-                                    <th>Color Name</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Mã màu</th>
+                                    <th>Tên màu</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thao tác</th>
                                 </tr>
                                 </thead>
 
@@ -45,21 +45,21 @@
                                     <td>
                                         <div class="btn-group">
                                             <button type="button"
-                                                    class="btn btn-outline-success"><a href="${pageContext.request.contextPath}/admin/colors/${color.color_name}">Info</a>
+                                                    class="btn btn-outline-success"><a href="${pageContext.request.contextPath}/admin/colors/${color.color_name}">Chi tiết</a>
                                             </button>
                                             <button type="button"
                                                     class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
                                                     data-bs-toggle="dropdown" aria-haspopup="true"
                                                     aria-expanded="false" data-display="static">
-                                                <span class="sr-only">Info</span>
+                                                <span class="sr-only">Chi tiết</span>
                                             </button>
 
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item"
-                                                   href="${pageContext.request.contextPath}/admin/colors/update/${color.color_name}">Edit</a>
+                                                   href="${pageContext.request.contextPath}/admin/colors/update/${color.color_name}">Sửa</a>
                                                 <c:if test="${color.state}">
                                                     <a class="dropdown-item"
-                                                       href="${pageContext.request.contextPath}/admin/colors/remove/${color.id}">Delete</a>
+                                                       href="${pageContext.request.contextPath}/admin/colors/remove/${color.id}">Xóa</a>
                                                 </c:if>
                                             </div>
                                         </div>

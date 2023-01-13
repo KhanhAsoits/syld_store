@@ -1,5 +1,6 @@
 <%@ taglib prefix="spForm" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <style>
     .form-control {
         border: 2px solid #ced4da !important;
@@ -72,12 +73,14 @@
     <div class="content">
         <div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
             <div>
-                <h1>Add Product</h1>
-                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/admin">Home</a></span>
-                    <span><i class="mdi mdi-chevron-right"></i></span>Product</p>
+                <h1>Thêm mới sản phẩm</h1>
+                <p class="breadcrumbs"><span><a href="${pageContext.request.contextPath}/admin/dashboard">Trang chủ</a></span>
+                    <span><i class="mdi mdi-chevron-right"></i></span>Danh sách sản phẩm
+                    <span><i class="mdi mdi-chevron-right"></i></span>Thêm mới sản phẩm
+                </p>
             </div>
             <div>
-                <a href="${pageContext.request.contextPath}/admin/products" class="btn btn-primary"> View All
+                <a href="${pageContext.request.contextPath}/admin/products" class="btn btn-primary"> Danh sách sản phẩm
                 </a>
             </div>
         </div>
@@ -85,7 +88,7 @@
             <div class="col-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Add Product</h2>
+                        <h2>Thêm mới sản phẩm</h2>
                     </div>
 
                     <div class="card-body">
@@ -224,14 +227,14 @@
                                 <div class="ec-vendor-upload-detail row">
                                     <div class="col-md-6">
                                         <spForm:label path="product_name"
-                                                      class="form-label">Product name</spForm:label>
+                                                      class="form-label">Tên sản phẩm</spForm:label>
                                         <spForm:input path="product_name" cssClass="form-control slug-title"
                                                       cssStyle="border: 2px solid #ced4da!important"
                                                       required="true"/>
                                         <spForm:errors path="product_name" cssStyle="color: red;font-size: 12px;"/>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Select Categories</label>
+                                        <label class="form-label">Chọn danh mục</label>
                                         <spForm:select path="category_id"
                                                        cssStyle="border: 2px solid #ced4da!important;"
                                                        cssClass="form-select">
@@ -247,7 +250,7 @@
 
                                     <div class="col-md-6">
                                         <spForm:label path="slug"
-                                                      cssClass="col-12 col-form-label">Slug</spForm:label>
+                                                      cssClass="col-12 col-form-label">Tên không dấu</spForm:label>
                                         <div class="col-12">
                                             <spForm:input path="slug"
                                                           cssStyle="border: 2px solid #ced4da!important;"
@@ -258,7 +261,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 mt-3">
-                                        <label class="form-label">Select Brand</label>
+                                        <label class="form-label">Chọn thương hiệu</label>
                                         <spForm:select path="brand_id"
                                                        cssStyle="border: 2px solid #ced4da!important;"
                                                        cssClass="form-select">
@@ -269,7 +272,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <spForm:label path="product_desc"
-                                                      class="form-label">Sort Description</spForm:label>
+                                                      class="form-label">Mô tả ngắn</spForm:label>
                                         <spForm:input path="product_desc" id="desc" hidden="hidden"/>
                                         <spForm:textarea path="product_desc" id="product_desc" cssClass="form-control"
                                                          cssStyle="border: 2px solid #ced4da!important;" rows="2"
@@ -277,7 +280,7 @@
                                     </div>
                                         <%--                                        colors--%>
                                     <div class="col-md-4 mb-25  mt-3">
-                                        <label class="form-label">Colors</label>
+                                        <label class="form-label">Chọn màu sắc</label>
                                         <div class="row justify-content-evenly align-items-center colors">
                                             <spForm:input path="colors" type="color"
                                                           class="form-control form-control-color"
@@ -299,7 +302,7 @@
                                     </div>
 
                                     <div class="col-md-8 mb-25  mt-3">
-                                        <spForm:label path="sizes" class="form-label">Size</spForm:label>
+                                        <spForm:label path="sizes" class="form-label">Chọn kích thước</spForm:label>
                                         <div class="form-checkbox-box d-flex justify-content-start align-items-center sizes">
                                             <c:forEach var="size" items="${sizes}" varStatus="loop">
                                                 <div class="form-check form-check-inline ">
@@ -317,19 +320,19 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label class="form-label">Price <span>( In USD )</span></label>
+                                        <label class="form-label">Giá tiền <span>( VND )</span></label>
                                         <spForm:input path="product_price" type="number" min="1" value="1"
                                                       cssStyle="border: 2px solid #ced4da!important;"
                                                       cssClass="form-control" required="true"/>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Quantity</label>
+                                        <label class="form-label">Số lượng</label>
                                         <spForm:input path="product_quantity" type="number" min="1" value="1"
                                                       cssStyle="border: 2px solid #ced4da!important;"
                                                       cssClass="form-control" required="true"/>
                                     </div>
                                     <div class="col-md-12 my-3">
-                                        <label class="form-label">Full Detail</label>
+                                        <label class="form-label">Mô tả chi tiết</label>
                                         <spForm:input path="product_detail" id="detail" hidden="hidden"/>
                                         <spForm:textarea path="product_detail" id="product_detail"
                                                          cssStyle="border: 2px solid #ced4da!important;"
@@ -337,7 +340,7 @@
                                                   required="true"></spForm:textarea>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">Product Tags <span>(Type and auto create tag if new)</span></label>
+                                        <label class="form-label">Từ khóa sản phẩm <span>(mỗi từ khóa cách nhau dấu phẩy)</span></label>
                                         <spForm:input path="group_tag" id="product_tags"
                                                       cssStyle="border: 2px solid #ced4da!important;"
                                                       required="true" type="text" cssClass="form-control"
@@ -345,12 +348,12 @@
                                                       placeholder="Type tab name here and it auto create!"/>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label">Product Tags Preview</label>
+                                        <label class="form-label">Từ khóa sản phẩm</label>
                                         <div id="tags-preview" style="border: 2px solid #ced4da!important;" class="form-control" name="group_tag">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary">Xác nhận</button>
                                     </div>
                                 </div>
                             </div>

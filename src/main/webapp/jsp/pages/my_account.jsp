@@ -1,5 +1,6 @@
 <%@ taglib prefix="spForm" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <section style="background-color: #eee;">
     <div class="container py-5">
         <br><br><br><br>
@@ -7,14 +8,14 @@
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1.webp"
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2.webp"
                              alt="avatar"
                              class="rounded-circle mx-auto img-fluid" style="width: 150px;">
                         <h5 class="my-3">${user.username}</h5>
                         <p class="text-muted mb-1">Website Full Stack Developer</p>
                         <div class="d-flex justify-content-center mb-2">
-                            <button type="button" class="btn btn-primary">Change Avatar</button>
-                            <button type="button" class="btn btn-outline-primary ms-1">Edit</button>
+                            <button type="button" class="btn btn-primary">Đổi ảnh đại diện</button>
+                            <button type="button" class="btn btn-outline-primary ms-1">Sửa</button>
                         </div>
                     </div>
                 </div>
@@ -58,7 +59,7 @@
                             <spForm:input path="id" cssStyle="visibility: hidden" value="${user.id}"/>
                             <div class="row py-1">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Full Name</p>
+                                    <p class="mb-0">Họ và tên</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <spForm:input path="username" cssClass="form-control" value="${user.username}"/>
@@ -76,7 +77,7 @@
                             </div>
                             <div class="row py-1">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Phone</p>
+                                    <p class="mb-0">Số điện thoại</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <spForm:input path="phone_number" placeholder="Phone" cssClass="form-control"
@@ -86,7 +87,7 @@
                             </div>
                             <div class="row py-1">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Address</p>
+                                    <p class="mb-0">Địa chỉ</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <spForm:input path="address" placeholder="Address" cssClass="form-control"
@@ -98,12 +99,11 @@
                                 <div class="col-12 col-md-6"></div>
                                 <div class="col-12 col-md-3">
                                     <button type="button" class="btn btn-success w-100 text-white"
-                                            data-bs-toggle="collapse" data-bs-target="#password_change_form">Change
-                                        Password
+                                            data-bs-toggle="collapse" data-bs-target="#password_change_form">Đổi mật khẩu
                                     </button>
                                 </div>
                                 <div class="col-12 col-md-3">
-                                    <button class="btn btn-warning w-100 text-white">Update</button>
+                                    <button class="btn btn-warning w-100 text-white">Cập nhật</button>
                                 </div>
 
                             </div>
@@ -117,7 +117,7 @@
                                      modelAttribute="password_changer">
                             <div class="row py-1">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Old Password</p>
+                                    <p class="mb-0">Mật khẩu cũ</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <spForm:input path="old_pass" cssClass="form-control" type="password"
@@ -127,7 +127,7 @@
                             </div>
                             <div class="row py-1">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">New Password</p>
+                                    <p class="mb-0">Mật khẩu mới</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <spForm:input path="new_pass" cssClass="form-control" type="password"
@@ -138,7 +138,7 @@
                             <div class="row mt-2">
                                 <div class="col-12 col-md-9"></div>
                                 <div class="col-12 col-md-3">
-                                    <button class="btn btn-success w-100 text-white">Confirm</button>
+                                    <button class="btn btn-success w-100 text-white">Xác nhận</button>
                                 </div>
 
                             </div>

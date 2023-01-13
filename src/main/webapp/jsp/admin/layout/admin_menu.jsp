@@ -17,7 +17,7 @@
                 <li class="has-sub">
                     <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/dashboard">
                         <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span class="nav-text">Báo Cáo</span>
+                        <span class="nav-text">Tổng quan</span>
                     </a>
                     <hr>
                 </li>
@@ -30,17 +30,7 @@
                     </a>
                     <div class="collapse">
                         <ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
-                            <li class="">
-                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/cards">
-                                    <span class="nav-text">Tài khoản quản trị viên Gird</span>
-                                </a>
-                            </li>
 
-                            <li class="">
-                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/list">
-                                    <span class="nav-text">Danh sách tài khoản quản trị viên</span>
-                                </a>
-                            </li>
                             <li class="">
                                 <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/roles">
                                     <span class="nav-text">Quyền tài khoản</span>
@@ -69,11 +59,7 @@
                                     <span class="nav-text">Danh sách người dùng</span>
                                 </a>
                             </li>
-                            <li class="">
-                                <a class="sidenav-item-link" href="${pageContext.request.contextPath}/admin/users/detail">
-                                    <span class="nav-text">Thông tin chi tiết người dùng</span>
-                                </a>
-                            </li>
+
                         </ul>
                     </div>
                     <hr>
